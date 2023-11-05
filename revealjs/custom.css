@@ -1,0 +1,32 @@
+
+:root {
+    --r-main-color: #47657d;
+    --r-heading-color: #1f4361;
+    --r-link-color: #306998;
+    --r-link-color-dark: #1f4361;
+    --r-link-color-hover: #82b1d7;
+    --r-selection-background-color: #82b1d7;
+}
+
+.reveal,
+.reveal h1,
+.reveal h2,
+.reveal h3,
+.reveal h4,
+.reveal h5,
+.reveal h6 {
+    font-family: Arial, sans-serif;
+    text-transform: none;
+}
+
+.reveal .backgrounds {
+    border-style: solid;
+    border-width: 300px;
+    border-image: url(img/cooper-border.svg);
+    border-image-slice: 38%;
+    box-sizing: border-box;
+}
+
+.reveal-viewport {
+    --r-controls-spacing: 4em;
+}

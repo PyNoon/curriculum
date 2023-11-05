@@ -1,0 +1,58 @@
+<h1 id="week-1">Week 1</h1>
+<h2 id="intro-to-jupyter">Intro to Jupyter</h2>
+<p>Loosely based on <a
+href="https://swcarpentry.github.io/python-novice-gapminder/01-run-quit.html">https://swcarpentry.github.io/python-novice-gapminder/01-run-quit.html</a>,
+but using a more streamlined set of things to review (e.g. we don’t want
+to teach shortcut keys).</p>
+<ul>
+<li>Open our jupyterlite: <a
+href="https://pynoon.github.io/jupyterlite">https://pynoon.github.io/jupyterlite</a>
+<ul>
+<li>You may have heard of Jupyter notebooks</li>
+<li>Jupyterlite is a version of Jupyter that runs entirely in the
+browser</li>
+</ul></li>
+<li><strong>Python console</strong>
+<ul>
+<li>Great for experimenting, doing quick calculations</li>
+<li><code>print('Hello world')</code></li>
+<li><code>1 + 1</code></li>
+<li>Work in the console is lost when you close the console</li>
+</ul></li>
+<li><strong>Python scripts</strong>
+<ul>
+<li>Ideal for creating re-usable programs</li>
+<li>New tab -&gt; new Python file -&gt; rename to
+<code>hello.py</code></li>
+<li>Add <code>print('Hello world')</code></li>
+<li>Go back to your console and run: <code>%run hello.py</code></li>
+<li>Add <code>1 + 1</code>
+<ul>
+<li>Result isn’t shown until we wrap it with <code>print()</code></li>
+</ul></li>
+</ul></li>
+<li><strong>Notebooks</strong>
+<ul>
+<li><p>Interactive like the console, re-usable like python scripts, and
+you can add formatted notes</p></li>
+<li><p>Rename your notebook: <code>week1.ipynb</code></p></li>
+<li><p><code>print('Hello world')</code></p></li>
+<li><p>Markdown: <code># My First Notebook</code></p></li>
+<li><p>Notebooks support rich output, like plots:</p>
+<pre><code>%pip install plotly nbformat pandas
+import plotly.express as px
+px.bar(x=[&#39;a&#39;, &#39;b&#39;, &#39;c&#39;], y=[1, 2, 3])</code></pre></li>
+<li><p>Interact with the plot</p></li>
+<li><p>Change the plot data and re-execute</p></li>
+<li><p>Drag cells around</p></li>
+<li><p>We’ll primarily use notebooks, so that you can save the commands
+you run and add notes</p></li>
+</ul></li>
+<li><strong>Tip:</strong> Download notebooks and python files to avoid
+data loss when clearing browser data</li>
+</ul>
+<h2 id="variables-and-assignment">Variables and Assignment</h2>
+<ul>
+<li>Live code through: <a
+href="https://swcarpentry.github.io/python-novice-gapminder/02-variables.html">https://swcarpentry.github.io/python-novice-gapminder/02-variables.html</a></li>
+</ul>
