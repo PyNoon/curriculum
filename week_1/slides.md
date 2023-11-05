@@ -11,6 +11,15 @@ title: PyNoon Week 1
 * Introduce yourself to someone!
   * What do each of you want to use Python for?
 
+### Tutorial Objectives
+
+1. Three ways to use Python:
+   * Python console
+   * Python scripts
+   * Python notebooks
+2. Basic maths
+3. Setting and using variables
+
 ### Independent Work/Homework
 
 <div style="font-size: 0.8em;">
