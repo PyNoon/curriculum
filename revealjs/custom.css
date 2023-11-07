@@ -27,6 +27,15 @@
     box-sizing: border-box;
 }
 
+.reveal .slides {
+    margin: 0 30px;
+}
+
 .reveal-viewport {
     --r-controls-spacing: 4em;
+}
+
+.reveal span.left-heading {
+    display: block;
+    text-align: left;
 }

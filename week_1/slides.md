@@ -11,7 +11,9 @@ title: PyNoon Week 1
 * Introduce yourself to someone!
   * What do each of you want to use Python for?
 
-### Tutorial Objectives
+### <span class="left-heading">Tutorial Objectives</span>
+
+<div style="text-align: left;">
 
 1. Three ways to use Python:
    * Python console
@@ -20,7 +22,10 @@ title: PyNoon Week 1
 2. Basic maths
 3. Setting and using variables
 
-### Independent Work/Homework
+</div>
+
+
+### <span class="left-heading">Independent Work/Homework</span>
 
 <div style="font-size: 0.8em;">
 
