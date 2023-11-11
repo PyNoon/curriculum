@@ -4,12 +4,19 @@ title: PyNoon Week 1
 
 ### Welcome! Get ready for PyNoon:
 
+<div style="font-size: 0.8em;">
+
+<img src="img/jupyterlite-demo.png" style="position: absolute; right: 0px; top: 45px; height: 68%;">
+
 * Connect to the WiFi (see whiteboard)
 * Check you can access:
   * [pynoon.slack.com](https://pynoon.slack.com)
   * [pynoon.github.io/jupyterlite](https://pynoon.github.io/jupyterlite)
-* Introduce yourself to someone!
-  * What do each of you want to use Python for?
+  * [futurecoder.io](https://futurecoder.io/)<br>(feel free to get started)
+* If you need help, ask a neighbour or<br>a helper wearing a lanyard
+* **Once everyone's ready, we'll kick off the course intro**
+
+</div>
 
 ### <span class="left-heading">Tutorial Objectives</span>
 
