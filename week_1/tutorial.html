@@ -26,6 +26,11 @@ browser</li>
 <li>New tab -&gt; new Python file -&gt; rename to
 <code>hello.py</code></li>
 <li>Add <code>print('Hello world')</code></li>
+<li>Save the file with <code>Ctrl + S</code>
+<ul>
+<li>We can tell the file isn’t saved yet by the black dot over the
+close-tab button</li>
+</ul></li>
 <li>Go back to your console and run: <code>%run hello.py</code></li>
 <li>Add <code>1 + 1</code>
 <ul>
@@ -46,15 +51,15 @@ you can add formatted notes</p></li>
 <li><p>Add markdown formatting:
 <code># My First Notebook</code></p></li>
 <li><p>Similar to Teams/Slack: Add a bullet list</p></li>
+<li><p>Drag cells around</p></li>
 <li><p>Notebooks support rich output, like plots:</p>
 <pre><code>%pip install plotly nbformat pandas
 import plotly.express as px
 px.bar(x=[&#39;a&#39;, &#39;b&#39;, &#39;c&#39;], y=[1, 2, 3])</code></pre></li>
 <li><p>Interact with the plot</p></li>
 <li><p>Change the plot data and re-execute</p></li>
-<li><p>Drag cells around</p></li>
 <li><p>Notebooks are really good for presenting the results of your code
-- very popular in data science</p></li>
+- very popular in data science and just for data exploration</p></li>
 <li><p>We’ll primarily use notebooks, so that you can save the commands
 you run and add notes</p></li>
 </ul></li>
@@ -93,5 +98,6 @@ print(&#39;Average movies per day:&#39;, average_movies_per_day)
 average_revenue_per_day = average_movies_per_day * revenue_per_movie
 print(&#39;Average daily revenue:&#39;, average_revenue_per_day)
 
+# Multiply daily revenue by number of days in the year
 annual_revenue_forecast = average_revenue_per_day * 365
 print(&#39;Annual revenue forecast:&#39;, annual_revenue_forecast)</code></pre>

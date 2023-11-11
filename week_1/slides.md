@@ -36,17 +36,19 @@ title: PyNoon Week 1
 
 <div style="font-size: 0.8em;">
 
-1. **Exercise:** Write a notebook for a calculation:
+1. **Work through [futurecoder.io](https://futurecoder.io) sections**:
+   1. The Shell
+   2. String Basics
+   3. Variables
+2. **Exercise:** Write a notebook for a calculation:
    * E.g. Do a back-of-the-envelope calculation:
      * Sales/profit for a business
      * Floor area of your home or office
      * Number of weetbix NZ eats in a year
+   * See the example in [pynoon.slack.com](https://pynoon.slack.com)
    * Name your notebook and variables well, and comment each part of
      the calculation
-   * Explain your calculation to your neighbour
-2. **Work through [futurecoder.io](https://futurecoder.io) sections**:
-   1. The Shell
-   2. String Basics
-   3. Variables
+   * If you finish in class, explain your calculation to a
+     neighbour
 
 </div>

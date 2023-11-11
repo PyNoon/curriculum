@@ -21,6 +21,9 @@ want to teach shortcut keys).
   * Ideal for creating re-usable programs
   * New tab -> new Python file -> rename to `hello.py`
   * Add `print('Hello world')`
+  * Save the file with `Ctrl + S`
+    * We can tell the file isn't saved yet by the black dot over the
+      close-tab button
   * Go back to your console and run: `%run hello.py`
   * Add `1 + 1`
     * Result isn't shown until we wrap it with `print()`
@@ -35,6 +38,7 @@ want to teach shortcut keys).
   * Markdown: `My First Notebook`
   * Add markdown formatting: `# My First Notebook`
   * Similar to Teams/Slack: Add a bullet list
+  * Drag cells around
   * Notebooks support rich output, like plots:
     ```
     %pip install plotly nbformat pandas
@@ -43,9 +47,8 @@ want to teach shortcut keys).
     ```
   * Interact with the plot
   * Change the plot data and re-execute
-  * Drag cells around
   * Notebooks are really good for presenting the results of your
-    code - very popular in data science
+    code - very popular in data science and just for data exploration
   * We'll primarily use notebooks, so that you can save the commands
     you run and add notes
 * **Tip:** Download notebooks and python files to avoid data loss when
@@ -85,6 +88,7 @@ print('Average movies per day:', average_movies_per_day)
 average_revenue_per_day = average_movies_per_day * revenue_per_movie
 print('Average daily revenue:', average_revenue_per_day)
 
+# Multiply daily revenue by number of days in the year
 annual_revenue_forecast = average_revenue_per_day * 365
 print('Annual revenue forecast:', annual_revenue_forecast)
 ```
