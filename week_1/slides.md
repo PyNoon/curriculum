@@ -37,7 +37,7 @@ title: PyNoon Week 1
 <div style="font-size: 0.8em;">
 
 1. **Exercise:** Write a notebook for a calculation:
-   * E.g. Try estimating:
+   * E.g. Do a back-of-the-envelope calculation:
      * Sales/profit for a business
      * Floor area of your home or office
      * Number of weetbix NZ eats in a year

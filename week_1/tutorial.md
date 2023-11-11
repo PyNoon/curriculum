@@ -15,6 +15,7 @@ want to teach shortcut keys).
   * Great for experimenting, doing quick calculations
   * `print('Hello world')`
   * `1 + 1`
+  * `5 - 3`
   * Work in the console is lost when you close the console
 * **Python scripts**
   * Ideal for creating re-usable programs
@@ -28,7 +29,12 @@ want to teach shortcut keys).
     you can add formatted notes
   * Rename your notebook: `week1.ipynb`
   * `print('Hello world')`
-  * Markdown: `# My First Notebook`
+  * `1.5 * 10`
+  * Each time you press shift+enter, a new cell is created
+  * Edit and re-run a cell: `(1.5 * 10) / (5 - 2)`
+  * Markdown: `My First Notebook`
+  * Add markdown formatting: `# My First Notebook`
+  * Similar to Teams/Slack: Add a bullet list
   * Notebooks support rich output, like plots:
     ```
     %pip install plotly nbformat pandas
@@ -38,6 +44,8 @@ want to teach shortcut keys).
   * Interact with the plot
   * Change the plot data and re-execute
   * Drag cells around
+  * Notebooks are really good for presenting the results of your
+    code - very popular in data science
   * We'll primarily use notebooks, so that you can save the commands
     you run and add notes
 * **Tip:** Download notebooks and python files to avoid data loss when
@@ -46,3 +54,37 @@ want to teach shortcut keys).
 ## Variables and Assignment
 
 * Live code through: [https://swcarpentry.github.io/python-novice-gapminder/02-variables.html](https://swcarpentry.github.io/python-novice-gapminder/02-variables.html)
+
+## Exercise
+
+Do a back of the envelope calculation like:
+
+```
+# Cinema Sales Forecast
+
+Forecasts the annual revenue from ticket sales at my cinema complex.
+
+---
+
+adult_ticket_price = 15.5
+child_ticket_price = 10.5
+
+average_movie_hours = 1.75
+opening_hours_per_day = 8
+
+cinemas = 5
+average_adult_tickets_per_movie = 80
+average_child_tickets_per_movie = 40
+
+revenue_per_movie = (adult_ticket_price * average_adult_tickets_per_movie) + (child_ticket_price * average_child_tickets_per_movie)
+print(f'Revenue per movie:', revenue_per_movie)
+
+average_movies_per_day = opening_hours_per_day / average_movie_hours
+print('Average movies per day:', average_movies_per_day)
+
+average_revenue_per_day = average_movies_per_day * revenue_per_movie
+print('Average daily revenue:', average_revenue_per_day)
+
+annual_revenue_forecast = average_revenue_per_day * 365
+print('Annual revenue forecast:', annual_revenue_forecast)
+```
