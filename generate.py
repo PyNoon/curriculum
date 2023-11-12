@@ -45,6 +45,8 @@ Weekly slides and tutorials for PyNoon.
         ])
         subprocess.run([
             'pandoc',
+            '-s',
+            '--css', str(curriculum_dir / 'revealjs' / 'tutorial.css'),
             '-o', str(week_dir / 'tutorial.html'),
             str(week_dir / 'tutorial.md'),
         ])

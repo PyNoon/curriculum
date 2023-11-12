@@ -1,4 +1,6 @@
-# Week 1
+---
+title: PyNoon Week 1 - Tutorial
+---
 
 ## Intro to Jupyter
 

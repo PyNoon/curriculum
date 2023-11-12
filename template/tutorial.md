@@ -1,1 +1,3 @@
-# PyNoon Week X
+---
+title: PyNoon Week X - Tutorial
+---
