@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="generator" content="pandoc">
-  <title>PyNoon Week 1</title>
+  <title>PyNoon Week 2</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -39,70 +39,78 @@
     <div class="slides">
 
 <section id="title-slide">
-  <h1 class="title">PyNoon Week 1</h1>
+  <h1 class="title">PyNoon Week 2</h1>
 </section>
 
-<section id="welcome-get-ready-for-pynoon" class="slide level3">
-<h3>Welcome! Get ready for PyNoon:</h3>
-<div style="font-size: 0.8em;">
-<p><img src="img/jupyterlite-demo.png" style="position: absolute; right: 0px; top: 45px; height: 68%;"></p>
+<section id="starting-exercise" class="slide level3">
+<h3>Starting Exercise</h3>
 <ul>
-<li>Connect to the WiFi (see whiteboard)</li>
-<li>Check you can access:
+<li>Continue <a
+href="https://pynoon.github.io/curriculum/week_1/slides.html#/independent-workhomework">Week
+1’s homework</a></li>
+<li><strong>Show your calculation to a neighbour you didn’t come
+with</strong>:
 <ul>
-<li><a href="https://pynoon.slack.com">pynoon.slack.com</a></li>
-<li><a
-href="https://pynoon.github.io/jupyterlite">pynoon.github.io/jupyterlite</a></li>
-<li><a href="https://futurecoder.io/">futurecoder.io</a><br>(feel free
-to get started)</li>
+<li>Without explaining your code, can they understand what each line
+achieves?</li>
+<li>What changes would make it easier to read?</li>
+<li>Hint: Add comments to explain your calculation
+<ul>
+<li>Lines starting with <code>#</code> are not run as code</li>
+<li>E.g. <code># This is a comment</code></li>
 </ul></li>
-<li>If you need help, ask a neighbour or<br>a helper wearing a
-lanyard</li>
-<li><strong>Once everyone’s ready, we’ll kick off the course
-intro</strong></li>
+</ul></li>
 </ul>
-</div>
+</section>
+<section id="thanks" class="slide level3">
+<h3>Thanks</h3>
+<ul>
+<li>Tower Insurance for the great venue<br>(and special mention Jeff
+Turin)</li>
+<li>2degrees for their support</li>
+<li>New Zealand Python User Group (NZPUG) for support</li>
+</ul>
+</section>
+<section id="administrivia" class="slide level3">
+<h3>Administrivia</h3>
+<ul>
+<li>Fire escapes</li>
+<li>2 Toilets opposite reception</li>
+<li>Cleaning up after ourselves</li>
+<li>WiFi (“Pynoon” - isolated to room)</li>
+</ul>
 </section>
 <section id="tutorial-objectives" class="slide level3">
-<h3><span class="left-heading">Tutorial Objectives</span></h3>
-<div style="text-align: left;">
-<ol type="1">
-<li>Three ways to use Python:
+<h3>Tutorial Objectives</h3>
 <ul>
-<li>Python console</li>
-<li>Python scripts</li>
-<li>Python notebooks</li>
-</ul></li>
-<li>Basic maths</li>
-</ol>
-</div>
+<li>Assigning values to variables</li>
+<li>Different types of values</li>
+<li>Indexing and slicing</li>
+</ul>
 </section>
 <section id="independent-workhomework" class="slide level3">
-<h3><span class="left-heading">Independent Work/Homework</span></h3>
-<div style="font-size: 0.8em;">
-<ol type="1">
-<li><strong>Work through <a
-href="https://futurecoder.io">futurecoder.io</a> sections</strong>:
-<ol type="1">
-<li>The Shell</li>
-<li>String Basics</li>
-<li>Variables</li>
-</ol></li>
-<li><strong>Exercise:</strong> Write a notebook for a calculation:
+<h3>Independent Work/Homework</h3>
+<div style="font-size: 0.7em;">
 <ul>
-<li>E.g. Do a back-of-the-envelope calculation:
+<li><strong>Write a random password generator</strong>
 <ul>
-<li>Sales/profit for a business</li>
-<li>Floor area of your home or office</li>
-<li>Number of weetbix NZ eats in a year</li>
+<li>Combine random strings and numbers into a password</li>
+<li>Use variables to store intermediate parts of the password</li>
+<li>Take parts of strings with indexing and slicing</li>
+<li>To convert numbers to strings: <code>str(some_int_var)</code></li>
+<li>To get a random integer:
+<ul>
+<li>Run once: <code>from secrets import randbelow</code></li>
+<li>Then use: <code>my_random_int = randbelow(10)</code></li>
 </ul></li>
-<li>See the example in <a
-href="https://pynoon.slack.com">pynoon.slack.com</a></li>
-<li>Name your notebook and variables well, and comment each part of the
-calculation</li>
-<li>If you finish in class, explain your calculation to a neighbour</li>
+<li>To get a random character from a string:
+<code>some_str_var[randbelow(len(some_str_var))]</code></li>
 </ul></li>
-</ol>
+<li>Continue with <a href="https://futurecoder.io/">futurecoder.io</a>
+<ul>
+<li>For Loops</li>
+</ul></li>
+</ul>
 </div>
 </section>
     </div>

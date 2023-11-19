@@ -15,6 +15,11 @@ Weekly slides and tutorials for PyNoon.
   * "Completed last task" note
   * "I'm stuck" note
     
+## Week 2
+
+* [Tutorial](https://pynoon.github.io/curriculum/week_2/tutorial.html)
+* [Slides](https://pynoon.github.io/curriculum/week_2/slides.html)
+        
 ## Week 1
 
 * [Tutorial](https://pynoon.github.io/curriculum/week_1/tutorial.html)

@@ -39,3 +39,7 @@
     display: block;
     text-align: left;
 }
+
+.reveal code {
+    background: #F5F5F5;
+}

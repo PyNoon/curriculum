@@ -27,7 +27,6 @@ title: PyNoon Week 1
    * Python scripts
    * Python notebooks
 2. Basic maths
-<!-- 3. Setting and using variables -->
 
 </div>
 

@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>PyNoon Week 2 - Tutorial</title>
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+  </style>
+  <link rel="stylesheet" href="revealjs/tutorial.css" />
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">PyNoon Week 2 - Tutorial</h1>
+</header>
+<h2 id="variables">Variables</h2>
+<ul>
+<li><p><code>age = 42</code></p>
+<ul>
+<li><code>=</code> symbol assigns the name on the left to refer to the
+value on the right</li>
+<li>Variable is created when first assigned to</li>
+<li>Variables are case-sensitive</li>
+</ul></li>
+<li><p><code>age + 10</code></p></li>
+<li><p><code>first_name = 'Alice'</code></p></li>
+<li><p><code>print(first_name)</code></p></li>
+<li><p>Be careful of cell order:</p>
+<ul>
+<li>Move <code>print(first_name)</code> above
+<code>first_name = 'Alice'</code></li>
+<li>The print cell still works for now…</li>
+<li><code>Restart and run all</code></li>
+</ul></li>
+<li><p>Be aware that the variable does not refer to a dynamic
+calculation, it refers to a value:</p>
+<pre><code>a = 2
+b = 5 * a
+a = 3
+print(a)
+print(b)</code></pre></li>
+</ul>
+<h2 id="types">Types</h2>
+<h3 id="checking-the-type">Checking the type</h3>
+<ul>
+<li>Every value has a type</li>
+<li>We can use the <code>type()</code> function to find out what it
+is</li>
+<li><code>type(42)</code> (integer)</li>
+<li><code>type(age)</code>
+<ul>
+<li>Note: the value has a type, not the variable</li>
+</ul></li>
+<li><code>type(42.0)</code> (float)</li>
+<li><code>type(42 + 42.0)</code>
+<ul>
+<li>Maths with both integers and floats results in a float:</li>
+</ul></li>
+<li><code>type(first_name)</code> (string)</li>
+</ul>
+<h3 id="operations-vary-by-type">Operations vary by type</h3>
+<ul>
+<li>The type of a value determines what operations we can perform with
+it</li>
+<li><code>'hello' + 'world'</code></li>
+<li><code>'hello' - 'h'</code> (results in a
+<code>TypeError</code>)</li>
+<li><code>len('hello')</code></li>
+<li><code>len(10)</code> (results in a <code>TypeError</code>)</li>
+</ul>
+<h3 id="operations-with-mixed-types">Operations with mixed types</h3>
+<ul>
+<li>Some operations do not work with mixed types</li>
+<li><code>1 + '1'</code></li>
+<li><code>'1' + '1'</code></li>
+<li>We can convert values from one type to another</li>
+<li><code>str(1) + '1'</code></li>
+<li>Some operations do work with mixed types</li>
+<li><code>'=' * 10</code></li>
+</ul>
+<h2 id="indexing-and-slicing">Indexing and Slicing</h2>
+<h3 id="indexing">Indexing</h3>
+<ul>
+<li>We can use indexing to get particular characters from a string</li>
+<li><code>first_name[0]</code></li>
+<li><code>first_name[1]</code></li>
+<li><code>first_name[-1]</code></li>
+</ul>
+<h3 id="slicing">Slicing</h3>
+<ul>
+<li>We can use indexing to get part of a string</li>
+<li><code>first_name[0:2]</code></li>
+<li>The slice <strong>includes</strong> the first index, and
+<strong>excludes</strong> the last index</li>
+<li>The length of the slice is the difference of the two indexes</li>
+<li>Taking a slice does not change the contents of the original string,
+but returns a copy of part of the string:
+<ul>
+<li>Check <code>first_name</code></li>
+</ul></li>
+<li><code>first_name[1:2]</code></li>
+<li><code>first_name[:2]</code></li>
+<li><code>first_name[2:]</code></li>
+<li>You can even index with variables:</li>
+<li>start_index = 3</li>
+<li><code>first_name[start_index:]</code></li>
+</ul>
+<h3 id="dataframes">DataFrames</h3>
+<ul>
+<li>More generally, indexing and slicing work on any type that is an
+ordered list of elements.</li>
+<li><code>import pandas as pd</code></li>
+<li><code>df = pd.read_csv('examples/data/iris.csv')</code></li>
+<li><code>df</code></li>
+<li><code>type(df)</code></li>
+<li><code>len(df)</code></li>
+<li><code>df.iloc[0]</code></li>
+<li><code>df.iloc[0:3]</code></li>
+</ul>
+</body>
+</html>
