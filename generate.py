@@ -6,14 +6,14 @@ base_url = 'https://pynoon.github.io/curriculum'
 curriculum_dir = Path(__file__).parent
 
 def main():
-    week_dirs = [
+    week_dirs = sorted([
         child for child in curriculum_dir.iterdir()
         if (
                 child.is_dir()
                 and child.name not in ['template', 'revealjs']
                 and not child.name.startswith('.')
         )
-    ]
+    ])
 
     index_markdown = '''
 # PyNoon Curriculum
