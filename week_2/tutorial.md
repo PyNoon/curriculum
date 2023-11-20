@@ -82,6 +82,9 @@ title: PyNoon Week 2 - Tutorial
 * You can see what attributes and methods are available for a value:
 * `dir('hello')`
   * Don't worry about the underscored names
+* `dir()`
+  * This shows you what functions and variables are available
+    generally (those you can call without a `.` after a value)
 
 ### Operations with mixed types
 
