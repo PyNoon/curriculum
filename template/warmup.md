@@ -1,5 +1,5 @@
 ---
-title: PyNoon Week X - Tutorial
+title: PyNoon Week X - Warmup
 jupyter:
   nbformat: 4
   nbformat_minor: 4
@@ -18,3 +18,7 @@ jupyter:
      pygments_lexer: "ipython3"
      version: "3.8"
 ---
+
+# PyNoon Week X - Warmup
+
+## 1. ...

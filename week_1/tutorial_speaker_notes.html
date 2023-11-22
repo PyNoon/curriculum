@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang xml:lang>
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>PyNoon Week 1 - Tutorial</title>
+  <style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+
+ul.task-list[class]{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+font-size: inherit;
+width: 0.8em;
+margin: 0 0.8em 0.2em -1.6em;
+vertical-align: middle;
+}
+.display.math{display: block; text-align: center; margin: 0.5rem auto;}
+</style>
+  <style type="text/css">body {
+font-size: 16px;
+}
+pre.code {
+font-size: 1.4em;
+}
+blockquote {
+font-style: italic;
+}
+</style>
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">PyNoon Week 1 - Tutorial</h1>
+</header>
+<h1 id="intro-to-jupyterlite">Intro to JupyterLite</h1>
+<p>The following tutorial is an introduction to writing and running
+Python code in the JupyterLite environment, loosely based on <a href="https://swcarpentry.github.io/python-novice-gapminder/01-run-quit.html">swcarpentry.github.io/python-novice-gapminder/01-run-quit.html</a>,
+(but more streamlined - not covering topics like shortcut keys).</p>
+<p><strong>To get started open the PyNoon JupyterLite environment at: <a href="https://pynoon.github.io/jupyterlite">pynoon.github.io/jupyterlite</a></strong></p>
+<ul>
+<li>You may have heard of Jupyter notebooks</li>
+<li>JupyterLite is very similar to a piece of software called JupyterLab
+that is used to run Jupyter’s Python notebooks - a popular format for
+writing Python code that we will be using in this course.</li>
+<li>The benefit of JupyterLite is that it runs entirely inside your web
+browser, meaning you don’t need to install Python, JupyterLab, or any
+other software on your computer.</li>
+</ul>
+<p>In this tutorial, we will look at three ways of running Python code
+inside JupyterLite:</p>
+<ul>
+<li>The Python console</li>
+<li>Python scripts</li>
+<li>Python notebooks</li>
+</ul>
+<h2 id="the-python-console">The Python Console</h2>
+<ul>
+<li>The Python console is great for running short snippets of Python
+code</li>
+<li>Use it to experiment and play with Python to learn more about how it
+works</li>
+<li>It’s also useful as a general purpose calculator</li>
+</ul>
+<p><strong>Open a Python Console</strong>: From the JupyterLite
+Home/Launcher page, under <code>Console</code>, select
+<code>Python</code></p>
+<p>In the prompt at the bottom of the Console screen, enter the
+following code, then hold the <code>shift</code> key and press the
+<code>enter</code> key to run it:</p>
+<pre class="code"><code>print(&#39;Hello world&#39;)</code></pre>
+<p>Congratulations! You’ve just run your first Python program!</p>
+<blockquote>
+<p>Note: Casing is important in Python, so make sure you write
+<code>print</code> in lower-case.</p>
+</blockquote>
+<p>We can also use Python to perform maths; try running the
+following:</p>
+<pre class="code"><code>1 + 1</code></pre>
+<pre class="code"><code>5 - 3</code></pre>
+<blockquote>
+<p>Note: The spaces around mathematical operators are optional, but they
+are important to make the code more readable!</p>
+</blockquote>
+<p><strong>It is important to remember that any work you do in the
+console is lost when you close the console.</strong></p>
+<h2 id="python-scripts">Python scripts</h2>
+<p>Python scripts are ideal for creating re-usable programs.</p>
+<p><strong>To create a new script in JupyterLite:</strong></p>
+<ul>
+<li>Click the <code>+</code> button next to the current tab to open a
+new Tab/Launcher</li>
+<li>Under <code>Other</code> select <code>Python file</code></li>
+<li>Right click on the tab of your new file, and rename it to
+<code>hello.py</code>
+<ul>
+<li><strong>It is very important to give your files useful names so that
+you know what they contain when you or others come back
+later.</strong></li>
+<li>The <code>.py</code> extension says that this is a plain-text file
+(like one you could edit with notepad) containing Python code.</li>
+</ul></li>
+</ul>
+<p>Write the following code to your script:</p>
+<pre class="code"><code>print(&#39;Hello world&#39;)</code></pre>
+<p><strong>Remember to save the file: Hold the <code>Ctrl</code> key and
+press the <code>s</code> key</strong></p>
+<ul>
+<li>If you don’t save your changes, the old version of your code will be
+used when you run the script.</li>
+<li>You can always tell the file isn’t saved yet by the black dot over
+the “close tab” button</li>
+</ul>
+<p>Go back to your Console tab (or open a new one), and run:</p>
+<pre class="code"><code>%run hello.py</code></pre>
+<p>You should see <code>Hello world</code> printed again in the
+console.</p>
+<blockquote>
+<p>Note: You can view the script and Console at the same time by
+clicking and dragging the Console tab to the right-hand side of the
+screen.</p>
+</blockquote>
+<p>Now try adding a new line to your script with the following code:</p>
+<pre class="code"><code>1 + 1</code></pre>
+<p>Save the script and run it again at the console</p>
+<blockquote>
+<p>Tip: You can press the “up arrow” key in the Console to bring up
+lines you’ve previously run (saving you from typing them again).</p>
+</blockquote>
+<p>When you run your script, you won’t see the result of
+<code>1 + 1</code>.</p>
+<p>This is because <strong>Python scripts only output what we explicitly
+tell Python to print!</strong></p>
+<p>To print the result of <code>1 + 1</code>, change the line in your
+script to be:</p>
+<pre class="code"><code>print(1 + 1)</code></pre>
+<p>Save the script and run it again at the console, and you should see
+the following output:</p>
+<pre><code>Hello world
+2</code></pre>
+<h2 id="python-notebooks">Python Notebooks</h2>
+<p>Python notebooks are:</p>
+<ul>
+<li>Interactive like the Console</li>
+<li>Re-usable like scripts</li>
+<li>Support rich formatting of notes and outputs</li>
+</ul>
+<p><strong>To create a new notebook in JupyterLite:</strong></p>
+<ul>
+<li>Click the <code>+</code> button next to the current tab to open a
+new Tab/Launcher</li>
+<li>Under <code>Notebook</code> select <code>Python</code></li>
+<li>Right click on the tab of your new file, and rename it to
+<code>week1.ipynb</code></li>
+</ul>
+<p>In the “cell” prompt at the at the top of your notebook, enter the
+following code, and run it with <code>shift + enter</code> (like at the
+Console):</p>
+<pre class="code"><code>print(&#39;Hello world&#39;)</code></pre>
+<p>The result is printed and a new “cell” appears below.</p>
+<p>Run this code in the new cell:</p>
+<pre class="code"><code>1.5 + 10</code></pre>
+<p>Each time you press <code>shift+enter</code>, a new cell is
+created</p>
+<p><strong>You can edit and re-run cells;</strong> update your previous
+cell to have the following content, then re-run it:</p>
+<pre class="code"><code>(1.5 * 10) / (5 - 2)</code></pre>
+<blockquote>
+<p>Note that we can use <code>*</code> for multiplication,
+<code>/</code> for
+division<code>, and group operations with parentheses</code>()`.</p>
+</blockquote>
+<p><strong>You can add non-code cells for formatted notes:</strong></p>
+<ul>
+<li>Click into the empty cell at the end of the notebook</li>
+<li>Change the dropdown at the top of the page from <code>Code</code> to
+<code>Markdown</code></li>
+<li>Add the following content:</li>
+</ul>
+<pre><code>My First Notebook</code></pre>
+<ul>
+<li>Press <code>shift+enter</code>, and see the text displayed.</li>
+</ul>
+<p><strong>You can add formatting in Markdown cells:</strong></p>
+<ul>
+<li>Double-click <code>My First Notebook</code> to edit the cell</li>
+<li>Add a <code>#</code> at the beginning of the line:</li>
+</ul>
+<pre><code># My First Notebook</code></pre>
+<ul>
+<li>Press shift-enter and see it formatted as a heading</li>
+</ul>
+<p><strong>Markdown code is similar to shortcuts supported by software
+like Slack and Teams</strong></p>
+<p>For example, add a bullet list with:</p>
+<pre><code>* item 1
+* item 2
+* item 3</code></pre>
+<ul>
+<li>To see what else is possible with Markdown, see: <a href="https://www.markdownguide.org/">www.markdownguide.org/</a></li>
+</ul>
+<p><strong>You can re-order notebook cells</strong></p>
+<ul>
+<li>Hover your mouse to the left of your Markdown cell until you see a
+four-way arrow</li>
+<li>Click and drag your cell to the top of the notebook to act as a
+title</li>
+</ul>
+<p><strong>Notebooks also support rich output from Python
+code</strong></p>
+<ul>
+<li>Run a cell with the following code (you don’t need to understand the
+code yet):</li>
+</ul>
+<pre class="code"><code>%pip install plotly nbformat pandas
+import plotly.express as px
+px.bar(x=[&#39;a&#39;, &#39;b&#39;, &#39;c&#39;], y=[1, 2, 3])</code></pre>
+<p><strong>You should see an interactive plot</strong></p>
+<ul>
+<li>Scroll to zoom</li>
+<li>Click and drag to zoom to a selection</li>
+<li>Double click to reset zoom</li>
+<li>Find the camera button in the plot header to download the plot as an
+image</li>
+</ul>
+<p>Try changing <code>y=[1, 2, 3]</code> in your cell to use different
+numbers, then re-execute the cell.</p>
+<ul>
+<li>Notebooks are really good for presenting the results of your code -
+they very popular in data science and just for data exploration</li>
+<li>We’ll primarily use notebooks in this course so that you can save
+the commands you run and add notes</li>
+</ul>
+<blockquote>
+<p>Tip: You should right-click and download your notebooks and Python
+files from the left-hand sidebar to avoid data loss when your browser’s
+data is cleared</p>
+</blockquote>
+</body>
+</html>
