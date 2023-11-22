@@ -4,7 +4,7 @@ import subprocess
 
 base_url = 'https://pynoon.github.io/curriculum'
 raw_repo_url = 'https://raw.githubusercontent.com/pynoon/curriculum/main'
-jupyterlite_url = 'https://pynoon.github.io/jupyterlite'
+jupyterlite_url = 'https://pynoon.github.io/jupyterlite/lab/index.html'
 curriculum_dir = Path(__file__).parent
 
 def main():
@@ -108,7 +108,7 @@ Git repository to exclude the outputs of notebook cells when running
                 f'''jq '.cells[] |= if has("execution_count") then .execution_count = 0 else . end' {notebook_path} > {notebook_path}.tmp && mv {notebook_path}.tmp {notebook_path}''',
             ], check=True, shell=True)
 
-        week_link_bullets = '\n'.join([f'* {week_link}' for week_link in week_links])
+        week_link_bullets = '\n'.join([f'* {week_link}{{:target="_blank"}}{{:rel="noopener"}}' for week_link in week_links])
         index_markdown += f'''
 ## {week_dir.name.capitalize().replace('_', ' ')}
 
