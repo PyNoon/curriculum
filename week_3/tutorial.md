@@ -34,12 +34,17 @@ It is based on:
 
 > DEMO-ONLY TUTORIAL BEGINS HERE
 
+<div class="notebook-only">
+
 ## Functions
 
 We've used functions in previous tutorials, but we're going to start
 using a lot more of them, so lets summarise their key facts:
 
-**Functions are *called* using parentheses**
+**Functions are like small Python scripts that we can *call* to
+perform some operation or return some value.**
+
+**Functions are *called* using parentheses, with *arguments* inside the parentheses.**
 
 ```code
 print('hello')
@@ -58,13 +63,19 @@ print
 'hello'.upper()
 ```
 
-**Functions may take zero, one, or more arguments**
+**Some functions take multiple arguments**
 
 ```code
-print('hello', 'world')
+round(3.14159, 2)
 ```
 
-Some functions require a minimum or specific number of arguments.
+**Functions may have default values for some arguments**
+
+`round()` defaults to rounding a number to zero decimal places:
+
+```code
+round(3.14159)
+```
 
 **Every function returns a value**
 
@@ -84,22 +95,6 @@ returned_value
 type(returned_value)
 ```
 
-**Functions may have default values for some arguments**
-
-`round()` defaults to rounding a number to zero decimal places:
-
-```code
-round(3.14159)
-```
-
-We can pass a second argument to `round` to specify the number of
-decimal places:
-
-```code
-round(3.14159, 2)
-```
-
-
 **Functions accept named arguments (and some require it):**
 
 ```code
@@ -116,8 +111,6 @@ help(round)
 help('hello'.upper)
 ```
 
-> Don't worry about the underscored names
-
 **Use `dir()` and `dir(__builtins__)` to list available functions (and
 non-function variables)**
 
@@ -128,6 +121,8 @@ dir()
 ```code
 dir(__builtins__)
 ```
+
+> Don't worry about the underscored names
 
 **Use `dir(some_value)` to list methods (and non-function variables
 called attributes) of a value**
@@ -143,35 +138,38 @@ dir('hello')
 * A key power of Python is that you can define your own functions as
   Python code to execute when the function is called.
 
-## Libraries
+</div>
+
+## Modules and Libraries
 
 To get more functions (and other things) to use in Python, you can
-import collections of Python files (aka **modules**) from
-**libraries**.
+import **modules**, which are just files of Python code.
 
-To use the contents of a library module, we must import it once
-(usually at the top of our notebook or script):
+To use the contents of a module, we must import it once (usually at
+the top of our notebook or script):
 
 ```code
 import math
 ```
 
-Then we can use functions and variables from it:
+Then we can use functions and variables from the module:
 
 ```code
 math.pi
 ```
 
 ```code
-math.log(math.e)
+math.sqrt(4)
 ```
 
 We can use the `help()` function to find out what is available in a
-library:
+module:
 
 ```code
 help(math)
 ```
+
+<div class="notebook-only">
 
 Sometimes we want to import only certain functions or variables from a
 module...
@@ -186,14 +184,16 @@ Or import the module under an aliased name...
 import pandas as pd
 ```
 
+</div>
+
 * `math` is one of the many modules in Python's **standard library**,
   which is well known for its extensive functionality.
-  * You can find out about the libraries available to import more
-  modules more about at:
+  * You can find out more about the modules available at:
   [docs.python.org/3/library](https://docs.python.org/3/library/index.html)
-* Python is also well known for its many **3rd party libraries** which
-  must be downloaded before they can be imported.
-  * You can search for available Python packages at:
+* Python is also well known for its many **3rd party libraries** that
+  provide more modules, but before they can be imported they must be
+  downloaded to your computer.
+  * You can search for available Python libraries at:
     [pypi.org](https://pypi.org/)
 
 3rd party Python libraries can be downloaded with `pip`, which can be
@@ -227,9 +227,21 @@ For example, check out:
 
 ## Setup
 
-* Make a new notebook for this week
-* What's the first thing to do? RENAME IT!
-* Name it `week3.ipynb`
+Let's start by getting some data to analyse:
+
+1. MAKE A BACKUP OF YOUR EXISTING NOTEBOOKS
+   * I have observed a bug with JupyterLite deleting files when
+     working with CSV files
+2. Use the link on
+   [pynoon.github.io/schedule](https://pynoon.github.io/schedule/) to
+   open `inside_airbnb_listings_nz_2023_09.csv`
+   * Look at the data dictionary linked to from that page to learn
+     what each column means.
+3. Double-click on the file in the file browser to view it in
+   JupyterLite.
+4. Make a new notebook for this week
+5. What's the first thing to do? RENAME IT!
+6. Name it `week3.ipynb`
 
 ## Pandas DataFrames
 
@@ -242,17 +254,8 @@ We can use the `pandas` library to work with tabular data in Python.
 import pandas as pd
 ```
 
-Let's get a CSV of data to load:
-
-1. Download `inside_airbnb_listings_nz_2023_09.csv` from
-   [pynoon.github.io/schedule](https://pynoon.github.io/schedule/).
-   * Look at the data dictionary linked to from that page to learn
-     what each column means.
-2. Upload the file into JupyterLite
-   * Use the upload button above the file browser, or drag and drop
-     the file into JupyterLite.
-3. Double-click on the file in the file browser to view it in
-   JupyterLite.
+> Importing Pandas as the alias `pd` is conventional, and saves us
+> typing out `pandas` everytime we want to use it.
 
 To load the CSV into a DataFrame:
 
@@ -262,7 +265,11 @@ listings_df = pd.read_csv('inside_airbnb_listings_nz_2023_09.csv')
 
 * `df` is a *conventional* variable suffix for a DataFrame.
 * Pandas has many different `read_*` functions for reading from
-  different types of files (e.g. `read_excel()`).
+  different types of files (e.g. `read_excel()`, `read_parquet()`).
+
+```code
+type(listings_df)
+```
 
 Let's look at the DataFrame:
 
@@ -272,99 +279,34 @@ listings_df
 
 > Only a few rows from the top and bottom of the DataFrame are shown
 
-* The first "column" is the *index*, which defaults to incrementing
-  integers
-* Like how each column has a name, the *index* is the "name" of each
-  row
-* We can assign a column to be the index of a DataFrame:
+We can sort the DataFrame by a column:
 
 ```code
-listings_df = listings_df.set_index('id')
+listings_df.sort_values('review_scores_rating')
 ```
 
-```code
-listings_df
-```
+> Note: This doesn't change the original DataFrame, it produced a new
+> DataFrame that is sorted
 
-Why do we need to assign the result of `set_index()`?
-
-* Calling `.set_index()` does not change the original DataFrame value
-* Calling `.set_index()` returns a **new DataFrame value** with the
-  index changed, which we then assign to the original variable.
-* Most Pandas methods return a new value rather than changing the
-  original value.
-
-Another example is sorting the DataFrame by a column:
-
-```code
-listings_df = listings_df.sort_values(by='host_name')
-```
-
-### DataFrame Indexing and Slicing
-
-**We can perform indexing and slicing on DataFrames using `.iloc`:**
-
-To get the first row:
-
-```code
-listings_df.iloc[0]
-```
-
-> The type of a single column or row from a Pandas `DataFrame` is a
-> `Series`
-
-To get the second column in the first row:
-
-```code
-listings_df.iloc[0, 1]
-```
-
-To get the second column of the first five rows:
-
-```code
-listings_df.iloc[0:5, 1]
-```
-
-To get the second column of all rows:
-
-```code
-listings_df.iloc[:, 1]
-```
-
-**We can also index and slice rows and columns by their names:**
-
-To get a single row by it's name in the index:
-
-```code
-listings_df.loc['l9995141']
-```
-
-To get several rows by their names:
-
-```code
-listings_df.loc[['l9995141', 'l12026015', 'l44688136']]
-```
-
-> While you can use `:` slicing to specify a start and end names for a
-> range, it is more common to specify a list of names.
-
-To get the `name` column of all rows:
-
-```code
-listings_df.loc[:, 'name']
-```
-
-Because we so commonly want to access columns, there is a shorthand:
+We can extract a single column from the DataFrame:
 
 ```code
 listings_df['name']
 ```
 
+The type of a single column or row from a Pandas `DataFrame` is a
+`Series`:
+
+```code
+type(listings_df['name'])
+```
+
+
 Also handy to get a new DataFrame that only contains a subset of
 columns:
 
 ```code
-listings_df[['name', 'region_name', 'region_parent_name']]
+listings_df[['latitude', 'longitude']]
 ```
 
 ### Column Types and Data Preparation
@@ -444,3 +386,100 @@ listings_df['last_review'].max()
 ```code
 listings_df['review_scores_rating'].mean()
 ```
+
+### Plotting Demo
+
+As a quick demo of the power of DataFrames, we can install and use the
+Plotly library to create plots from DataFrame columns:
+
+```code
+%pip install plotly nbformat
+```
+
+```code
+import plotly.express as px
+```
+
+```code
+px.scatter(listings_df, x='longitude, y='latitude')
+```
+
+```code
+px.histogram(listings_df, x='price')
+```
+
+<!--
+### DataFrame Indexing and Slicing
+
+* The first "column" in the DataFrame is the *index*, which defaults to incrementing
+  integers
+* Like how each column has a name, the *index* is the "name" of each
+  row
+* We can assign a column to be the index of a DataFrame:
+
+```code
+listings_df = listings_df.set_index('id')
+```
+
+```code
+listings_df
+```
+
+Why do we need to assign the result of `set_index()`?
+
+* Calling `.set_index()` does not change the original DataFrame value
+* Calling `.set_index()` returns a **new DataFrame value** with the
+  index changed, which we then assign to the original variable.
+* Most Pandas methods return a new value rather than changing the
+  original value.
+
+
+**We can perform indexing and slicing on DataFrames using `.iloc`:**
+
+To get the first row:
+
+```code
+listings_df.iloc[0]
+```
+
+To get the second column in the first row:
+
+```code
+listings_df.iloc[0, 1]
+```
+
+To get the second column of the first five rows:
+
+```code
+listings_df.iloc[0:5, 1]
+```
+
+To get the second column of all rows:
+
+```code
+listings_df.iloc[:, 1]
+```
+
+**We can also index and slice rows and columns by their names:**
+
+To get a single row by it's name in the index:
+
+```code
+listings_df.loc['l9995141']
+```
+
+To get several rows by their names:
+
+```code
+listings_df.loc[['l9995141', 'l12026015', 'l44688136']]
+```
+
+> While you can use `:` slicing to specify a start and end names for a
+> range, it is more common to specify a list of names.
+
+To get the `name` column of all rows:
+
+```code
+listings_df.loc[:, 'name']
+```
+-->

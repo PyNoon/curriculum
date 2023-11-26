@@ -9,3 +9,7 @@ pre.code {
 blockquote {
     font-style: italic;
 }
+
+.notebook-only {
+    display: none;
+}

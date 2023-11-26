@@ -31,7 +31,6 @@ title: PyNoon Week 3
 
 ### Tutorial Objectives
 
-* A review of functions
 * Working with built-in and third party libraries
 * Loading and exploring tabular data with Pandas
 

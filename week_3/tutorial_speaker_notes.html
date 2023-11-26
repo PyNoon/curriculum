@@ -30,6 +30,9 @@ font-size: 1.4em;
 blockquote {
 font-style: italic;
 }
+.notebook-only {
+display: none;
+}
 </style>
   <!--[if lt IE 9]>
     <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
@@ -55,10 +58,15 @@ font-style: italic;
 <blockquote>
 <p>DEMO-ONLY TUTORIAL BEGINS HERE</p>
 </blockquote>
-<h2 id="functions">Functions</h2>
+<section id="functions" class="notebook-only">
+<h2>Functions</h2>
 <p>We’ve used functions in previous tutorials, but we’re going to start
 using a lot more of them, so lets summarise their key facts:</p>
-<p><strong>Functions are <em>called</em> using parentheses</strong></p>
+<p><strong>Functions are like small Python scripts that we can
+<em>call</em> to perform some operation or return some
+value.</strong></p>
+<p><strong>Functions are <em>called</em> using parentheses, with
+<em>arguments</em> inside the parentheses.</strong></p>
 <pre class="code"><code>print(&#39;hello&#39;)</code></pre>
 <p>Using a function’s name without parentheses refers to the function
 itself <em>as</em> a value:</p>
@@ -66,9 +74,13 @@ itself <em>as</em> a value:</p>
 <p><strong>Functions attached to values are called
 <em>methods</em></strong></p>
 <pre class="code"><code>&#39;hello&#39;.upper()</code></pre>
-<p><strong>Functions may take zero, one, or more arguments</strong></p>
-<pre class="code"><code>print(&#39;hello&#39;, &#39;world&#39;)</code></pre>
-<p>Some functions require a minimum or specific number of arguments.</p>
+<p><strong>Some functions take multiple arguments</strong></p>
+<pre class="code"><code>round(3.14159, 2)</code></pre>
+<p><strong>Functions may have default values for some
+arguments</strong></p>
+<p><code>round()</code> defaults to rounding a number to zero decimal
+places:</p>
+<pre class="code"><code>round(3.14159)</code></pre>
 <p><strong>Every function returns a value</strong></p>
 <p>Even functions that don’t seem to return a value (like
 <code>print</code>) actually return a special value called
@@ -77,14 +89,6 @@ languages):</p>
 <pre class="code"><code>returned_value = print(&#39;hello&#39;)</code></pre>
 <pre class="code"><code>returned_value</code></pre>
 <pre class="code"><code>type(returned_value)</code></pre>
-<p><strong>Functions may have default values for some
-arguments</strong></p>
-<p><code>round()</code> defaults to rounding a number to zero decimal
-places:</p>
-<pre class="code"><code>round(3.14159)</code></pre>
-<p>We can pass a second argument to <code>round</code> to specify the
-number of decimal places:</p>
-<pre class="code"><code>round(3.14159, 2)</code></pre>
 <p><strong>Functions accept named arguments (and some require
 it):</strong></p>
 <pre class="code"><code>round(3.14159, ndigits=2)</code></pre>
@@ -92,13 +96,13 @@ it):</strong></p>
 function</strong></p>
 <pre class="code"><code>help(round)</code></pre>
 <pre class="code"><code>help(&#39;hello&#39;.upper)</code></pre>
-<blockquote>
-<p>Don’t worry about the underscored names</p>
-</blockquote>
 <p><strong>Use <code>dir()</code> and <code>dir(__builtins__)</code> to
 list available functions (and non-function variables)</strong></p>
 <pre class="code"><code>dir()</code></pre>
 <pre class="code"><code>dir(__builtins__)</code></pre>
+<blockquote>
+<p>Don’t worry about the underscored names</p>
+</blockquote>
 <p><strong>Use <code>dir(some_value)</code> to list methods (and
 non-function variables called attributes) of a value</strong></p>
 <pre class="code"><code>dir(&#39;hello&#39;)</code></pre>
@@ -109,36 +113,39 @@ Python.</li>
 <li>A key power of Python is that you can define your own functions as
 Python code to execute when the function is called.</li>
 </ul>
-<h2 id="libraries">Libraries</h2>
+</section>
+<h2 id="modules-and-libraries">Modules and Libraries</h2>
 <p>To get more functions (and other things) to use in Python, you can
-import collections of Python files (aka <strong>modules</strong>) from
-<strong>libraries</strong>.</p>
-<p>To use the contents of a library module, we must import it once
-(usually at the top of our notebook or script):</p>
+import <strong>modules</strong>, which are just files of Python
+code.</p>
+<p>To use the contents of a module, we must import it once (usually at
+the top of our notebook or script):</p>
 <pre class="code"><code>import math</code></pre>
-<p>Then we can use functions and variables from it:</p>
+<p>Then we can use functions and variables from the module:</p>
 <pre class="code"><code>math.pi</code></pre>
-<pre class="code"><code>math.log(math.e)</code></pre>
+<pre class="code"><code>math.sqrt(4)</code></pre>
 <p>We can use the <code>help()</code> function to find out what is
-available in a library:</p>
+available in a module:</p>
 <pre class="code"><code>help(math)</code></pre>
+<div class="notebook-only">
 <p>Sometimes we want to import only certain functions or variables from
 a module…</p>
 <pre class="code"><code>from math import pi, e</code></pre>
 <p>Or import the module under an aliased name…</p>
 <pre class="code"><code>import pandas as pd</code></pre>
+</div>
 <ul>
 <li><code>math</code> is one of the many modules in Python’s
 <strong>standard library</strong>, which is well known for its extensive
 functionality.
 <ul>
-<li>You can find out about the libraries available to import more
-modules more about at: <a href="https://docs.python.org/3/library/index.html">docs.python.org/3/library</a></li>
+<li>You can find out more about the modules available at: <a href="https://docs.python.org/3/library/index.html">docs.python.org/3/library</a></li>
 </ul></li>
 <li>Python is also well known for its many <strong>3rd party
-libraries</strong> which must be downloaded before they can be imported.
+libraries</strong> that provide more modules, but before they can be
+imported they must be downloaded to your computer.
 <ul>
-<li>You can search for available Python packages at: <a href="https://pypi.org/">pypi.org</a></li>
+<li>You can search for available Python libraries at: <a href="https://pypi.org/">pypi.org</a></li>
 </ul></li>
 </ul>
 <p>3rd party Python libraries can be downloaded with <code>pip</code>,
@@ -172,11 +179,25 @@ the library.</li>
 <p>FOLLOW-ALONG TUTORIAL BEGINS HERE</p>
 </blockquote>
 <h2 id="setup">Setup</h2>
+<p>Let’s start by getting some data to analyse:</p>
+<ol type="1">
+<li>MAKE A BACKUP OF YOUR EXISTING NOTEBOOKS
 <ul>
+<li>I have observed a bug with JupyterLite deleting files when working
+with CSV files</li>
+</ul></li>
+<li>Use the link on <a href="https://pynoon.github.io/schedule/">pynoon.github.io/schedule</a>
+to open <code>inside_airbnb_listings_nz_2023_09.csv</code>
+<ul>
+<li>Look at the data dictionary linked to from that page to learn what
+each column means.</li>
+</ul></li>
+<li>Double-click on the file in the file browser to view it in
+JupyterLite.</li>
 <li>Make a new notebook for this week</li>
 <li>What’s the first thing to do? RENAME IT!</li>
 <li>Name it <code>week3.ipynb</code></li>
-</ul>
+</ol>
 <h2 id="pandas-dataframes">Pandas DataFrames</h2>
 <p>We can use the <code>pandas</code> library to work with tabular data
 in Python.</p>
@@ -186,90 +207,40 @@ in Python.</p>
 <li>Pandas DataFrames are similar to R’s DataFrames</li>
 </ul>
 <pre class="code"><code>import pandas as pd</code></pre>
-<p>Let’s get a CSV of data to load:</p>
-<ol type="1">
-<li>Download <code>inside_airbnb_listings_nz_2023_09.csv</code> from <a href="https://pynoon.github.io/schedule/">pynoon.github.io/schedule</a>.
-<ul>
-<li>Look at the data dictionary linked to from that page to learn what
-each column means.</li>
-</ul></li>
-<li>Upload the file into JupyterLite
-<ul>
-<li>Use the upload button above the file browser, or drag and drop the
-file into JupyterLite.</li>
-</ul></li>
-<li>Double-click on the file in the file browser to view it in
-JupyterLite.</li>
-</ol>
+<blockquote>
+<p>Importing Pandas as the alias <code>pd</code> is conventional, and
+saves us typing out <code>pandas</code> everytime we want to use it.</p>
+</blockquote>
 <p>To load the CSV into a DataFrame:</p>
 <pre class="code"><code>listings_df = pd.read_csv(&#39;inside_airbnb_listings_nz_2023_09.csv&#39;)</code></pre>
 <ul>
 <li><code>df</code> is a <em>conventional</em> variable suffix for a
 DataFrame.</li>
 <li>Pandas has many different <code>read_*</code> functions for reading
-from different types of files (e.g. <code>read_excel()</code>).</li>
+from different types of files (e.g. <code>read_excel()</code>,
+<code>read_parquet()</code>).</li>
 </ul>
+<pre class="code"><code>type(listings_df)</code></pre>
 <p>Let’s look at the DataFrame:</p>
 <pre class="code"><code>listings_df</code></pre>
 <blockquote>
 <p>Only a few rows from the top and bottom of the DataFrame are
 shown</p>
 </blockquote>
-<ul>
-<li>The first “column” is the <em>index</em>, which defaults to
-incrementing integers</li>
-<li>Like how each column has a name, the <em>index</em> is the “name” of
-each row</li>
-<li>We can assign a column to be the index of a DataFrame:</li>
-</ul>
-<pre class="code"><code>listings_df = listings_df.set_index(&#39;id&#39;)</code></pre>
-<pre class="code"><code>listings_df</code></pre>
-<p>Why do we need to assign the result of <code>set_index()</code>?</p>
-<ul>
-<li>Calling <code>.set_index()</code> does not change the original
-DataFrame value</li>
-<li>Calling <code>.set_index()</code> returns a <strong>new DataFrame
-value</strong> with the index changed, which we then assign to the
-original variable.</li>
-<li>Most Pandas methods return a new value rather than changing the
-original value.</li>
-</ul>
-<p>Another example is sorting the DataFrame by a column:</p>
-<pre class="code"><code>listings_df = listings_df.sort_values(by=&#39;host_name&#39;)</code></pre>
-<h3 id="dataframe-indexing-and-slicing">DataFrame Indexing and
-Slicing</h3>
-<p><strong>We can perform indexing and slicing on DataFrames using
-<code>.iloc</code>:</strong></p>
-<p>To get the first row:</p>
-<pre class="code"><code>listings_df.iloc[0]</code></pre>
+<p>We can sort the DataFrame by a column:</p>
+<pre class="code"><code>listings_df.sort_values(&#39;review_scores_rating&#39;)</code></pre>
 <blockquote>
-<p>The type of a single column or row from a Pandas
-<code>DataFrame</code> is a <code>Series</code></p>
+<p>Note: This doesn’t change the original DataFrame, it produced a new
+DataFrame that is sorted</p>
 </blockquote>
-<p>To get the second column in the first row:</p>
-<pre class="code"><code>listings_df.iloc[0, 1]</code></pre>
-<p>To get the second column of the first five rows:</p>
-<pre class="code"><code>listings_df.iloc[0:5, 1]</code></pre>
-<p>To get the second column of all rows:</p>
-<pre class="code"><code>listings_df.iloc[:, 1]</code></pre>
-<p><strong>We can also index and slice rows and columns by their
-names:</strong></p>
-<p>To get a single row by it’s name in the index:</p>
-<pre class="code"><code>listings_df.loc[&#39;l9995141&#39;]</code></pre>
-<p>To get several rows by their names:</p>
-<pre class="code"><code>listings_df.loc[[&#39;l9995141&#39;, &#39;l12026015&#39;, &#39;l44688136&#39;]]</code></pre>
-<blockquote>
-<p>While you can use <code>:</code> slicing to specify a start and end
-names for a range, it is more common to specify a list of names.</p>
-</blockquote>
-<p>To get the <code>name</code> column of all rows:</p>
-<pre class="code"><code>listings_df.loc[:, &#39;name&#39;]</code></pre>
-<p>Because we so commonly want to access columns, there is a
-shorthand:</p>
+<p>We can extract a single column from the DataFrame:</p>
 <pre class="code"><code>listings_df[&#39;name&#39;]</code></pre>
+<p>The type of a single column or row from a Pandas
+<code>DataFrame</code> is a <code>Series</code>:</p>
+<pre class="code"><code>type(listings_df[&#39;name&#39;])</code></pre>
 <p>Also handy to get a new DataFrame that only contains a subset of
 columns:</p>
-<pre class="code"><code>listings_df[[&#39;name&#39;, &#39;region_name&#39;, &#39;region_parent_name&#39;]]</code></pre>
+<pre class="code"><code>listings_df[[&#39;latitude&#39;, &#39;longitude&#39;]]</code></pre>
 <h3 id="column-types-and-data-preparation">Column Types and Data
 Preparation</h3>
 <p>Every column has a type of value stored in it:</p>
@@ -304,5 +275,87 @@ string to float:</p>
 individually:</p>
 <pre class="code"><code>listings_df[&#39;last_review&#39;].max()</code></pre>
 <pre class="code"><code>listings_df[&#39;review_scores_rating&#39;].mean()</code></pre>
+<h3 id="plotting-demo">Plotting Demo</h3>
+<p>As a quick demo of the power of DataFrames, we can install and use
+the Plotly library to create plots from DataFrame columns:</p>
+<pre class="code"><code>%pip install plotly nbformat</code></pre>
+<pre class="code"><code>import plotly.express as px</code></pre>
+<pre class="code"><code>px.scatter(listings_df, x=&#39;longitude, y=&#39;latitude&#39;)</code></pre>
+<pre class="code"><code>px.histogram(listings_df, x=&#39;price&#39;)</code></pre>
+<!--
+### DataFrame Indexing and Slicing
+
+* The first "column" in the DataFrame is the *index*, which defaults to incrementing
+  integers
+* Like how each column has a name, the *index* is the "name" of each
+  row
+* We can assign a column to be the index of a DataFrame:
+
+```code
+listings_df = listings_df.set_index('id')
+```
+
+```code
+listings_df
+```
+
+Why do we need to assign the result of `set_index()`?
+
+* Calling `.set_index()` does not change the original DataFrame value
+* Calling `.set_index()` returns a **new DataFrame value** with the
+  index changed, which we then assign to the original variable.
+* Most Pandas methods return a new value rather than changing the
+  original value.
+
+
+**We can perform indexing and slicing on DataFrames using `.iloc`:**
+
+To get the first row:
+
+```code
+listings_df.iloc[0]
+```
+
+To get the second column in the first row:
+
+```code
+listings_df.iloc[0, 1]
+```
+
+To get the second column of the first five rows:
+
+```code
+listings_df.iloc[0:5, 1]
+```
+
+To get the second column of all rows:
+
+```code
+listings_df.iloc[:, 1]
+```
+
+**We can also index and slice rows and columns by their names:**
+
+To get a single row by it's name in the index:
+
+```code
+listings_df.loc['l9995141']
+```
+
+To get several rows by their names:
+
+```code
+listings_df.loc[['l9995141', 'l12026015', 'l44688136']]
+```
+
+> While you can use `:` slicing to specify a start and end names for a
+> range, it is more common to specify a list of names.
+
+To get the `name` column of all rows:
+
+```code
+listings_df.loc[:, 'name']
+```
+-->
 </body>
 </html>

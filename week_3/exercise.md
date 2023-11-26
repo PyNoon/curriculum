@@ -73,6 +73,7 @@ Applying what you’ve learned about reading from files, write
 can use `help(listing_df.to_csv)` or Pandas documentation to get
 information on how to use `to_csv`.
 
+<!--
 ## 1d. Selection of Individual Values
 
 Use sorting and indexing on `listing_df` to find:
@@ -81,6 +82,7 @@ Use sorting and indexing on `listing_df` to find:
 2. The `name` of the listing with an `id` of `'l6113'`
 3. The `review_scores_rating` of the most reviewed listing.
 4. The `latitude` and `longitude` of the least expensive listing.
+-->
 
 ## 2. Exploratory Data Analysis Notebook
 
@@ -112,7 +114,7 @@ descriptive statistics of DataFrame columns (remember, the data type
 of a single column is a `Series`):
 [pandas.pydata.org/pandas-docs/stable/reference/series.html#computations-descriptive-stats](https://pandas.pydata.org/pandas-docs/stable/reference/series.html#computations-descriptive-stats)
 
-### 2b. Find Frequent and Rare Values
+### 2c. Find Frequent and Rare Values
 
 Learn more about the `.value_counts()` method of Series from the
 Pandas' documentation or by using `help()`:
@@ -125,7 +127,7 @@ Use this method to find the most frequent and least frequent values
 for columns of your choosing. What columns would it be interesting to
 find out the frequent and rare values for?
 
-### 2c. Missing Values
+### 2d. Missing Values
 
 Learn more about the `.isna()` and `.dropna()` methods of Series from
 the Pandas' documentation or by using `help()`.
@@ -136,7 +138,13 @@ part of calculating the number of missing values in a column Series,
 you may find it helpful to apply the `len()` function on one or more
 Series.
 
-### 2d. Document your Notebook
+### 2d. Plotting
+
+Have a look at the different kinds of plotting functions available
+from [Plotly Express](https://plotly.com/python/plotly-express/), and
+create some interesting plots of column values.
+
+### 2e. Document your Notebook
 
 1. Ensure your notebook has a meaningful name that makes it clear that
    it performs exploratory analysis of the listings dataset.
