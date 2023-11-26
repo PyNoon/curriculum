@@ -19,87 +19,12 @@ jupyter:
      version: "3.8"
 ---
 
-This week's tutorial is based on
-[swcarpentry.github.io/python-novice-gapminder/02-variables.html](https://swcarpentry.github.io/python-novice-gapminder/02-variables.html)
-and
-[swcarpentry.github.io/python-novice-gapminder/03-types-conversion.html](https://swcarpentry.github.io/python-novice-gapminder/03-types-conversion.html).
+This week's tutorial is based on:
 
-* Make a new notebook for this week
-* What's the first thing to do? RENAME IT!
-* Name it `week2.ipynb`
-
-## Variables
-
-A quick recap on variables for those who haven't reached that part of
-futurecoder yet. Run the following:
-
-```code
-height_cm = 180
-```
-
-The `=` symbol assigns the name on the left to refer to the value on
-the right.
-
-Now we can use the variable anywhere we would have used the value:
-
-```code
-height_cm
-```
-
-```code
-height_cm + 10
-```
-
-> Note: The Python convention for naming variables is to use "snake
-> case" (lowercase letters separated with words/parts separated by
-> underscores).
-
-> Note: Variables are case-sensitive.
-
-**Variables are useful for giving meaningful names to values:**
-
-This is bad:
-
-```code
-height_cm / 2.54
-```
-
-This is better:
-
-```code
-cm_per_inch = 2.54
-height_cm / cm_per_inch
-```
-
-Also note how helpful it is to include the units in the name of the
-variable.
-
-**Variables are also useful for strong the result of an operation for later use:**
-
-```code
-cm_per_inch = 2.54
-height_inch = height_cm / cm_per_inch
-```
-
-<!-- * Be careful of cell order: -->
-<!--   * Move `print(first_name)` above `first_name = 'Alice'` -->
-<!--   * The print cell still works for now... -->
-<!--   * `Restart and run all` -->
-<!-- * Be aware that the variable does not refer to a dynamic calculation, it refers -->
-<!--   to a value: -->
-<!--   ``` -->
-<!--   a = 2 -->
-<!--   b = 5 * a -->
-<!--   a = 3 -->
-<!--   print(a) -->
-<!--   print(b) -->
-<!--   ``` -->
-
+* [swcarpentry.github.io/python-novice-gapminder/02-variables.html](https://swcarpentry.github.io/python-novice-gapminder/02-variables.html)
+* [swcarpentry.github.io/python-novice-gapminder/03-types-conversion.html](https://swcarpentry.github.io/python-novice-gapminder/03-types-conversion.html).
 
 ## Types
-
-Now that we've looked at assigning values to variables, let's talk
-more about the values themselves.
 
 **In Python, every value has a type**
 
@@ -171,33 +96,6 @@ attached to the value itself:
 doesn't take any arguments, and it is attached to string values
 (referred to as a special kind of function called a *method*).
 
-You can see what attributes and methods are available for a value with
-the `dir()` function:
-
-```code
-dir('hello')
-```
-
-> Don't worry about the underscored names
-
-You can also call the `dir()` function to see what functions and
-variables are available generally (those you can call without a `.`
-after a value):
-
-```code
-dir()
-```
-
-To find out more about what a specific function does, use the `help()`
-function on the function's name:
-
-```code
-help(dir)
-```
-
-```code
-help('hello'.upper)
-```
 
 ### Operations with mixed types
 
@@ -232,6 +130,81 @@ decimal part after the resulting number:
 ```code
 42 + 42.0
 ```
+
+> FOLLOW-ALONG TUTORIAL BEGINS HERE
+
+## Setup
+
+* Make a new notebook for this week
+* What's the first thing to do? RENAME IT!
+* Name it `week2.ipynb`
+
+## Variables
+
+A quick recap on variables for those who haven't reached that part of
+futurecoder yet. Run the following:
+
+```code
+height_cm = 180
+```
+
+The `=` symbol assigns the name on the left to refer to the value on
+the right.
+
+Now we can use the variable anywhere we would have used the value:
+
+```code
+height_cm
+```
+
+```code
+height_cm + 10
+```
+
+> Note: The Python convention for naming variables is to use "snake
+> case" (lowercase letters separated with words/parts separated by
+> underscores).
+
+> Note: Variables are case-sensitive.
+
+**Variables are useful for giving meaningful names to values:**
+
+This is bad:
+
+```code
+height_cm / 2.54
+```
+
+This is better:
+
+```code
+cm_per_inch = 2.54
+height_cm / cm_per_inch
+```
+
+Also note how helpful it is to include the units in the name of the
+variable.
+
+**Variables are also useful for strong the result of an operation for later use:**
+
+```code
+cm_per_inch = 2.54
+height_inch = height_cm / cm_per_inch
+```
+
+<!-- * Be careful of cell order: -->
+<!--   * Move `print(first_name)` above `first_name = 'Alice'` -->
+<!--   * The print cell still works for now... -->
+<!--   * `Restart and run all` -->
+<!-- * Be aware that the variable does not refer to a dynamic calculation, it refers -->
+<!--   to a value: -->
+<!--   ``` -->
+<!--   a = 2 -->
+<!--   b = 5 * a -->
+<!--   a = 3 -->
+<!--   print(a) -->
+<!--   print(b) -->
+<!--   ``` -->
 
 
 ## Indexing and Slicing

@@ -36,7 +36,7 @@ title: PyNoon Week 2
 
 ### Independent Work/Homework
 
-1. **Exercise:**
+1. **Exercise Notebook:**
    * More variable and value examples
    * Write a password generator
    * See the Exercise Notebook for Week 2 at
