@@ -24,6 +24,8 @@ This week's tutorial is based on:
 * [swcarpentry.github.io/python-novice-gapminder/02-variables.html](https://swcarpentry.github.io/python-novice-gapminder/02-variables.html)
 * [swcarpentry.github.io/python-novice-gapminder/03-types-conversion.html](https://swcarpentry.github.io/python-novice-gapminder/03-types-conversion.html).
 
+> DEMO-ONLY TUTORIAL BEGINS HERE
+
 ## Types
 
 **In Python, every value has a type**
