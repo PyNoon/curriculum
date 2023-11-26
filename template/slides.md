@@ -2,7 +2,7 @@
 title: PyNoon Week X
 ---
 
-# Warm-Up Exercise
+### Warm-Up Exercise
 
 
 ### Thanks
@@ -19,7 +19,7 @@ title: PyNoon Week X
 * WiFi
 
 
-# Tutorial Objectives
+### Tutorial Objectives
 
 
-# Independent Work/Homework
+### Independent Work/Homework

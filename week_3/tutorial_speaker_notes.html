@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang xml:lang>
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>PyNoon Week 3 - Tutorial</title>
+  <style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+
+ul.task-list[class]{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+font-size: inherit;
+width: 0.8em;
+margin: 0 0.8em 0.2em -1.6em;
+vertical-align: middle;
+}
+.display.math{display: block; text-align: center; margin: 0.5rem auto;}
+</style>
+  <style type="text/css">body {
+font-size: 16px;
+}
+pre.code {
+font-size: 1.4em;
+}
+blockquote {
+font-style: italic;
+}
+</style>
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">PyNoon Week 3 - Tutorial</h1>
+</header>
+<p>This week’s tutorial will cover:</p>
+<ul>
+<li>A review of functions</li>
+<li>Working with built-in and third party libraries</li>
+<li>Loading and exploring tabular data with Pandas</li>
+</ul>
+<p>It is based on:</p>
+<ul>
+<li><a href="https://swcarpentry.github.io/python-novice-gapminder/04-built-in.html">swcarpentry.github.io/python-novice-gapminder/04-built-in.html</a></li>
+<li><a href="https://swcarpentry.github.io/python-novice-gapminder/06-libraries.html">swcarpentry.github.io/python-novice-gapminder/06-libraries.html</a></li>
+<li><a href="https://swcarpentry.github.io/python-novice-gapminder/07-reading-tabular.html">swcarpentry.github.io/python-novice-gapminder/07-reading-tabular.html</a></li>
+<li><a href="https://swcarpentry.github.io/python-novice-gapminder/08-data-frames.html">swcarpentry.github.io/python-novice-gapminder/08-data-frames.html</a></li>
+</ul>
+<blockquote>
+<p>DEMO-ONLY TUTORIAL BEGINS HERE</p>
+</blockquote>
+<h2 id="functions">Functions</h2>
+<p>We’ve used functions in previous tutorials, but we’re going to start
+using a lot more of them, so lets summarise their key facts:</p>
+<p><strong>Functions are <em>called</em> using parentheses</strong></p>
+<pre class="code"><code>print(&#39;hello&#39;)</code></pre>
+<p>Using a function’s name without parentheses refers to the function
+itself <em>as</em> a value:</p>
+<pre class="code"><code>print</code></pre>
+<p><strong>Functions attached to values are called
+<em>methods</em></strong></p>
+<pre class="code"><code>&#39;hello&#39;.upper()</code></pre>
+<p><strong>Functions may take zero, one, or more arguments</strong></p>
+<pre class="code"><code>print(&#39;hello&#39;, &#39;world&#39;)</code></pre>
+<p>Some functions require a minimum or specific number of arguments.</p>
+<p><strong>Every function returns a value</strong></p>
+<p>Even functions that don’t seem to return a value (like
+<code>print</code>) actually return a special value called
+<code>None</code> (similar to <code>null</code> in SQL or other
+languages):</p>
+<pre class="code"><code>returned_value = print(&#39;hello&#39;)</code></pre>
+<pre class="code"><code>returned_value</code></pre>
+<pre class="code"><code>type(returned_value)</code></pre>
+<p><strong>Functions may have default values for some
+arguments</strong></p>
+<p><code>round()</code> defaults to rounding a number to zero decimal
+places:</p>
+<pre class="code"><code>round(3.14159)</code></pre>
+<p>We can pass a second argument to <code>round</code> to specify the
+number of decimal places:</p>
+<pre class="code"><code>round(3.14159, 2)</code></pre>
+<p><strong>Functions accept named arguments (and some require
+it):</strong></p>
+<pre class="code"><code>round(3.14159, ndigits=2)</code></pre>
+<p><strong>Use the built-in function help to get help for a
+function</strong></p>
+<pre class="code"><code>help(round)</code></pre>
+<pre class="code"><code>help(&#39;hello&#39;.upper)</code></pre>
+<blockquote>
+<p>Don’t worry about the underscored names</p>
+</blockquote>
+<p><strong>Use <code>dir()</code> and <code>dir(__builtins__)</code> to
+list available functions (and non-function variables)</strong></p>
+<pre class="code"><code>dir()</code></pre>
+<pre class="code"><code>dir(__builtins__)</code></pre>
+<p><strong>Use <code>dir(some_value)</code> to list methods (and
+non-function variables called attributes) of a value</strong></p>
+<pre class="code"><code>dir(&#39;hello&#39;)</code></pre>
+<ul>
+<li>See <a href="https://docs.python.org/3/library/functions.html">docs.python.org/3/library/functions.html</a>
+for more about functions that are built-in and always available in
+Python.</li>
+<li>A key power of Python is that you can define your own functions as
+Python code to execute when the function is called.</li>
+</ul>
+<h2 id="libraries">Libraries</h2>
+<p>To get more functions (and other things) to use in Python, you can
+import collections of Python files (aka <strong>modules</strong>) from
+<strong>libraries</strong>.</p>
+<p>To use the contents of a library module, we must import it once
+(usually at the top of our notebook or script):</p>
+<pre class="code"><code>import math</code></pre>
+<p>Then we can use functions and variables from it:</p>
+<pre class="code"><code>math.pi</code></pre>
+<pre class="code"><code>math.log(math.e)</code></pre>
+<p>We can use the <code>help()</code> function to find out what is
+available in a library:</p>
+<pre class="code"><code>help(math)</code></pre>
+<p>Sometimes we want to import only certain functions or variables from
+a module…</p>
+<pre class="code"><code>from math import pi, e</code></pre>
+<p>Or import the module under an aliased name…</p>
+<pre class="code"><code>import pandas as pd</code></pre>
+<ul>
+<li><code>math</code> is one of the many modules in Python’s
+<strong>standard library</strong>, which is well known for its extensive
+functionality.
+<ul>
+<li>You can find out about the libraries available to import more
+modules more about at: <a href="https://docs.python.org/3/library/index.html">docs.python.org/3/library</a></li>
+</ul></li>
+<li>Python is also well known for its many <strong>3rd party
+libraries</strong> which must be downloaded before they can be imported.
+<ul>
+<li>You can search for available Python packages at: <a href="https://pypi.org/">pypi.org</a></li>
+</ul></li>
+</ul>
+<p>3rd party Python libraries can be downloaded with <code>pip</code>,
+which can be run as follows in JupyterLite:</p>
+<pre class="code"><code>%pip install pandas</code></pre>
+<blockquote>
+<p><strong>Anyone</strong> can publish a 3rd party library, so it’s
+prudent to ask the following questions before installing a library:</p>
+<ul>
+<li>Has someone you trust recommended this library?</li>
+<li>Is there concrete evidence of an active user base for this
+library?</li>
+<li>Am I sure I am spelling the library’s name correctly? (malicious
+users have been known to publish “typo-squatting” libraries with similar
+names to popular libraries)</li>
+</ul>
+</blockquote>
+<p>The webpage for a library on <code>pypi.org</code> will often have
+links to:</p>
+<ul>
+<li>A <strong>GitHub (or similar) page</strong> where you can read the
+library’s code, report issues, and contribute improvements.</li>
+<li>A <strong>quick start</strong> to briefly demonstrate you how to use
+the library</li>
+<li>More extensive <strong>documentation</strong> or an <strong>API
+reference</strong> that documents all the functions and capabilities of
+the library.</li>
+</ul>
+<p>For example, check out: <a href="https://pypi.org/project/pandas/">pypi.org/project/pandas</a></p>
+<blockquote>
+<p>FOLLOW-ALONG TUTORIAL BEGINS HERE</p>
+</blockquote>
+<h2 id="setup">Setup</h2>
+<ul>
+<li>Make a new notebook for this week</li>
+<li>What’s the first thing to do? RENAME IT!</li>
+<li>Name it <code>week3.ipynb</code></li>
+</ul>
+<h2 id="pandas-dataframes">Pandas DataFrames</h2>
+<p>We can use the <code>pandas</code> library to work with tabular data
+in Python.</p>
+<ul>
+<li>Pandas is based on a lower-level maths library called
+<code>numpy</code></li>
+<li>Pandas DataFrames are similar to R’s DataFrames</li>
+</ul>
+<pre class="code"><code>import pandas as pd</code></pre>
+<p>Let’s get a CSV of data to load:</p>
+<ol type="1">
+<li>Download <code>inside_airbnb_listings_nz_2023_09.csv</code> from <a href="https://pynoon.github.io/schedule/">pynoon.github.io/schedule</a>.
+<ul>
+<li>Look at the data dictionary linked to from that page to learn what
+each column means.</li>
+</ul></li>
+<li>Upload the file into JupyterLite
+<ul>
+<li>Use the upload button above the file browser, or drag and drop the
+file into JupyterLite.</li>
+</ul></li>
+<li>Double-click on the file in the file browser to view it in
+JupyterLite.</li>
+</ol>
+<p>To load the CSV into a DataFrame:</p>
+<pre class="code"><code>listings_df = pd.read_csv(&#39;inside_airbnb_listings_nz_2023_09.csv&#39;)</code></pre>
+<ul>
+<li><code>df</code> is a <em>conventional</em> variable suffix for a
+DataFrame.</li>
+<li>Pandas has many different <code>read_*</code> functions for reading
+from different types of files (e.g. <code>read_excel()</code>).</li>
+</ul>
+<p>Let’s look at the DataFrame:</p>
+<pre class="code"><code>listings_df</code></pre>
+<blockquote>
+<p>Only a few rows from the top and bottom of the DataFrame are
+shown</p>
+</blockquote>
+<ul>
+<li>The first “column” is the <em>index</em>, which defaults to
+incrementing integers</li>
+<li>Like how each column has a name, the <em>index</em> is the “name” of
+each row</li>
+<li>We can assign a column to be the index of a DataFrame:</li>
+</ul>
+<pre class="code"><code>listings_df = listings_df.set_index(&#39;id&#39;)</code></pre>
+<pre class="code"><code>listings_df</code></pre>
+<p>Why do we need to assign the result of <code>set_index()</code>?</p>
+<ul>
+<li>Calling <code>.set_index()</code> does not change the original
+DataFrame value</li>
+<li>Calling <code>.set_index()</code> returns a <strong>new DataFrame
+value</strong> with the index changed, which we then assign to the
+original variable.</li>
+<li>Most Pandas methods return a new value rather than changing the
+original value.</li>
+</ul>
+<p>Another example is sorting the DataFrame by a column:</p>
+<pre class="code"><code>listings_df = listings_df.sort_values(by=&#39;host_name&#39;)</code></pre>
+<h3 id="dataframe-indexing-and-slicing">DataFrame Indexing and
+Slicing</h3>
+<p><strong>We can perform indexing and slicing on DataFrames using
+<code>.iloc</code>:</strong></p>
+<p>To get the first row:</p>
+<pre class="code"><code>listings_df.iloc[0]</code></pre>
+<blockquote>
+<p>The type of a single column or row from a Pandas
+<code>DataFrame</code> is a <code>Series</code></p>
+</blockquote>
+<p>To get the second column in the first row:</p>
+<pre class="code"><code>listings_df.iloc[0, 1]</code></pre>
+<p>To get the second column of the first five rows:</p>
+<pre class="code"><code>listings_df.iloc[0:5, 1]</code></pre>
+<p>To get the second column of all rows:</p>
+<pre class="code"><code>listings_df.iloc[:, 1]</code></pre>
+<p><strong>We can also index and slice rows and columns by their
+names:</strong></p>
+<p>To get a single row by it’s name in the index:</p>
+<pre class="code"><code>listings_df.loc[&#39;l9995141&#39;]</code></pre>
+<p>To get several rows by their names:</p>
+<pre class="code"><code>listings_df.loc[[&#39;l9995141&#39;, &#39;l12026015&#39;, &#39;l44688136&#39;]]</code></pre>
+<blockquote>
+<p>While you can use <code>:</code> slicing to specify a start and end
+names for a range, it is more common to specify a list of names.</p>
+</blockquote>
+<p>To get the <code>name</code> column of all rows:</p>
+<pre class="code"><code>listings_df.loc[:, &#39;name&#39;]</code></pre>
+<p>Because we so commonly want to access columns, there is a
+shorthand:</p>
+<pre class="code"><code>listings_df[&#39;name&#39;]</code></pre>
+<p>Also handy to get a new DataFrame that only contains a subset of
+columns:</p>
+<pre class="code"><code>listings_df[[&#39;name&#39;, &#39;region_name&#39;, &#39;region_parent_name&#39;]]</code></pre>
+<h3 id="column-types-and-data-preparation">Column Types and Data
+Preparation</h3>
+<p>Every column has a type of value stored in it:</p>
+<pre class="code"><code>listings_df.info()</code></pre>
+<ul>
+<li>Numeric types have been automatically inferred by Pandas</li>
+<li>Non-numeric types like strings are listed as <code>object</code> (we
+only have strings here)</li>
+<li>Some types aren’t what we want</li>
+</ul>
+<p>We can convert date columns from strings to dates:</p>
+<pre class="code"><code>pd.to_datetime(listings_df[&#39;host_since&#39;])</code></pre>
+<p>We must assign the transformed columns to replace the original
+columns:</p>
+<pre class="code"><code>listings_df[&#39;host_since&#39;] = pd.to_datetime(listings_df[&#39;host_since&#39;])
+listings_df[&#39;last_review&#39;] = pd.to_datetime(listings_df[&#39;last_review&#39;])</code></pre>
+<pre class="code"><code>listings_df.info()</code></pre>
+<pre class="code"><code>listings_df</code></pre>
+<p>We can also remove the dollar sign from each price:</p>
+<pre class="code"><code>listings_df[&#39;price&#39;].str.replace(&#39;$&#39;, &#39;&#39;, regex=False)</code></pre>
+<p>We can “chain” additional method calls on the results of previous
+method calls to replace commas and convert the column data type from
+string to float:</p>
+<pre class="code"><code>listings_df[&#39;price&#39;].str.replace(&#39;$&#39;, &#39;&#39;, regex=False).str.replace(&#39;,&#39;, &#39;&#39;, regex=False).astype(float)</code></pre>
+<pre class="code"><code>listings_df[&#39;price&#39;] = listings_df[&#39;price&#39;].str.replace(&#39;$&#39;, &#39;&#39;, regex=False).str.replace(&#39;,&#39;, &#39;&#39;, regex=False).astype(float)</code></pre>
+<pre class="code"><code>listings_df.info()</code></pre>
+<pre class="code"><code>listings_df</code></pre>
+<h3 id="summary-statistics">Summary Statistics</h3>
+<p>We can get summary statistics for all numeric columns:</p>
+<pre class="code"><code>listings_df.describe()</code></pre>
+<p>And we can get specific summary statistics for column’s
+individually:</p>
+<pre class="code"><code>listings_df[&#39;last_review&#39;].max()</code></pre>
+<pre class="code"><code>listings_df[&#39;review_scores_rating&#39;].mean()</code></pre>
+</body>
+</html>

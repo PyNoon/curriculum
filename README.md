@@ -40,3 +40,10 @@ Git repository to exclude the outputs of notebook cells when running
 * [Tutorial Speaker Notes](https://pynoon.github.io/curriculum/week_2/tutorial_speaker_notes.html){:target="_blank"}{:rel="noopener"}
 * [Tutorial Notebook](https://pynoon.github.io/jupyterlite/lab/index.html?fromURL=https://raw.githubusercontent.com/pynoon/curriculum/main/week_2/week_2_tutorial.ipynb){:target="_blank"}{:rel="noopener"}
 * [Exercise Notebook](https://pynoon.github.io/jupyterlite/lab/index.html?fromURL=https://raw.githubusercontent.com/pynoon/curriculum/main/week_2/week_2_exercise.ipynb){:target="_blank"}{:rel="noopener"}
+
+## Week 3
+
+* [Slides](https://pynoon.github.io/curriculum/week_3/slides.html){:target="_blank"}{:rel="noopener"}
+* [Tutorial Speaker Notes](https://pynoon.github.io/curriculum/week_3/tutorial_speaker_notes.html){:target="_blank"}{:rel="noopener"}
+* [Tutorial Notebook](https://pynoon.github.io/jupyterlite/lab/index.html?fromURL=https://raw.githubusercontent.com/pynoon/curriculum/main/week_3/week_3_tutorial.ipynb){:target="_blank"}{:rel="noopener"}
+* [Exercise Notebook](https://pynoon.github.io/jupyterlite/lab/index.html?fromURL=https://raw.githubusercontent.com/pynoon/curriculum/main/week_3/week_3_exercise.ipynb){:target="_blank"}{:rel="noopener"}
