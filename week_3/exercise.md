@@ -153,12 +153,12 @@ create some interesting plots of column values.
    to:
    1. Provide a title at the beginning of the notebook
    2. Mark the beginning of the code that loads the dataset
-   3. Mark the beginning of the code that pre-processes the dataset
-      (i.e. setting the index and changing column data types)
-   4. Mark the beginning of the code that analyses the dataset
+   <!-- 3. Mark the beginning of the code that pre-processes the dataset -->
+   <!--    (i.e. setting the index and changing column data types) -->
+   3. Mark the beginning of the code that analyses the dataset
 3. Extend or add more Markdown cells to document:
-   1. What each data pre-processing step is for
-   2. What each analysis of the dataset tells you about the data -
+   <!-- 1. What each data pre-processing step is for -->
+   1. What each analysis of the dataset tells you about the data -
       provide commentary you think would be useful to a colleague who
       will also be working with this data
 
