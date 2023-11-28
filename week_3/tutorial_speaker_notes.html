@@ -203,7 +203,7 @@ imported they must be downloaded to your computer.
 </ul></li>
 </ul>
 <p>3rd party Python libraries can be downloaded with <code>pip</code>,
-which can be run as follows in JupyterLite:</p>
+which can be run as follows in a notebook:</p>
 <pre class="code"><code>%pip install pandas</code></pre>
 <blockquote>
 <p><strong>Anyone</strong> can publish a 3rd party library, so it’s
@@ -233,25 +233,32 @@ the library.</li>
 <p>FOLLOW-ALONG TUTORIAL BEGINS HERE</p>
 </blockquote>
 <h2 id="setup">Setup</h2>
-<p>Let’s start by getting some data to analyse:</p>
+<!--
+Let's start by getting some data to analyse:
+
+1. MAKE A BACKUP OF YOUR EXISTING NOTEBOOKS
+   * I have observed a bug with JupyterLite deleting files when
+     working with CSV files
+2. Use the link on
+   [pynoon.github.io/schedule](https://pynoon.github.io/schedule/) to
+   open `inside_airbnb_listings_nz_2023_09.csv`
+   * Look at the data dictionary linked to from that page to learn
+     what each column means.
+3. Double-click on the file in the file browser to view it in
+   JupyterLite.
+-->
 <ol type="1">
-<li>MAKE A BACKUP OF YOUR EXISTING NOTEBOOKS
-<ul>
-<li>I have observed a bug with JupyterLite deleting files when working
-with CSV files</li>
-</ul></li>
-<li>Use the link on <a href="https://pynoon.github.io/schedule/">pynoon.github.io/schedule</a>
-to open <code>inside_airbnb_listings_nz_2023_09.csv</code>
-<ul>
-<li>Look at the data dictionary linked to from that page to learn what
-each column means.</li>
-</ul></li>
-<li>Double-click on the file in the file browser to view it in
-JupyterLite.</li>
 <li>Make a new notebook for this week</li>
 <li>What’s the first thing to do? RENAME IT!</li>
 <li>Name it <code>week3.ipynb</code></li>
 </ol>
+<p>Let’s look at the data we’re going to analyse:</p>
+<p>Use the link on<a href="https://pynoon.github.io/schedule/">pynoon.github.io/schedule</a>
+to open <code>inside_airbnb_listings_nz_2023_09.csv</code></p>
+<ul>
+<li>Look at the data dictionary linked to from that page to learn what
+each column means.</li>
+</ul>
 <h2 id="pandas-dataframes">Pandas DataFrames</h2>
 <p>We can use the <code>pandas</code> library to work with tabular data
 in Python.</p>
@@ -266,7 +273,7 @@ in Python.</p>
 saves us typing out <code>pandas</code> everytime we want to use it.</p>
 </blockquote>
 <p>To load the CSV into a DataFrame:</p>
-<pre class="code"><code>listings_df = pd.read_csv(&#39;inside_airbnb_listings_nz_2023_09.csv&#39;)</code></pre>
+<pre class="code"><code>listings_df = pd.read_csv(&#39;https://raw.githubusercontent.com/pynoon/curriculum/main/week_3/inside_airbnb_listings_nz_2023_09.csv&#39;)</code></pre>
 <ul>
 <li><code>df</code> is a <em>conventional</em> variable suffix for a
 DataFrame.</li>

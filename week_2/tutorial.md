@@ -309,10 +309,10 @@ To import the pandas library as the alias `pd`:
 import pandas as pd
 ```
 
-To load a CSV file from the JupyterLite environment into a DataFrame:
+To load a CSV file into a DataFrame:
 
 ```code
-df = pd.read_csv('examples/data/iris.csv')
+df = pd.read_csv('https://raw.githubusercontent.com/pynoon/curriculum/main/week_3/inside_airbnb_listings_nz_2023_09.csv')
 ```
 
 > Note: Your notebook must not be inside a subfolder for this command

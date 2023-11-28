@@ -248,7 +248,7 @@ import pandas as pd
     [pypi.org](https://pypi.org/)
 
 3rd party Python libraries can be downloaded with `pip`, which can be
-run as follows in JupyterLite:
+run as follows in a notebook:
 
 ```code
 %pip install pandas
@@ -278,6 +278,7 @@ For example, check out:
 
 ## Setup
 
+<!--
 Let's start by getting some data to analyse:
 
 1. MAKE A BACKUP OF YOUR EXISTING NOTEBOOKS
@@ -290,9 +291,21 @@ Let's start by getting some data to analyse:
      what each column means.
 3. Double-click on the file in the file browser to view it in
    JupyterLite.
-4. Make a new notebook for this week
-5. What's the first thing to do? RENAME IT!
-6. Name it `week3.ipynb`
+-->
+
+1. Make a new notebook for this week
+2. What's the first thing to do? RENAME IT!
+3. Name it `week3.ipynb`
+
+Let's look at the data we're going to analyse:
+
+Use the link
+on[pynoon.github.io/schedule](https://pynoon.github.io/schedule/) to
+open `inside_airbnb_listings_nz_2023_09.csv`
+
+* Look at the data dictionary linked to from that page to learn what
+  each column means.
+
 
 ## Pandas DataFrames
 
@@ -311,7 +324,7 @@ import pandas as pd
 To load the CSV into a DataFrame:
 
 ```code
-listings_df = pd.read_csv('inside_airbnb_listings_nz_2023_09.csv')
+listings_df = pd.read_csv('https://raw.githubusercontent.com/pynoon/curriculum/main/week_3/inside_airbnb_listings_nz_2023_09.csv')
 ```
 
 * `df` is a *conventional* variable suffix for a DataFrame.
