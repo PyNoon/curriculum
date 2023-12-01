@@ -1,5 +1,5 @@
 ---
-title: PyNoon Week X - Exercise
+title: PyNoon Week 4 - Exercise
 jupyter:
   nbformat: 4
   nbformat_minor: 4
@@ -19,6 +19,20 @@ jupyter:
      version: "3.8"
 ---
 
-# PyNoon Week X - Exercise
+# PyNoon Week 4 - Exercise
 
-## 1. ...
+## 1. Answering questions from data
+
+Use the `listings_df` dataset from the tutorial to answer the
+following questions:
+
+1. TODO
+
+## 2. Futurecoder
+
+Complete the following lesson on [futurecoder.io](https://futurecoder.io):
+
+1. Lists (it's a longer one to work on over the break)
+
+> You can check which lesson you are up to on Futurecoder from the
+> `Table of Contents` link at the top of the Futurecoder webpage.

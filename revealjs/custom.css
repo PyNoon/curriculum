@@ -43,3 +43,7 @@
 .reveal code {
     background: #F5F5F5;
 }
+
+.reveal li > p {
+    margin: 0;
+}

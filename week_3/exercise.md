@@ -73,17 +73,6 @@ Applying what you’ve learned about reading from files, write
 can use `help(listing_df.to_csv)` or Pandas documentation to get
 information on how to use `to_csv`.
 
-<!--
-## 1d. Selection of Individual Values
-
-Use sorting and indexing on `listing_df` to find:
-
-1. The value in the third column of the fifth row.
-2. The `name` of the listing with an `id` of `'l6113'`
-3. The `review_scores_rating` of the most reviewed listing.
-4. The `latitude` and `longitude` of the least expensive listing.
--->
-
 ## 2. Exploratory Data Analysis Notebook
 
 In this assignment, your task is to extend your notebook from this

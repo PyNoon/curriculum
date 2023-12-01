@@ -96,3 +96,15 @@ To get the `name` column of all rows:
 listings_df.loc[:, 'name']
 ```
 -->
+
+
+<!--
+## 1d. Selection of Individual Values
+
+Use sorting and indexing on `listing_df` to find:
+
+1. The value in the third column of the fifth row.
+2. The `name` of the listing with an `id` of `'l6113'`
+3. The `review_scores_rating` of the most reviewed listing.
+4. The `latitude` and `longitude` of the least expensive listing.
+-->
