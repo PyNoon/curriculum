@@ -166,7 +166,7 @@ to each pair of values from the two Series:</p>
 <pre class="code"><code>listings_df[&#39;price_nzd&#39;] / listings_df[&#39;accommodates&#39;]</code></pre>
 <p>We can add a new column to an existing DataFrame by assigning to a
 new column name that doesn’t exist in the DataFrame yet:</p>
-<pre class="code"><code>listings_df[&#39;price_per_person&#39;] = listings_df[&#39;price_nzd&#39;] * listings_df[&#39;accommodates&#39;]</code></pre>
+<pre class="code"><code>listings_df[&#39;price_per_person&#39;] = listings_df[&#39;price_nzd&#39;] / listings_df[&#39;accommodates&#39;]</code></pre>
 <pre class="code"><code>listings_df</code></pre>
 <pre class="code"><code>listings_df[&#39;price_per_person&#39;].describe()</code></pre>
 <h2 id="pandas-and-plotly-documentation">Pandas and Plotly

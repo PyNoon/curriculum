@@ -246,7 +246,7 @@ We can add a new column to an existing DataFrame by assigning to a new
 column name that doesn't exist in the DataFrame yet:
 
 ```code
-listings_df['price_per_person'] = listings_df['price_nzd'] * listings_df['accommodates']
+listings_df['price_per_person'] = listings_df['price_nzd'] / listings_df['accommodates']
 ```
 
 ```code
