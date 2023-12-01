@@ -4,7 +4,7 @@ import subprocess
 
 base_url = 'https://pynoon.github.io/curriculum'
 raw_repo_url = 'https://raw.githubusercontent.com/pynoon/curriculum/main'
-jupyterlite_url = 'https://pynoon.github.io/jupyterlite/lab/index.html'
+colab_url = 'https://colab.research.google.com/github/pynoon/curriculum/blob/main'
 curriculum_dir = Path(__file__).parent
 
 def main():
@@ -26,7 +26,7 @@ Weekly slides and tutorials for PyNoon.
 
 * [Software Carpentry instructor tips](https://carpentries.github.io/instructor-training/instructor/17-live.html#top-ten-tips-for-participatory-live-coding-in-a-workshop)
 * Ensure font is big enough
-  * In Jupyterlite -> View -> Presentation Mode
+  * In JupyterLite -> View -> Presentation Mode
 * Draw up bottom of browser window if it won't be visible from all seats
 * Turn off notifications
 * Have a print-out of the course content so that you don't have to
@@ -37,8 +37,12 @@ Weekly slides and tutorials for PyNoon.
 
 ## Notebook Outputs
 
-You should not commit the outputs of notebook cells to your Git
-repository. If you have Python 3 installed, you can use
+(The instructions in this section are for course authors only, you can
+ignore these instructions if you are a learner using these notebooks.)
+
+When updating the notebooks in this repo that are shared with
+learners, you should not commit the outputs of notebook cells to your
+Git repository. If you have Python 3 installed, you can use
 [nbstripout](https://github.com/kynan/nbstripout) to configure your
 Git repository to exclude the outputs of notebook cells when running
 `git add`:
@@ -70,7 +74,7 @@ Git repository to exclude the outputs of notebook cells when running
                 '-o', warmup_notebook_path,
                 str(week_dir / 'warmup.md'),
             ], check=True)
-            week_links.append(f'[Warm-up Notebook]({jupyterlite_url}?fromURL={raw_repo_url}/{week_dir.name}/{week_dir.name}_warmup.ipynb)')
+            week_links.append(f'[Warm-up Notebook]({colab_url}/{week_dir.name}/{week_dir.name}_warmup.ipynb)')
             notebook_paths.append(warmup_notebook_path)
 
         if (week_dir / 'tutorial.md').exists():
@@ -89,7 +93,7 @@ Git repository to exclude the outputs of notebook cells when running
                 '-o', tutorial_notebook_path,
                 str(week_dir / 'tutorial.md'),
             ], check=True)
-            week_links.append(f'[Tutorial Notebook]({jupyterlite_url}?fromURL={raw_repo_url}/{week_dir.name}/{week_dir.name}_tutorial.ipynb)')
+            week_links.append(f'[Tutorial Notebook]({colab_url}/{week_dir.name}/{week_dir.name}_tutorial.ipynb)')
             notebook_paths.append(tutorial_notebook_path)
 
         if (week_dir / 'exercise.md').exists():
@@ -99,7 +103,7 @@ Git repository to exclude the outputs of notebook cells when running
                 '-o', exercise_notebook_path,
                 str(week_dir / 'exercise.md'),
             ], check=True)
-            week_links.append(f'[Exercise Notebook]({jupyterlite_url}?fromURL={raw_repo_url}/{week_dir.name}/{week_dir.name}_exercise.ipynb)')
+            week_links.append(f'[Exercise Notebook]({colab_url}/{week_dir.name}/{week_dir.name}_exercise.ipynb)')
             notebook_paths.append(exercise_notebook_path)
 
         # Quick fix for `"execution_count": null` that JupyterLite doesn't like.

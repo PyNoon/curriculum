@@ -26,6 +26,11 @@ Python code in the JupyterLite environment, loosely based on
 [swcarpentry.github.io/python-novice-gapminder/01-run-quit.html](https://swcarpentry.github.io/python-novice-gapminder/01-run-quit.html),
 (but more streamlined - not covering topics like shortcut keys).
 
+> The remainder of this course will use [Google
+> Colab](https://colab.google/) for running Python notebooks, but this
+> tutorial uses JupyterLite to demonstrate use of the Python console,
+> Python scripts, and Python notebooks.
+
 **To get started open the PyNoon JupyterLite environment at:
 [pynoon.github.io/jupyterlite](https://pynoon.github.io/jupyterlite)**
 
