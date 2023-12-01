@@ -324,7 +324,7 @@ import pandas as pd
 To load the CSV into a DataFrame:
 
 ```code
-listings_df = pd.read_csv('https://raw.githubusercontent.com/pynoon/curriculum/main/week_3/inside_airbnb_listings_nz_2023_09.csv')
+listings_df = pd.read_csv('https://pynoon.github.io/data/inside_airbnb_listings_nz_2023_09.csv')
 ```
 
 * `df` is a *conventional* variable suffix for a DataFrame.
@@ -373,66 +373,6 @@ columns:
 listings_df[['latitude', 'longitude']]
 ```
 
-### Column Types and Data Preparation
-
-Every column has a type of value stored in it:
-
-```code
-listings_df.info()
-```
-
-* Numeric types have been automatically inferred by Pandas
-* Non-numeric types like strings are listed as `object` (we only have
-  strings here)
-* Some types aren't what we want
-
-We can convert date columns from strings to dates:
-
-```code
-pd.to_datetime(listings_df['host_since'])
-```
-
-We must assign the transformed columns to replace the original columns:
-
-```code
-listings_df['host_since'] = pd.to_datetime(listings_df['host_since'])
-listings_df['last_review'] = pd.to_datetime(listings_df['last_review'])
-```
-
-```code
-listings_df.info()
-```
-
-```code
-listings_df
-```
-
-We can also remove the dollar sign from each price:
-
-```code
-listings_df['price'].str.replace('$', '', regex=False)
-```
-
-We can "chain" additional method calls on the results of previous
-method calls to replace commas and convert the column data type from
-string to float:
-
-```code
-listings_df['price'].str.replace('$', '', regex=False).str.replace(',', '', regex=False).astype(float)
-```
-
-```code
-listings_df['price'] = listings_df['price'].str.replace('$', '', regex=False).str.replace(',', '', regex=False).astype(float)
-```
-
-```code
-listings_df.info()
-```
-
-```code
-listings_df
-```
-
 ### Summary Statistics
 
 We can get summary statistics for all numeric columns:
@@ -465,85 +405,9 @@ import plotly.express as px
 ```
 
 ```code
-px.scatter(listings_df, x='longitude, y='latitude')
+px.scatter(listings_df, x='longitude', y='latitude')
 ```
 
 ```code
-px.histogram(listings_df, x='price')
+px.histogram(listings_df, x='review_scores_rating')
 ```
-
-<!--
-### DataFrame Indexing and Slicing
-
-* The first "column" in the DataFrame is the *index*, which defaults to incrementing
-  integers
-* Like how each column has a name, the *index* is the "name" of each
-  row
-* We can assign a column to be the index of a DataFrame:
-
-```code
-listings_df = listings_df.set_index('id')
-```
-
-```code
-listings_df
-```
-
-Why do we need to assign the result of `set_index()`?
-
-* Calling `.set_index()` does not change the original DataFrame value
-* Calling `.set_index()` returns a **new DataFrame value** with the
-  index changed, which we then assign to the original variable.
-* Most Pandas methods return a new value rather than changing the
-  original value.
-
-
-**We can perform indexing and slicing on DataFrames using `.iloc`:**
-
-To get the first row:
-
-```code
-listings_df.iloc[0]
-```
-
-To get the second column in the first row:
-
-```code
-listings_df.iloc[0, 1]
-```
-
-To get the second column of the first five rows:
-
-```code
-listings_df.iloc[0:5, 1]
-```
-
-To get the second column of all rows:
-
-```code
-listings_df.iloc[:, 1]
-```
-
-**We can also index and slice rows and columns by their names:**
-
-To get a single row by it's name in the index:
-
-```code
-listings_df.loc['l9995141']
-```
-
-To get several rows by their names:
-
-```code
-listings_df.loc[['l9995141', 'l12026015', 'l44688136']]
-```
-
-> While you can use `:` slicing to specify a start and end names for a
-> range, it is more common to specify a list of names.
-
-To get the `name` column of all rows:
-
-```code
-listings_df.loc[:, 'name']
-```
--->
