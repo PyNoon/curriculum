@@ -72,7 +72,7 @@ Hint: You may find a plot useful to examine the relationship between
 Complete the following lesson on
 [futurecoder.io](https://futurecoder.io):
 
-1. Lists (it's a longer one to work on over the break)
+1. Lists
 
 > You can check which lesson you are up to on Futurecoder from the
 > `Table of Contents` link at the top of the Futurecoder webpage.

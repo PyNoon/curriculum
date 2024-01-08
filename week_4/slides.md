@@ -6,16 +6,6 @@ title: PyNoon Week 4
 
 <div style="text-align: left; font-size: 0.65em;">
 
-#### Get setup with Colab
-
-1. Open Colab Notebooks (link in the menu of
-   [pynoon.github.io](https://pynoon.github.io))
-2. Click the "New Notebook" button (it may take a few seconds)
-3. Make sure you can run a simple `print('Hello world')` in a notebook
-   cell (the first cell in a notebook will take a few seconds)
-
----
-
 #### Plot some data
 
 <style>
@@ -68,4 +58,4 @@ title: PyNoon Week 4
    * See the Exercise Notebook for Week 4 at
      [pynoon.github.io/schedule](https://pynoon.github.io/schedule)
 2. **Work through [futurecoder.io](https://futurecoder.io) sections**:
-   1. Lists (it's a longer one to work on over the break)
+   1. Lists
