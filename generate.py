@@ -67,16 +67,6 @@ Git repository to exclude the outputs of notebook cells when running
             ], check=True)
             week_links.append(f'[Slides]({base_url}/{week_dir.name}/slides.html)')
 
-        if (week_dir / 'warmup.md').exists():
-            warmup_notebook_path = str(week_dir / f'{week_dir.name}_warmup.ipynb')
-            subprocess.run([
-                'pandoc', '-s',
-                '-o', warmup_notebook_path,
-                str(week_dir / 'warmup.md'),
-            ], check=True)
-            week_links.append(f'[Warm-up Notebook]({colab_url}/{week_dir.name}/{week_dir.name}_warmup.ipynb)')
-            notebook_paths.append(warmup_notebook_path)
-
         if (week_dir / 'tutorial.md').exists():
             subprocess.run([
                 'pandoc',
