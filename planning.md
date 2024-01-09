@@ -1,25 +1,22 @@
-# Week 4
+# Week 6
 
-* Plotting
-* DataFrames:
-  * Masking
-  * Group-by
-  * Updating
-  * dropna(), fillna()
-  * .to_csv()
-  * .shape
-  * .columns
 * Futurecoder:
-  * Lists
-  * A bit more about strings
+  * Functions
+
+# Week 7
+
+* Futurecoder:
   * Dictionaries
 
-# Week 5
+# Week 8
 
-* Using everything we've learned so far for exploratory data analysis
 * Futurecoder:
-* Homework: In the break, more extensive EDA project
+  * Boolean Operators
 
+# Week 9
+
+* Futurecoder:
+  * Tic Tac Toe Project
 
 <!--
 ### DataFrame Indexing and Slicing
