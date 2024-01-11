@@ -4,7 +4,12 @@ title: PyNoon Week 7
 
 ### Warm-Up Exercise
 
-
+* Continue working on your Personal Python Project
+* Pair up and review each other's project work
+  * Without explaining your code, can they understand what each line
+    achieves?
+  * What changes would make it easier to read?
+  * Do you have any suggestions to DRY out your partner's code?
 
 ### Thanks
 
@@ -59,5 +64,17 @@ title: PyNoon Week 7
 
 ### Tutorial Objectives
 
+* Building user interfaces in Jupyter notebooks
+* Using an off-the-shelf AI model
 
 ### Independent Work/Homework
+
+1. **Exercise Notebook:**
+   * User interface practice
+   * See the Exercise Notebook for Week 7 at
+     [pynoon.github.io/schedule](https://pynoon.github.io/schedule)
+2. **Work through [futurecoder.io](https://futurecoder.io) sections**:
+   1. Dictionaries (note: this lesson is at the end of the Futurecoder
+      course, so you will need to skip ahead using the Table of
+      Contents)
+3. Work on your own Python project

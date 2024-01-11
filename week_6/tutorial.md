@@ -30,7 +30,7 @@ It is based on:
 
 1. Make a new notebook for this week
 2. What's the first thing to do? RENAME IT!
-3. Name it `week5.ipynb`
+3. Name it `week6.ipynb`
 
 ## Defining Functions
 
