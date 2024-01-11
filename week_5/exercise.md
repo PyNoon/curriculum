@@ -94,3 +94,19 @@ Complete the following lessons on
   * Generating a report from spreadsheets, word documents, or images
 * For more inspiration, have a look at:
   * https://automatetheboringstuff.com/#toc
+
+Once you have an idea, start designing your solution, applying what
+you learned in the Lunch Talk. Use a simple diagram to:
+
+* Identify inputs and outputs
+  * Does your software need to process any data? Where will it come
+    from and what format will it be in?
+  * What output will your software produce? What format will it be in?
+* Plan high-level steps from inputs to outputs
+  * Work backwards from the outputs, or forwards from the inputs
+  * A step might be an action to take or an *intermediate data
+    representation* to produce
+* Fill in details
+  * Think about what libraries or techniques you will use for each part
+  * If necessary, break up major steps into sub-steps
+

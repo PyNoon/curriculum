@@ -28,7 +28,7 @@ title: PyNoon Week 6
 * WiFi
 
 
-### Lunch talk:<br>DRY: Don't Repeat Yourself
+### Lunch Talk:<br>DRY: Don't Repeat Yourself
 
 * Foundational principle for maintainable code
   * See [The Pragmatic Programmer](https://pragprog.com/titles/tpp20/the-pragmatic-programmer-20th-anniversary-edition/), Section 2.7

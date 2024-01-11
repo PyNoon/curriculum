@@ -155,49 +155,60 @@ located in based on lat and lon</li>
 <li>WiFi</li>
 </ul>
 </section>
-<section id="lunch-talk-ai-assisted-python-programming"
-class="slide level3">
-<h3>Lunch Talk: AI-Assisted Python Programming</h3>
+<section id="lunch-talk-intro-to-software-design" class="slide level3">
+<h3>Lunch Talk: Intro to Software Design</h3>
 <ul>
-<li>ChatGPT, GitHub Copilot, etc. are quite good at generating Python
-code</li>
-<li>Will programming become obsolete?</li>
-<li>Do’s/Dont’s of programming with AI</li>
+<li>Use these tips while planning your Personal Python Project</li>
+<li>Just <em>one</em> possible way to go about software design</li>
+<li>We’ll look at an example of a simple report generating system</li>
 </ul>
 </section>
-<section id="will-programming-become-obsolete" class="slide level3">
-<h3>Will programming become obsolete?</h3>
-<div style="font-size: 0.7em; display: flex; align-items: center;">
+<section id="identify-inputs-and-outputs" class="slide level3">
+<h3>1. Identify Inputs and Outputs</h3>
 <ul>
-<li>Probably not</li>
-<li>If anything, programming is more important to “glue” AI to
-data/systems</li>
-<li>AI-generated code often needs fixing - <strong>you still need to
-know how to fix it</strong></li>
-<li>The essence of programming is about <em>precisely</em> instructing a
-computer - you still need to carefully <strong>consider</strong> and
-<strong>communicate</strong> those instructions</li>
+<li>What formats will inputs and outputs be in?</li>
 </ul>
-<div>
-<p><img src="well.png" style="width: 1400px; margin: 0;">
-<a href="https://xkcd.com/568/">xkcd.com/568</a></p>
-</div>
+<p><img src="images/software-design-1.png"></p>
+</section>
+<section id="plan-high-level-steps" class="slide level3">
+<h3>2. Plan high-level steps</h3>
+<ul>
+<li>Work <strong>backwards</strong> from the outputs, or
+<strong>forwards</strong> from the inputs, or both!</li>
+<li>First think about <strong>the data you need to produce</strong>,
+then how to produce it</li>
+</ul>
+<div class="r-stack">
+<img src="images/software-design-2.png">
+<img class="fragment" src="images/software-design-3.png">
+<img class="fragment" src="images/software-design-4.png">
 </div>
 </section>
-<section id="dosdonts-of-programming-with-ai" class="slide level3">
-<h3>Do’s/Dont’s of programming with AI</h3>
+<section id="fill-in-details" class="slide level3">
+<h3>3. Fill in details</h3>
 <ul>
-<li><strong>DON’T</strong> feed confidential data into public AI
-tools</li>
-<li><strong>DON’T</strong> use generated code you don’t understand</li>
-<li><strong>DON’T</strong> use it to replace reading documentation</li>
-<li><strong>DO</strong> ask it to explain code (as <em>one</em>
-perspective)</li>
-<li><strong>DO</strong> use it generate snippets for specific tasks</li>
-<li><strong>DO</strong> be specific in your
-instructions/requirements</li>
-<li><strong>DO</strong> ask it to try fix code when the result is
-wrong</li>
+<li>Think about what libraries or techniques you will use for each
+part</li>
+<li>If necessary, break up major steps into sub-steps</li>
+<li>Next week we’ll look at how to write your own functions to split
+your code according to your identified steps</li>
+</ul>
+<p><img src="images/software-design-5.png"></p>
+</section>
+<section id="get-started" class="slide level3">
+<h3>4. Get started!</h3>
+<ul>
+<li>Start with the most uncertain parts:
+<ul>
+<li>The part that you don’t know how to do yet</li>
+<li>The part that might not work</li>
+</ul></li>
+<li>Prioritise working code over perfect code for this
+<ul>
+<li>You’ll likely rewrite it based on what you learn!</li>
+</ul></li>
+<li>What you learn from doing that might also make you reconsider parts
+or all of your design</li>
 </ul>
 </section>
 <section id="tutorial-objectives" class="slide level3">
@@ -222,7 +233,10 @@ href="https://futurecoder.io">futurecoder.io</a> sections</strong>:
 <li>A bit more about strings</li>
 <li>Nested Loops</li>
 </ol></li>
-<li>Identify a Personal Python Project to work on</li>
+<li>Identify a Personal Python Project to work on
+<ul>
+<li>Start designing your solution</li>
+</ul></li>
 </ol>
 </section>
     </div>

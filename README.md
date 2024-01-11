@@ -72,3 +72,10 @@ Git repository to exclude the outputs of notebook cells when running
 * [Tutorial Speaker Notes](https://pynoon.github.io/curriculum/week_6/tutorial_speaker_notes.html)
 * [Tutorial Notebook](https://colab.research.google.com/github/pynoon/curriculum/blob/main/week_6/week_6_tutorial.ipynb)
 * [Exercise Notebook](https://colab.research.google.com/github/pynoon/curriculum/blob/main/week_6/week_6_exercise.ipynb)
+
+## Week 7
+
+* [Slides](https://pynoon.github.io/curriculum/week_7/slides.html)
+* [Tutorial Speaker Notes](https://pynoon.github.io/curriculum/week_7/tutorial_speaker_notes.html)
+* [Tutorial Notebook](https://colab.research.google.com/github/pynoon/curriculum/blob/main/week_7/week_7_tutorial.ipynb)
+* [Exercise Notebook](https://colab.research.google.com/github/pynoon/curriculum/blob/main/week_7/week_7_exercise.ipynb)

@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="generator" content="pandoc">
-  <title>PyNoon Week 6</title>
+  <title>PyNoon Week 7</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -39,23 +39,11 @@
     <div class="slides">
 
 <section id="title-slide">
-  <h1 class="title">PyNoon Week 6</h1>
+  <h1 class="title">PyNoon Week 7</h1>
 </section>
 
 <section id="warm-up-exercise" class="slide level3">
 <h3>Warm-Up Exercise</h3>
-<div style="font-size: 0.9em;">
-<ul>
-<li>Pair up and share your Personal Python Project idea</li>
-<li>What is the goal of your project - how will you know it has
-succeeded?</li>
-<li>What parts of your project do you think will be the most difficult
-to implement?</li>
-<li>Can you identify any skill you’ll need to learn to complete your
-project?</li>
-<li>Is there any data you need to collect for your project?</li>
-</ul>
-</div>
 </section>
 <section id="thanks" class="slide level3">
 <h3>Thanks</h3>
@@ -74,88 +62,56 @@ project?</li>
 <li>WiFi</li>
 </ul>
 </section>
-<section id="lunch-talk-dry-dont-repeat-yourself" class="slide level3">
-<h3>Lunch Talk:<br>DRY: Don’t Repeat Yourself</h3>
+<section id="lunch-talk-ai-assisted-python-programming"
+class="slide level3">
+<h3>Lunch Talk: AI-Assisted Python Programming</h3>
 <ul>
-<li>Foundational principle for maintainable code
-<ul>
-<li>See <a
-href="https://pragprog.com/titles/tpp20/the-pragmatic-programmer-20th-anniversary-edition/">The
-Pragmatic Programmer</a>, Section 2.7</li>
-</ul></li>
-<li>When you need to make a change later, there should be <strong>only
-one place to change</strong></li>
-<li>Strive to remove all forms of duplication
-<ul>
-<li>Getting your code to <em>work</em> is not the finish line!</li>
-<li><strong>Refactor</strong> your code to DRY it out</li>
-</ul></li>
+<li>ChatGPT, GitHub Copilot, etc. are quite good at generating Python
+code</li>
+<li>Will programming become obsolete?</li>
+<li>Do’s/Dont’s of programming with AI</li>
 </ul>
 </section>
-<section id="what-should-you-dry-out" class="slide level3">
-<h3>What should you DRY out?</h3>
-<div style="font-size: 0.8em;">
+<section id="will-programming-become-obsolete" class="slide level3">
+<h3>Will programming become obsolete?</h3>
+<div style="font-size: 0.7em; display: flex; align-items: center;">
 <ul>
-<li>Data
-<ul>
-<li>Each piece of data should have a <strong>single source of
-truth</strong></li>
-<li>Generate other representations from that source</li>
-</ul></li>
-<li>Documentation
-<ul>
-<li>Comments that state <strong>how</strong> the code works get out of
-date</li>
-<li>Comments should explain <strong>what</strong> the code does and
-<strong>why</strong></li>
-</ul></li>
-<li>Code
-<ul>
-<li>Use loops and custom functions to avoid code duplication</li>
-<li>A great function is <strong>re-usable</strong> in many different
-contexts</li>
-<li>We’ll look more at these tools in the tutorial</li>
-</ul></li>
+<li>Probably not</li>
+<li>If anything, programming is more important to “glue” AI to
+data/systems</li>
+<li>AI-generated code often needs fixing - <strong>you still need to
+know how to fix it</strong></li>
+<li>The essence of programming is about <em>precisely</em> instructing a
+computer - you still need to carefully <strong>consider</strong> and
+<strong>communicate</strong> those instructions</li>
 </ul>
+<div>
+<p><img src="well.png" style="width: 1400px; margin: 0;">
+<a href="https://xkcd.com/568/">xkcd.com/568</a></p>
+</div>
 </div>
 </section>
-<section id="dont-over-dry-your-code" class="slide level3">
-<h3>Don’t <em>over-DRY</em> your code!</h3>
-<div style="font-size: 0.85em;">
+<section id="dosdonts-of-programming-with-ai" class="slide level3">
+<h3>Do’s/Dont’s of programming with AI</h3>
 <ul>
-<li>E.g. you produce near-identical reports for two teams</li>
-<li>You DRY them so that they share all repeated code</li>
-<li>Later, one team asks for a change to their report, but now it is
-hard to change one without changing the other</li>
-<li>The two reports weren’t actually <strong>duplicating</strong> one
-thing, they were just two things that <strong>happened to be the
-same</strong></li>
+<li><strong>DON’T</strong> feed confidential data into public AI
+tools</li>
+<li><strong>DON’T</strong> use generated code you don’t understand</li>
+<li><strong>DON’T</strong> use it to replace reading documentation</li>
+<li><strong>DO</strong> ask it to explain code (as <em>one</em>
+perspective)</li>
+<li><strong>DO</strong> use it generate snippets for specific tasks</li>
+<li><strong>DO</strong> be specific in your
+instructions/requirements</li>
+<li><strong>DO</strong> ask it to try fix code when the result is
+wrong</li>
 </ul>
-</div>
 </section>
 <section id="tutorial-objectives" class="slide level3">
 <h3>Tutorial Objectives</h3>
-<ul>
-<li>Defining and using your own functions</li>
-<li>Reducing duplication in your code</li>
-</ul>
 </section>
 <section id="independent-workhomework" class="slide level3">
 <h3>Independent Work/Homework</h3>
-<ol type="1">
-<li><strong>Exercise Notebook:</strong>
-<ul>
-<li>Function and de-duplication exercises</li>
-<li>See the Exercise Notebook for Week 6 at <a
-href="https://pynoon.github.io/schedule">pynoon.github.io/schedule</a></li>
-</ul></li>
-<li><strong>Work through <a
-href="https://futurecoder.io">futurecoder.io</a> sections</strong>:
-<ol type="1">
-<li>Functions</li>
-</ol></li>
-<li>Work on your own Python project</li>
-</ol>
 </section>
     </div>
   </div>
