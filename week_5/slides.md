@@ -94,9 +94,9 @@ title: PyNoon Week 5
 
 1. **Exercise Notebook:**
    * Grouping and summarising exercises
-   * See the Exercise Notebook for Week 4 at
+   * See the Exercise Notebook for Week 5 at
      [pynoon.github.io/schedule](https://pynoon.github.io/schedule)
 2. **Work through [futurecoder.io](https://futurecoder.io) sections**:
    1. A bit more about strings
    2. Nested Loops
-3. Identify a project you can apply Python to
+3. Identify a Personal Python Project to work on

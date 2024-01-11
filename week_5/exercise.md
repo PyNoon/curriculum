@@ -70,7 +70,7 @@ Then use use appropriate `groupby()`s and/or plotting.
 
 ## 2. Futurecoder
 
-Complete the following lesson on
+Complete the following lessons on
 [futurecoder.io](https://futurecoder.io):
 
 1. A bit more about strings
@@ -80,7 +80,7 @@ Complete the following lesson on
 > `Table of Contents` link at the top of the Futurecoder webpage.
 
 
-## 3. Identify a project you can apply Python to
+## 3. Identify a Personal Python Project to work on
 
 * Do you have a dataset you want to analyse?
   * A spreadsheet from work?

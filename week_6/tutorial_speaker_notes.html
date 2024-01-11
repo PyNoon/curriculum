@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang xml:lang>
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>PyNoon Week 6 - Tutorial</title>
+  <style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+
+ul.task-list[class]{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+font-size: inherit;
+width: 0.8em;
+margin: 0 0.8em 0.2em -1.6em;
+vertical-align: middle;
+}
+.display.math{display: block; text-align: center; margin: 0.5rem auto;}
+</style>
+  <style type="text/css">body {
+font-size: 16px;
+}
+pre.code {
+font-size: 1.4em;
+}
+blockquote {
+font-style: italic;
+}
+.notebook-only {
+display: none;
+}
+</style>
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">PyNoon Week 6 - Tutorial</h1>
+</header>
+<p>This week’s tutorial will cover defining and using your own
+functions, and reducing duplication in your code.</p>
+<p>It is based on:</p>
+<ul>
+<li><a href="https://swcarpentry.github.io/python-novice-gapminder/16-writing-functions.html">swcarpentry.github.io/python-novice-gapminder/16-writing-functions.html</a></li>
+</ul>
+<h2 id="setup">Setup</h2>
+<ol type="1">
+<li>Make a new notebook for this week</li>
+<li>What’s the first thing to do? RENAME IT!</li>
+<li>Name it <code>week5.ipynb</code></li>
+</ol>
+<h2 id="defining-functions">Defining Functions</h2>
+<ul>
+<li>One of the key ways to reduce duplication of code in our projects is
+to define our own re-usable functions.</li>
+<li>In Python, we can use the <code>def</code> keyword to define our own
+functions.</li>
+<li>Any number of lines of code after the <code>def</code> line that are
+<em>indented</em> make up the <em>body</em> of the function that is
+executed when the function is called.</li>
+</ul>
+<pre class="code"><code>def print_greeting():
+    print(&#39;Hello World!&#39;)
+    print(&#39;How are you?&#39;)</code></pre>
+<p>Defining the function does not execute the code inside it, but we can
+call the function just like any other function:</p>
+<pre class="code"><code>print_greeting()</code></pre>
+<ul>
+<li>We can write functions that accept arguments.</li>
+<li>The argument can be used just like any other variable in the
+function’s body.</li>
+</ul>
+<pre class="code"><code>def print_greeting(name):
+    print(f&#39;Hello {name}!&#39;)
+    print(&#39;How are you?&#39;)</code></pre>
+<pre class="code"><code>print_greeting(&#39;Cooper&#39;)</code></pre>
+<ul>
+<li>We can write functions that return values using the
+<code>return</code> statement.</li>
+<li>The function will immediately exit as soon as it hits any
+<code>return</code> statement.</li>
+<li>If a function does not <code>return</code> a value, it implicitly
+returns the value <code>None</code>.</li>
+</ul>
+<pre class="code"><code>def shorten_description(description, max_length):
+    if len(description) &gt; max_length:
+        return description[:max_length] + &#39;...&#39;
+    return description</code></pre>
+<pre class="code"><code>short_description = shorten_description(&#39;This is a very long description&#39;, 10)
+short_description</code></pre>
+<ul>
+<li>A benefit of functions is that we can test that they return the
+values we expect for a variety of argument combinations.</li>
+<li>An <code>assert</code> statement will raise an error if the Boolean
+expression given to it returns <code>False</code>.</li>
+<li>For example, let’s test that <code>shorten_description</code>
+returns the <code>description</code> unchanged if it is equal to the
+<code>max_length</code>:</li>
+</ul>
+<pre class="code"><code>assert shorten_description(&#39;12345&#39;, 5) == &#39;12345&#39;</code></pre>
+<p>Now let’s test that the <code>description</code> is limited to the
+given <code>max_length</code>:</p>
+<pre class="code"><code>assert shorten_description(&#39;123456789&#39;, 5) == &#39;12...&#39;</code></pre>
+<p>Hmmm, why did that fail?</p>
+<pre class="code"><code>shorten_description(&#39;123456789&#39;, 5)</code></pre>
+<p>Aha! we need take into account the length of the ellipsis:</p>
+<pre class="code"><code>def shorten_description(description, max_length):
+    if len(description) &gt; max_length:
+        ellipsis = &#39;...&#39;
+        return description[:max_length - len(ellipsis)] + ellipsis
+    return description</code></pre>
+<h2 id="applying-functions-to-dataframes">Applying functions to
+DataFrames</h2>
+<ul>
+<li>We can apply functions to each value in a Pandas DataFrame.</li>
+<li>As we have previously, let’s load our AirBnB listings data into
+Pandas:</li>
+</ul>
+<pre class="code"><code>import pandas as pd</code></pre>
+<pre class="code"><code>listings_df = pd.read_csv(&#39;https://pynoon.github.io/data/inside_airbnb_listings_nz_2023_09.csv&#39;)
+listings_df</code></pre>
+<p>Let’s define a function to transform a listing ID into a URL:</p>
+<pre class="code"><code>def id_to_url(id):
+    return f&#39;https://www.airbnb.co.nz/rooms/{id[1:]}&#39;</code></pre>
+<pre class="code"><code>print(id_to_url(&#39;l11909616&#39;))</code></pre>
+<p>Calling <code>.apply(id_to_url)</code> on a single column Series
+passes each item in the Series to the function and returns a new Series
+where each value is the corresponding value returned by the
+function:</p>
+<pre class="code"><code>listings_df[&#39;url&#39;] = listings_df[&#39;id&#39;].apply(id_to_url)
+listings_df</code></pre>
+<p>We can also use <code>.apply()</code> with <code>axis=&#39;index&#39;</code>
+on an entire DataFrame to pass an entire row at a time to the
+function:</p>
+<pre class="code"><code>def listing_to_description(row):
+    return f&#39;{row[&quot;room_type&quot;]} by {row[&quot;host_name&quot;]} in {row[&quot;region_name&quot;]}&#39;
+
+listings_df[&#39;description&#39;] = listings_df.apply(listing_to_description, axis=&#39;index&#39;)
+listings_df</code></pre>
+<h2 id="organising-code-with-functions">Organising code with
+functions</h2>
+<ul>
+<li>Consider the following two blocks of code that look for “above
+average” listings.</li>
+<li>You can copy the code from: <a href="https://pynoon.github.io/curriculum/week_6/duplication_example.py">pynoon.github.io/curriculum/week_6/duplication_example.py</a></li>
+</ul>
+<pre class="code"><code>akl_listings_df = listings_df[listings_df[&#39;region_parent_name&#39;] == &#39;Auckland&#39;]
+akl_average_price = akl_listings_df[&#39;price_nzd&#39;].median()
+akl_above_average_price_df = akl_listings_df[akl_listings_df[&#39;price_nzd&#39;] &gt; akl_median_price]
+display(akl_above_average_price_df)
+
+wlg_listings_df = listings_df[listings_df[&#39;region_parent_name&#39;] == &#39;Wellington City&#39;]
+wlg_average_rating = wlg_listings_df[&#39;review_scores_rating&#39;].median()
+wlg_above_average_rating_df = wlg_listings_df[wlg_listings_df[&#39;review_scores_rating&#39;] &gt; wlg_average_rating]
+display(wlg_above_average_rating_df)</code></pre>
+<ul>
+<li>We can define a re-usable function to reduce code duplication
+here.</li>
+<li>First, let’s identify the differences between the blocks of code:
+<ul>
+<li>One looks at Auckland, the other Wellington</li>
+<li>One considers price, the other rating</li>
+</ul></li>
+<li>These points of difference determine the arguments to our
+function.</li>
+<li>We also add a <strong>docstring</strong> to document what our
+function does.</li>
+</ul>
+<pre class="code"><code>def get_above_average_listings_df(listings_df, comparison_column):
+    &quot;&quot;&quot;Returns the subset of the given listings_df that is above average
+    according to the given comparison_column.&quot;&quot;&quot;
+    average_value = listings_df[comparison_column].median()
+    return listings_df[listings_df[comparison_column] &gt; average_value]</code></pre>
+<pre class="code"><code>akl_above_average_price_df = get_above_average_listings_df(
+    listings_df=listings_df[listings_df[&#39;region_parent_name&#39;] == &#39;Wellington City&#39;],
+    comparison_column=&#39;price_nzd&#39;,
+)
+wlg_above_average_rating_df = get_above_average_listings_df(
+    listings_df=listings_df[listings_df[&#39;region_parent_name&#39;] == &#39;Wellington City&#39;],
+    comparison_column=&#39;review_scores_rating&#39;,
+)</code></pre>
+<ul>
+<li>Naming our arguments when calling the function makes it easier to
+read the function calls.</li>
+<li>While we could accept a <code>parent_region_name</code> argument, we
+instead accept a <code>listings_df</code>
+<ul>
+<li>Because it is listed as an argument, the <code>listings_df</code>
+<em>local</em> variable inside the function is separate to the
+<code>listings_df</code> <em>global</em> variable we have been using
+outside the function.</li>
+<li>It is also good practice to avoid depending on global variables in
+functions - it makes them more versatile for re-use.</li>
+<li>Accepting a <code>listings_df</code> is more versatile, because we
+are not restricted to just filtering by region - we can pass in any
+filtered (or even unfiltered) DataFrame of listings.</li>
+</ul></li>
+<li>Whenever <em>refactoring</em> code to make it more readable,
+maintainable, or re-usable - it is important to make sure that we have
+<em>NOT</em> changed it’s behaviour.</li>
+<li>Writing tests is a great way to check that code produces the same
+results.
+<ul>
+<li>That will be part of this week’s exercise</li>
+</ul></li>
+</ul>
+<h2 id="reducing-duplication-with-loops-and-list-comprehensions">Reducing
+duplication with loops and list comprehensions</h2>
+<ul>
+<li>Loops can also help us reduce code duplication.</li>
+<li>For example, take the following code that transforms several text
+columns to lowercase:</li>
+</ul>
+<pre class="code"><code>listings_df[&#39;name&#39;] = listings_df[&#39;name&#39;].str.lower()
+listings_df[&#39;host_name&#39;] = listings_df[&#39;host_name&#39;].str.lower()
+listings_df[&#39;region_name&#39;] = listings_df[&#39;region_name&#39;].str.lower()
+listings_df[&#39;region_parent_name&#39;] = listings_df[&#39;region_parent_name&#39;].str.lower()</code></pre>
+<ul>
+<li>We can loop over a list of columns, meaning we only have to define
+the transformation once.</li>
+<li>If we ever need to change the transformation, we only need to change
+it in once place.</li>
+</ul>
+<pre class="code"><code>text_columns = [&#39;name&#39;, &#39;host_name&#39;, &#39;region_name&#39;, &#39;region_parent_name&#39;]
+
+for text_column in text_columns:
+    listings_df[text_column] = listings_df[text_column].str.lower()</code></pre>
+<ul>
+<li>It is quite common to want to transform one list of values into
+another list of values.
+<ul>
+<li>Similar to how we used <code>.apply()</code> on a Pandas Series
+earlier</li>
+</ul></li>
+<li>One way you might do that is as follows:</li>
+</ul>
+<pre class="code"><code>names = [&#39;Alice&#39;, &#39;Bob&#39;, &#39;Mallory&#39;]
+
+name_lengths = []
+for name in names:
+    name_lengths.append(len(name))
+name_lengths</code></pre>
+<p>Python’s <em>list comprehensions</em> provide a more
+<strong>succinct</strong> and <strong>idiomatic</strong> way to do
+this:</p>
+<pre class="code"><code>names = [&#39;Alice&#39;, &#39;Bob&#39;, &#39;Mallory&#39;]
+
+name_lengths = [len(name) for name in names]
+name_lengths</code></pre>
+<p>List comprehensions are particularly useful when we don’t even want
+to keep the list itself in a variable, but just to use it as an
+intermediate value in some computation:</p>
+<pre class="code"><code>names = [&#39;Alice&#39;, &#39;Bob&#39;, &#39;Mallory&#39;]
+
+max_name_length = max([len(name) for name in names])
+max_name_length</code></pre>
+<p>List comprehensions can also be used to <em>filter out</em> items
+from a list:</p>
+<pre class="code"><code>longest_names = [
+    name for name in names
+    if len(name) == max_name_length
+]
+longest_names</code></pre>
+</body>
+</html>

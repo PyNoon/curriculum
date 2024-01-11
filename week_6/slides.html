@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="generator" content="pandoc">
-  <title>PyNoon Week 5</title>
+  <title>PyNoon Week 6</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -28,70 +28,6 @@
       vertical-align: middle;
     }
     .display.math{display: block; text-align: center; margin: 0.5rem auto;}
-    /* CSS for syntax highlighting */
-    pre > code.sourceCode { white-space: pre; position: relative; }
-    pre > code.sourceCode > span { line-height: 1.25; }
-    pre > code.sourceCode > span:empty { height: 1.2em; }
-    .sourceCode { overflow: visible; }
-    code.sourceCode > span { color: inherit; text-decoration: inherit; }
-    div.sourceCode { margin: 1em 0; }
-    pre.sourceCode { margin: 0; }
-    @media screen {
-    div.sourceCode { overflow: auto; }
-    }
-    @media print {
-    pre > code.sourceCode { white-space: pre-wrap; }
-    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-    }
-    pre.numberSource code
-      { counter-reset: source-line 0; }
-    pre.numberSource code > span
-      { position: relative; left: -4em; counter-increment: source-line; }
-    pre.numberSource code > span > a:first-child::before
-      { content: counter(source-line);
-        position: relative; left: -1em; text-align: right; vertical-align: baseline;
-        border: none; display: inline-block;
-        -webkit-touch-callout: none; -webkit-user-select: none;
-        -khtml-user-select: none; -moz-user-select: none;
-        -ms-user-select: none; user-select: none;
-        padding: 0 4px; width: 4em;
-        color: #aaaaaa;
-      }
-    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
-    div.sourceCode
-      {   }
-    @media screen {
-    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-    }
-    code span.al { color: #ff0000; font-weight: bold; } /* Alert */
-    code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-    code span.at { color: #7d9029; } /* Attribute */
-    code span.bn { color: #40a070; } /* BaseN */
-    code span.bu { color: #008000; } /* BuiltIn */
-    code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-    code span.ch { color: #4070a0; } /* Char */
-    code span.cn { color: #880000; } /* Constant */
-    code span.co { color: #60a0b0; font-style: italic; } /* Comment */
-    code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-    code span.do { color: #ba2121; font-style: italic; } /* Documentation */
-    code span.dt { color: #902000; } /* DataType */
-    code span.dv { color: #40a070; } /* DecVal */
-    code span.er { color: #ff0000; font-weight: bold; } /* Error */
-    code span.ex { } /* Extension */
-    code span.fl { color: #40a070; } /* Float */
-    code span.fu { color: #06287e; } /* Function */
-    code span.im { color: #008000; font-weight: bold; } /* Import */
-    code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
-    code span.kw { color: #007020; font-weight: bold; } /* Keyword */
-    code span.op { color: #666666; } /* Operator */
-    code span.ot { color: #007020; } /* Other */
-    code span.pp { color: #bc7a00; } /* Preprocessor */
-    code span.sc { color: #4070a0; } /* SpecialChar */
-    code span.ss { color: #bb6688; } /* SpecialString */
-    code span.st { color: #4070a0; } /* String */
-    code span.va { color: #19177c; } /* Variable */
-    code span.vs { color: #4070a0; } /* VerbatimString */
-    code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
   </style>
   <link rel="stylesheet" href="../revealjs/dist/theme/black.css" id="theme">
   <link rel="stylesheet" href="../revealjs/dist/theme/white.css">
@@ -103,39 +39,22 @@
     <div class="slides">
 
 <section id="title-slide">
-  <h1 class="title">PyNoon Week 5</h1>
+  <h1 class="title">PyNoon Week 6</h1>
 </section>
 
 <section id="warm-up-exercise" class="slide level3">
 <h3>Warm-Up Exercise</h3>
-<style>
-.plot-exercise {
-    font-size: 0.7em;
-}
-.plot-exercise pre {
-    width: 100%;
-    margin: 5px 0;
-}
-</style>
-<div class="plot-exercise">
-<ol type="1">
-<li><p>Load libraries and data in a notebook:</p>
-<div class="sourceCode" id="cb1"><pre
-class="sourceCode python"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> plotly.express <span class="im">as</span> px</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>listings_df <span class="op">=</span> pd.read_csv(<span class="st">&#39;https://pynoon.github.io/data/inside_airbnb_listings_nz_2023_09.csv&#39;</span>)</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>listings_df</span></code></pre></div></li>
-<li><p>Using what you learned in week 4’s tutorial:</p>
+<div style="font-size: 0.9em;">
 <ul>
-<li>Make a histogram plot of listing prices <em>in Auckland</em></li>
-<li>Make a scatter plot of listing of price against review rating for
-listings that <em>only accomodate one person</em></li>
-<li>Challenge: Add an <code>island</code> column to
-<code>listings_df</code> that indicates which island the listing is
-located in based on lat and lon</li>
-</ul></li>
-</ol>
+<li>Pair up and share your Personal Python Project idea</li>
+<li>What is the goal of your project - how will you know it has
+succeeded?</li>
+<li>What parts of your project do you think will be the most difficult
+to implement?</li>
+<li>Can you identify any skill you’ll need to learn to complete your
+project?</li>
+<li>Is there any data you need to collect for your project?</li>
+</ul>
 </div>
 </section>
 <section id="thanks" class="slide level3">
@@ -155,56 +74,70 @@ located in based on lat and lon</li>
 <li>WiFi</li>
 </ul>
 </section>
-<section id="lunch-talk-ai-assisted-python-programming"
-class="slide level3">
-<h3>Lunch Talk: AI-Assisted Python Programming</h3>
+<section id="lunch-talk-dry-dont-repeat-yourself" class="slide level3">
+<h3>Lunch talk:<br>DRY: Don’t Repeat Yourself</h3>
 <ul>
-<li>ChatGPT, GitHub Copilot, etc. are quite good at generating Python
-code</li>
-<li>Will programming become obsolete?</li>
-<li>Do’s/Dont’s of programming with AI</li>
+<li>Foundational principle for maintainable code
+<ul>
+<li>See <a
+href="https://pragprog.com/titles/tpp20/the-pragmatic-programmer-20th-anniversary-edition/">The
+Pragmatic Programmer</a>, Section 2.7</li>
+</ul></li>
+<li>When you need to make a change later, there should be <strong>only
+one place to change</strong></li>
+<li>Strive to remove all forms of duplication
+<ul>
+<li>Getting your code to <em>work</em> is not the finish line!</li>
+<li><strong>Refactor</strong> your code to DRY it out</li>
+</ul></li>
 </ul>
 </section>
-<section id="will-programming-become-obsolete" class="slide level3">
-<h3>Will programming become obsolete?</h3>
-<div style="font-size: 0.7em; display: flex; align-items: center;">
+<section id="what-should-you-dry-out" class="slide level3">
+<h3>What should you DRY out?</h3>
+<div style="font-size: 0.8em;">
 <ul>
-<li>Probably not</li>
-<li>If anything, programming is more important to “glue” AI to
-data/systems</li>
-<li>AI-generated code often needs fixing - <strong>you still need to
-know how to fix it</strong></li>
-<li>The essence of programming is about <em>precisely</em> instructing a
-computer - you still need to carefully <strong>consider</strong> and
-<strong>communicate</strong> those instructions</li>
+<li>Data
+<ul>
+<li>Each piece of data should have a <strong>single source of
+truth</strong></li>
+<li>Generate other representations from that source</li>
+</ul></li>
+<li>Documentation
+<ul>
+<li>Comments that state <strong>how</strong> the code works get out of
+date</li>
+<li>Comments should explain <strong>what</strong> the code does and
+<strong>why</strong></li>
+</ul></li>
+<li>Code
+<ul>
+<li>Use loops and custom functions to avoid code duplication</li>
+<li>A great function is <strong>re-usable</strong> in many different
+contexts</li>
+<li>We’ll look more at these tools in the tutorial</li>
+</ul></li>
 </ul>
-<div>
-<p><img src="well.png" style="width: 1400px; margin: 0;">
-<a href="https://xkcd.com/568/">xkcd.com/568</a></p>
-</div>
 </div>
 </section>
-<section id="dosdonts-of-programming-with-ai" class="slide level3">
-<h3>Do’s/Dont’s of programming with AI</h3>
+<section id="dont-over-dry-your-code" class="slide level3">
+<h3>Don’t <em>over-DRY</em> your code!</h3>
+<div style="font-size: 0.85em;">
 <ul>
-<li><strong>DON’T</strong> feed confidential data into public AI
-tools</li>
-<li><strong>DON’T</strong> use generated code you don’t understand</li>
-<li><strong>DON’T</strong> use it to replace reading documentation</li>
-<li><strong>DO</strong> ask it to explain code (as <em>one</em>
-perspective)</li>
-<li><strong>DO</strong> use it generate snippets for specific tasks</li>
-<li><strong>DO</strong> be specific in your
-instructions/requirements</li>
-<li><strong>DO</strong> ask it to try fix code when the result is
-wrong</li>
+<li>E.g. you produce near-identical reports for two teams</li>
+<li>You DRY them so that they share all repeated code</li>
+<li>Later, one team asks for a change to their report, but now it is
+hard to change one without changing the other</li>
+<li>The two reports weren’t actually <strong>duplicating</strong> one
+thing, they were just two things that <strong>happened to be the
+same</strong></li>
 </ul>
+</div>
 </section>
 <section id="tutorial-objectives" class="slide level3">
 <h3>Tutorial Objectives</h3>
 <ul>
-<li>Grouping and summarising data in Pandas and Plotly</li>
-<li>Handling missing data in Pandas</li>
+<li>Defining and using your own functions</li>
+<li>Reducing duplication in your code</li>
 </ul>
 </section>
 <section id="independent-workhomework" class="slide level3">
@@ -212,17 +145,16 @@ wrong</li>
 <ol type="1">
 <li><strong>Exercise Notebook:</strong>
 <ul>
-<li>Grouping and summarising exercises</li>
-<li>See the Exercise Notebook for Week 5 at <a
+<li>Function and de-duplication exercises</li>
+<li>See the Exercise Notebook for Week 6 at <a
 href="https://pynoon.github.io/schedule">pynoon.github.io/schedule</a></li>
 </ul></li>
 <li><strong>Work through <a
 href="https://futurecoder.io">futurecoder.io</a> sections</strong>:
 <ol type="1">
-<li>A bit more about strings</li>
-<li>Nested Loops</li>
+<li>Functions</li>
 </ol></li>
-<li>Identify a Personal Python Project to work on</li>
+<li>Work on your own Python project</li>
 </ol>
 </section>
     </div>
