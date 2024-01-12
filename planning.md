@@ -1,22 +1,27 @@
-# Week 6
-
-* Futurecoder:
-  * Functions
-
-# Week 7
-
-* Futurecoder:
-  * Dictionaries
-
-# Week 8
-
-* Futurecoder:
-  * Boolean Operators
-
 # Week 9
 
 * Futurecoder:
   * Tic Tac Toe Project
+
+# Week 10
+
+* How to continue learning
+
+
+# Other Topics
+
+* Importing Python functions from a Python file
+* Documentation
+* Version control
+* Deployment
+* Structuring a project
+* Debugging
+* dataclasses
+* sqlite
+* wordcloud
+* regexes
+* OOP
+
 
 <!--
 ### DataFrame Indexing and Slicing

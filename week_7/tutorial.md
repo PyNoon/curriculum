@@ -1,5 +1,5 @@
 ---
-title: PyNoon Week X - Tutorial
+title: PyNoon Week 7 - Tutorial
 jupyter:
   nbformat: 4
   nbformat_minor: 4
@@ -209,7 +209,7 @@ classify_text('one day I will see the world')
   the user interface accept *any* function that can transform the
   entered text into some output.
 * This will:
-  * Logically separate our interface code from our business logic.
+  * Logically separate our interface code from our "business logic".
   * Make our form re-usable for different actions.
   * Make it easier to test both our interface and classifier.
 

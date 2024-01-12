@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang xml:lang>
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>PyNoon Week X - Tutorial</title>
+  <style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+
+ul.task-list[class]{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+font-size: inherit;
+width: 0.8em;
+margin: 0 0.8em 0.2em -1.6em;
+vertical-align: middle;
+}
+.display.math{display: block; text-align: center; margin: 0.5rem auto;}
+</style>
+  <style type="text/css">body {
+font-size: 16px;
+}
+pre.code {
+font-size: 1.4em;
+}
+blockquote {
+font-style: italic;
+}
+.notebook-only {
+display: none;
+}
+</style>
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">PyNoon Week X - Tutorial</h1>
+</header>
+<p>This week’s tutorial will cover retrieving data from web APIs,
+loading data from text files, and constructing DataFrames.</p>
+<h2 id="setup">Setup</h2>
+<ol type="1">
+<li>Make a new notebook for this week</li>
+<li>What’s the first thing to do? RENAME IT!</li>
+<li>Name it <code>week8.ipynb</code></li>
+</ol>
+<h2 id="making-web-requests">Making web Requests</h2>
+<p>Let’s import the <code>requests</code> library, which provides a
+simple set of functions for making web requests.</p>
+<blockquote>
+<p>Normally we’d have to install <code>requests</code> using
+<code>pip</code>, but Colab already has it installed.</p>
+</blockquote>
+<pre class="code"><code>import requests</code></pre>
+<ul>
+<li>Let’s use a geocoding web API to get standard address fields for a
+given address query.</li>
+<li>We use <code>requests.get()</code> to make an HTTP <code>GET</code>
+request, which is the standard method for requests to retrieve data.
+<ul>
+<li>Other methods include <code>POST</code> and <code>PUT</code>, which
+are commonly used for submitting new data or data updates to an
+API.</li>
+</ul></li>
+<li>The URL to use and expected parameters for the API are documented
+at: <a href="https://nominatim.org/release-docs/develop/api/Overview/">nominatim.org/release-docs/develop/api/Overview</a></li>
+</ul>
+<pre class="code"><code>r = requests.get(
+    &#39;https://nominatim.openstreetmap.org/search,
+    params={
+        &#39;q&#39;: &#39;221B Baker Street, London&#39;,
+        &#39;format&#39;: &#39;jsonv2&#39;,
+        &#39;addressdetails&#39;: 1,
+    },
+)</code></pre>
+<p>We can check the status of the response (<code>200</code> means the
+request was successful):</p>
+<pre class="code"><code>r.status_code</code></pre>
+<p>We can look at the text returned by the API:</p>
+<pre class="code"><code>r.text</code></pre>
+<ul>
+<li>The response text is formatted as JSON, a common data format used by
+APIs.</li>
+<li><code>requests</code> can convert the JSON data to a structure of
+Python strings, numbers, lists and dictionaries:</li>
+</ul>
+<pre class="code"><code>r.json()</code></pre>
+<h3 id="handling-errors">Handling Errors</h3>
+<p>What happens if we change our request to specify an invalid
+format?</p>
+<pre class="code"><code>r = requests.get(
+    &#39;https://nominatim.openstreetmap.org/search,
+    params={
+        &#39;q&#39;: &#39;221B Baker Street, London&#39;,
+        &#39;format&#39;: &#39;oops&#39;,
+        &#39;addressdetails&#39;: 1,
+    },
+)</code></pre>
+<p>The text is not the JSON we expect:</p>
+<pre class="code"><code>r.text</code></pre>
+<p>And the status code of <code>400</code> indicates a failure -
+specifically a “Bad Request”:</p>
+<pre class="code"><code>r.status_code</code></pre>
+<p>We can tell requests to raise an <strong>exception</strong> if the
+response has any non-successful status code:</p>
+<pre class="code"><code>r.raise_for_status()</code></pre>
+<ul>
+<li>If we want our program to continue even when an exception is raised,
+we can use a <strong>try/except</strong> statement to execute some code
+in the case of an exception.</li>
+<li>If any line of code in the <code>try</code> clause raises an
+exception, Python will stop executing the <code>try</code> block and
+execute the <code>except</code> block instead.</li>
+<li>The <code>as ex</code> saves the exception itself in a variable
+called <code>ex</code> so that we can get more details from it.
+<ul>
+<li>We can use any variable name we want, but <code>ex</code> is
+conventional.</li>
+</ul></li>
+</ul>
+<pre class="code"><code>try:
+    r.raise_for_status()
+except requests.HTTPError as ex:
+    print(f&#39;Failed request: {ex}&#39;)</code></pre>
+<ul>
+<li>We only want to catch exceptions we expect might happen:
+<ul>
+<li>Wrap as few lines of code as possible.</li>
+<li>Only catch the types of exception we are expecting.</li>
+</ul></li>
+</ul>
+<h2 id="defining-a-request-function">Defining a request function</h2>
+<ul>
+<li>Taking what we’ve learned, let’s define a function to provide a
+simple interface for getting the details of an address.</li>
+<li>Note that:
+<ul>
+<li>We add a <code>sleep</code> for 1 second, as the API we are using
+has a rate limit of 1 request per second.
+<ul>
+<li>We might get an error or be blocked if we make requests faster than
+that.</li>
+</ul></li>
+<li>In the case of an error, we return the special value
+<code>None</code>.</li>
+</ul></li>
+</ul>
+<pre class="code"><code>from time import sleep
+
+def get_address_details(address):
+    &quot;&quot;&quot;Given a loosely-formatted address string,
+    return a dictionary of standard address details.
+
+    If the request fails, None is returned.&quot;&quot;&quot;
+    r = requests.get(
+        &#39;https://nominatim.openstreetmap.org/search,
+        params={
+            &#39;q&#39;: address,
+            &#39;format&#39;: &#39;jsonv2&#39;,
+            &#39;addressdetails&#39;: 1,
+        },
+    )
+    # Avoid hitting the API rate limit
+    sleep(1)
+
+    try:
+        r.raise_for_status()
+    except requests.HTTPError as ex:
+        print(f&#39;Failed request: {ex}&#39;)
+        return None
+
+    data = r.json()
+    return data[&#39;address&#39;]
+
+get_address_details(&#39;221B Baker Street, London&#39;)</code></pre>
+<h2 id="converting-a-file-of-addresses-to-a-dataframe-of-address-details">Converting
+a file of addresses to a DataFrame of address details</h2>
+<ul>
+<li><p>Now let’s process a text file of addresses to produce a DataFrame
+of address details</p></li>
+<li><p>Download <code>addresses.txt</code> from: <a href="https://pynoon.github.io/curriculum/week_8/addresses.txt">pynoon.github.io/curriculum/week_8/addresses.txt</a></p></li>
+<li><p>Click the folder icon on the left side of the Colab interface,
+then use the upload button to upload <code>addresses.txt</code></p></li>
+<li><p>Now, we can use <code>open()</code> to load</p></li>
+<li><p><code>open()</code> should be used with a <code>with</code>
+statement so that the file is automatically closed when we’re finished
+with it:</p></li>
+</ul>
+<pre class="code"><code>with open(&#39;addresses.txt&#39;) as addresses_file:
+    addresses = addresses_file.readlines()</code></pre>
+<p><code>.readlines()</code> has provided us with a list of strings
+representing each line in the file:</p>
+<pre class="code"><code>addresses</code></pre>
+<p>We can use a list comprehension to apply our function to each
+address, producing a list of corresponding address details:</p>
+<pre class="code"><code>address_details = [get_address_details(address) for address in addresses]</code></pre>
+<p>Because of our exception handling in
+<code>get_address_details</code>, we should remove any <code>None</code>
+values from the list of details:</p>
+<pre class="code"><code>address_details = [
+    address_detail for address_detail in address_details
+    if address_detail is not None
+]
+address_details</code></pre>
+<ul>
+<li><code>pd.DataFrame</code> can be used to construct a DataFrame from
+a list of dictionaries like <code>address_details</code>.</li>
+<li>Where each dictionary represents the values for each column in a
+given row.</li>
+</ul>
+<pre class="code"><code>import pandas as pd
+
+address_df = pd.DataFrame(address_details)
+address_df</code></pre>
+<h2 id="reflection">Reflection</h2>
+<ul>
+<li>In this tutorial, we:
+<ul>
+<li>Took a list of addresses in a simple text file.</li>
+<li>Retrieved more details for each address from an API.</li>
+<li>And reformatted those details into a DataFrame, which we could
+export to a CSV file, or even an SQL database.</li>
+</ul></li>
+<li>This kind of data transformation is a common task that Python is
+very helpful for.</li>
+</ul>
+</body>
+</html>
