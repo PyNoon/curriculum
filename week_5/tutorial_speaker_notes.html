@@ -60,14 +60,14 @@ import plotly.express as px</code></pre>
 <pre class="code"><code>listings_df = pd.read_csv(&#39;https://pynoon.github.io/data/inside_airbnb_listings_nz_2023_09.csv&#39;)
 listings_df</code></pre>
 <p>We can see how big the DataFrame is using <code>.shape</code>:</p>
-<pre><code>listing_groups_df.shape</code></pre>
+<pre class="code"><code>listing_groups_df.shape</code></pre>
 <p>We can also see what columns we have available to work with:</p>
 <pre class="code"><code>listings_df.columns</code></pre>
 <h2 id="grouping-data-in-plotly">Grouping Data in Plotly</h2>
 <p>When analysing data, we often want to compare different groups.</p>
 <p>One simple way is to colour data points by a categorical column when
 plotting. For example, colouring listings by their room type:</p>
-<pre class="code"><code>px.geo_scatter(listings_df, x=&#39;longitude&#39;, y=&#39;latitude&#39;, color=&#39;room_type&#39;)</code></pre>
+<pre class="code"><code>px.scatter_geo(listings_df, lon=&#39;longitude&#39;, lat=&#39;latitude&#39;, color=&#39;room_type&#39;)</code></pre>
 <p>We can also specify a categorical column as a <code>facet_row</code>
 or <code>facet_col</code> to generate a separate graph for data points
 having each “facet” value.</p>
@@ -123,7 +123,7 @@ more.</li>
 listing_groups_df</code></pre>
 <p>Such DataFrames produced with <code>groupby()</code> can be very
 useful for producing plots of statistics, like bar charts:</p>
-<pre><code>px.bar(
+<pre class="code"><code>px.bar(
     listing_groups_df,
     x=&#39;accommodates&#39;,
     y=&#39;price_nzd&#39;,
@@ -132,29 +132,30 @@ useful for producing plots of statistics, like bar charts:</p>
     title=&#39;Mean Price&#39;,
 )</code></pre>
 <p>We can also export our new DataFrame to a CSV file:</p>
-<pre><code>listing_groups_df.to_csv(&#39;listing_groups.csv&#39;)</code></pre>
+<pre class="code"><code>listing_groups_df.to_csv(&#39;listing_groups.csv&#39;)</code></pre>
 <h2 id="handling-missing-data-in-pandas">Handling Missing Data in
 Pandas</h2>
 <p>We can also use <code>.count()</code> to count the number of rows in
 each group, but notice that the count for the rating column is less than
 the price column:</p>
-<pre><code>listings_df.groupby(&#39;accommodates&#39;)[[&#39;price_nzd&#39;, &#39;review_scores_rating&#39;]].count().reset_index()</code></pre>
+<pre class="code"><code>listings_df.groupby(&#39;accommodates&#39;)[[&#39;price_nzd&#39;, &#39;review_scores_rating&#39;]].count().reset_index()</code></pre>
 <p>This is because there are <code>missing</code> (aka
 <code>null</code>, aka <code>NA</code>) values in the rating column that
 are ignored by <code>count()</code>.</p>
 <p>We can use <code>isna()</code> to get a mask of rows where a value is
 missing:</p>
-<pre><code>listings_df[&#39;review_scores_rating&#39;].isna()</code></pre>
-<pre><code>listings_df[listings_df[&#39;review_scores_rating&#39;].isna()]</code></pre>
+<pre class="code"><code>listings_df[&#39;review_scores_rating&#39;].isna()</code></pre>
+<pre class="code"><code>listings_df[listings_df[&#39;review_scores_rating&#39;].isna()]</code></pre>
 <p>We can then invert the mask with <code>~</code> and filter out rows
 with missing values:</p>
-<pre><code>listings_df[~listings_df[&#39;review_scores_rating&#39;].isna()]</code></pre>
+<pre class="code"><code>listings_df[~listings_df[&#39;review_scores_rating&#39;].isna()]</code></pre>
 <p>Alternatively, we can use <code>fillna()</code> to replace missing
 values with a fixed value. For example, we make want to consider
 un-reviewed listings with a mid-point rating:</p>
-<pre><code>listings_df[&#39;review_scores_rating_filled&#39;] = listings_df[&#39;review_scores_rating&#39;].fillna(2.5)</code></pre>
+<pre class="code"><code>listings_df[&#39;review_scores_rating_filled&#39;] = listings_df[&#39;review_scores_rating&#39;].fillna(2.5)
+listings_df</code></pre>
 <p>Finally, <code>dropna()</code> on a DataFrame can be used to simply
 remove any rows where any column contains a missing value:</p>
-<pre><code>listings_df.dropna()</code></pre>
+<pre class="code"><code>listings_df.dropna()</code></pre>
 </body>
 </html>

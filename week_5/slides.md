@@ -61,7 +61,7 @@ title: PyNoon Week 5
 
 ### 2. Plan high-level steps
 
-* Work **backwards** from the outputs, or **forwards** from the inputs, or both!
+* Work **forwards** from the inputs, **backwards** from the outputs, or both!
 * First think about **the data you need to produce**, then how to produce it
 
 <div class="r-stack"><img src="images/software-design-2.png">
@@ -90,7 +90,7 @@ title: PyNoon Week 5
 ### Tutorial Objectives
 
 * Grouping and summarising data in Pandas and Plotly
-* Handling missing data in Pandas
+* Extra: Handling missing data in Pandas
 
 
 ### Independent Work/Homework
@@ -102,5 +102,5 @@ title: PyNoon Week 5
 2. **Work through [futurecoder.io](https://futurecoder.io) sections**:
    1. A bit more about strings
    2. Nested Loops
-3. Identify a Personal Python Project to work on
+3. Identify a **Personal Python Project** to work on
    * Start designing your solution

@@ -50,7 +50,7 @@ listings_df
 
 We can see how big the DataFrame is using `.shape`:
 
-```
+```code
 listing_groups_df.shape
 ```
 
@@ -68,7 +68,7 @@ One simple way is to colour data points by a categorical column when
 plotting. For example, colouring listings by their room type:
 
 ```code
-px.geo_scatter(listings_df, x='longitude', y='latitude', color='room_type')
+px.scatter_geo(listings_df, lon='longitude', lat='latitude', color='room_type')
 ```
 
 We can also specify a categorical column as a `facet_row` or
@@ -143,7 +143,7 @@ listing_groups_df
 Such DataFrames produced with `groupby()` can be very useful for
 producing plots of statistics, like bar charts:
 
-```
+```code
 px.bar(
     listing_groups_df,
     x='accommodates',
@@ -156,7 +156,7 @@ px.bar(
 
 We can also export our new DataFrame to a CSV file:
 
-```
+```code
 listing_groups_df.to_csv('listing_groups.csv')
 ```
 
@@ -166,7 +166,7 @@ We can also use `.count()` to count the number of rows in each group,
 but notice that the count for the rating column is less than the price
 column:
 
-```
+```code
 listings_df.groupby('accommodates')[['price_nzd', 'review_scores_rating']].count().reset_index()
 ```
 
@@ -175,18 +175,18 @@ the rating column that are ignored by `count()`.
 
 We can use `isna()` to get a mask of rows where a value is missing:
 
-```
+```code
 listings_df['review_scores_rating'].isna()
 ```
 
-```
+```code
 listings_df[listings_df['review_scores_rating'].isna()]
 ```
 
 We can then invert the mask with `~` and filter out rows with missing
 values:
 
-```
+```code
 listings_df[~listings_df['review_scores_rating'].isna()]
 ```
 
@@ -194,13 +194,14 @@ Alternatively, we can use `fillna()` to replace missing values with a
 fixed value. For example, we make want to consider un-reviewed
 listings with a mid-point rating:
 
-```
+```code
 listings_df['review_scores_rating_filled'] = listings_df['review_scores_rating'].fillna(2.5)
+listings_df
 ```
 
 Finally, `dropna()` on a DataFrame can be used to simply remove any
 rows where any column contains a missing value:
 
-```
+```code
 listings_df.dropna()
 ```
