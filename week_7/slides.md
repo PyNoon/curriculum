@@ -25,47 +25,61 @@ title: PyNoon Week 7
 * WiFi
 
 
-### Lunch Talk: AI-Assisted Python Programming
+### Lunch Talk: Deploying Python Code
 
-* ChatGPT, GitHub Copilot, etc. are quite good at generating Python code
-* Will programming become obsolete?
-* Do's/Dont's of programming with AI
+* Sharing a Jupyter notebook
+* Users already have Python installed
+* "Native" applications (e.g. desktop or mobile app)
+* Python web applications
+  * Beyond the scope of this course
 
-### Will programming become obsolete?
+### Sharing a notebook
 
-<div style="font-size: 0.7em; display: flex; align-items: center;">
+* **Option 1:** Just send them the .ipynb file
+* **Option 2:** Export an `html` or `pdf` file
+  * Won't run your Python code, just show the code and its results
+  * `html` files can be opened in a web browser and retain plot interactivity
+  * Use [nbconvert](https://nbconvert.readthedocs.io/en/latest/)
+* **Option 3:** Create a web application
+  * E.g. [Panel](https://panel.holoviz.org/), [Voilà](https://voila.readthedocs.io/), [Plotly Dash](https://dash.plotly.com/), [Streamlit](https://streamlit.io/)
+  * You'll need a web server to host it
 
-* Probably not
-* If anything, programming is more important to "glue" AI to
-  data/systems
-* AI-generated code often needs fixing - **you still need to know how to
-  fix it**
-* The essence of programming is about *precisely* instructing a
-  computer - you still need to carefully **consider** and
-  **communicate** those instructions
+### Sharing a notebook
 
-<div>
-<img src="well.png" style="width: 1400px; margin: 0;">
-<a href="https://xkcd.com/568/">xkcd.com/568</a>
-</div>
+* **Option 4:** Create a runnable `html` file
+  * A recent development; some Python libraries and functions won't work
+  * E.g. [Panel convert](https://panel.holoviz.org/how_to/wasm/convert.html), [Voici](https://github.com/voila-dashboards/voici), [stlite](https://github.com/whitphx/stlite)
+  * [pyscript](https://pyscript.net/) also lets you write Python directly in a html file (without a notebook)
+  * We'll look at [Panel convert](https://panel.holoviz.org/how_to/wasm/convert.html) in today's tutorial
 
-</div>
+### Users already have Python installed
 
-### Do's/Dont's of programming with AI
+* **Option 1:** Make a runnable zip file: [zipapp](https://docs.python.org/3/library/zipapp.html)
+* **Option 2:** Create a Python package
+  * [Poetry](https://python-poetry.org/) makes packaging easy
+  * Share the package as a pip-installable file
+  * Publish on [pypi](https://pypi.org/) for anyone to install with `pip`
+* Useful for:
+  * Libraries of functions for other programmers
+  * Command-line apps - e.g. Built with [argparse](https://docs.python.org/3/library/argparse.html)
+  * Desktop/GUI apps - e.g. Built with [Tkinter](https://docs.python.org/3/library/tkinter.html)
 
-* **DON'T** feed confidential data into public AI tools
-* **DON'T** use generated code you don't understand
-* **DON'T** use it to replace reading documentation
-* **DO** ask it to explain code (as *one* perspective)
-* **DO** use it generate snippets for specific tasks
-* **DO** be specific in your instructions/requirements
-* **DO** ask it to try fix code when the result is wrong
+### Packaging a "native" application
+
+* Often a bit tricky...
+* Lots of tools and libraries out there:
+  * [PyInstaller](https://pyinstaller.org/en/stable/)
+  * [cx_Freeze](https://marcelotduarte.github.io/cx_Freeze/)
+  * [and more...](https://packaging.python.org/en/latest/overview/#bringing-your-own-python-executable)
+* Cross-platform development (desktop + mobile):
+  * [Kivy](https://kivy.org/doc/stable/)
+  * [Beeware](https://beeware.org/)
 
 
 ### Tutorial Objectives
 
 * Building user interfaces in Jupyter notebooks
-* Using an off-the-shelf AI model
+* Deploying a notebook as a web page
 
 ### Independent Work/Homework
 

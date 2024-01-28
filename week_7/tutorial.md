@@ -30,27 +30,29 @@ notebooks, and using an off-the-shelf AI model.
 
 ## UI Widget Basics
 
-To get started, let's import:
+To get started, let's import the `panel` module that provides widgets
+for building user interfaces
 
-* The `ipywidgets` module that provides widgets for building user
-  interfaces.
-* A `display` function for displaying the widgets.
+* Usually installed with `%pip install panel`, but it's pre-installed
+  in Colab.
+* We also need to call `pn.extension()` to finish loading panel.
 
 ```code
-from IPython.display import display
-import ipywidgets as widgets
+import panel as pn
+
+pn.extension()
 ```
 
 Now let's make a text field:
 
 ```code
-text_field = widgets.Text()
+text_field = pn.widgets.TextInput()
 ```
 
-We can use `display` to display it:
+We can display it:
 
 ```code
-display(text_field)
+text_field
 ```
 
 And we can get the current contents of the field:
@@ -67,139 +69,131 @@ text_field.value
 Now let's make a button:
 
 ```code
-submit_button = widgets.Button(description='Submit')
-display(submit_button)
+submit_button = pn.widgets.Button(name='Submit')
+submit_button
 ```
 
-* We can use `on_click()` to assign a function that should be called
-  whenever the button is clicked.
+* We can use `pn.bind()` to assign a "callback" function that should
+  be called whenever the button is clicked.
+* The value returned by `pn.bind()` will display outputs returned by
+  the callback.
+  * We display the button and output together by wrapping them in a
+    `pn.Column`.
+  * `pn.bind()` can also bind functions to any widget updates, like
+    text box changes.
 * Note that the function we provide must accept a single argument that
   will contain details of the button click "event".
-  * We generally won't need to use the `event`, but the function must
-    still accept it.
+  * The callback will be called once initially, but the argument
+    passed to it will only be `True` when the button has been clicked.
 
 ```code
-submit_button = widgets.Button(description='Submit')
+submit_button = pn.widgets.Button(name='Submit')
 
-def on_submit(event):
-    print('hello')
+def on_submit(clicked):
+    if clicked:
+        return text_field.value
 
-submit_button.on_click(on_submit)
+submit_output = pn.bind(on_submit, submit_button)
 
-display(submit_button)
-```
-
-* Each time you click the button, `hello` is printed again.
-* But what if we want to replace the printed text each time the button
-  is clicked?
-* We can print to our own `Output()` widget:
-* When the submit handler runs, we:
-  1. Clear any current contents of the `output`.
-  2. Use `with output:` to capture any printed or displayed content
-     and add it to the contents of `output`.
-* We must make sure we display the `output` widget itself.
-
-```code
-submit_button = widgets.Button(description='Submit')
-output = widgets.Output()
-
-def on_submit(event):
-    output.clear_output()
-    with output:
-        print('hello')
-
-submit_button.on_click(on_submit)
-
-display(
+pn.Column(
     submit_button,
-    output,
+    submit_output,
 )
 ```
 
-## Building a self-contained form
+Each time you click the button, the current value of the text input
+is displayed.
 
-* Now let's write a function to keep all of our interface code
-  together
-  * Because all of the variables are defined inside the function, they
-    will not overwrite other variables outside the function.
-* Use a consistent layout:
+## Bringing it all together a self-contained form
+
+* Use a consistent structure:
   * Start by defining widgets.
-  * Then define and assign event handlers.
-  * Then return a *layout* widget that wraps up all of the widgets to
-    be displayed.
-    * Instead of displaying the interface, `ui_form()` will return a
-      widget that we can display as we please.
-    * This is particularly useful for creating nested interface
-      functions.
+  * Then define and bind event handlers.
+  * Then define a layout that includes all of the widgets to be
+    displayed.
+* If your interface gets too big, consider splitting it up into
+  functions
 
 ```code
-def user_interface():
-    text_field = widgets.Text()
-    submit_button = widgets.Button(description='Submit')
-    output = widgets.Output()
+text_field = pn.widgets.TextInput()
+submit_button = pn.widgets.Button(name='Submit')
 
-    def on_submit(event):
-        output.clear_output()
-        with output:
-            print(text_field.value)
+def on_submit(clicked):
+    if clicked:
+        return text_field.value
 
-    submit_button.on_click(on_submit)
+submit_output = pn.bind(on_submit, submit_button)
 
-    return widgets.VBox([
-        text_field,
-        submit_button,
-        output,
-    ])
-
-display(user_interface())
-```
-
-## Using
-
-* Now we'd like to make our form do something.
-* Let's get it to use an AI model to assign a label to our text!
-* [huggingface.co](https://huggingface.co/) has LOTS of AI models
-  available for different tasks that we can download and use.
-* In this case, we'll use a zero-shot classification model that picks
-  which of a provided list of labels best fits a text snippet we
-  provide.
-
-> Normally we'd have to install `transformers` and its dependency
-> `torch` using `pip`, but Colab already has these installed.
-
-```code
-from transformers import pipeline
-
-classifier = pipeline('zero-shot-classification', model='facebook/bart-large-mnli')
-
-text_to_classify = 'one day I will see the world'
-classifier(
-    text_to_classify,
-    candidate_labels=['travel', 'cooking', 'dancing'],
+layout = pn.Column(
+    text_field,
+    submit_button,
+    submit_output,
 )
+layout
 ```
 
-* We can see that the model thinks that `travel` is the best fit,
-  which seems reasonable.
-  * Though AI models won't always give reasonable responses!
-* The output is given as a dictionary, which you'll learn more about
-  in this week's Futurecoder lesson.
-* Let's create a function that we can use to call the classifier with
-  a single argument - the text to classify:
+## Deploying our app
+
+* One way we can share a `panel` application with users is to convert
+  it to a shareable `.html` file.
+* `html` is the language web pages are written in, so any user will be
+  able to open the file in their web browser.
+* Recent developments in web and Python technologies allow us to
+  create `html` files that can run Python code.
+
+### Preparing the app notebook
+
+* Make a new notebook, call it `week7_app.ipynb`
+* Add from above:
 
 ```code
-from transformers import pipeline
+import panel as pn
 
-classifier = pipeline('zero-shot-classification', model='facebook/bart-large-mnli')
+pn.extension()
 
-def classify_text(text_to_classify):
-    return classifier(
-        text_to_classify,
-        candidate_labels=['travel', 'cooking', 'dancing'],
-    )
+...interface...
 
-classify_text('one day I will see the world')
+layout.servable()
 ```
+
+* Make sure your `layout` ends with `.servable()`
+  * This tells panel what components make up the "app"
+* Save the file
+
+### Converting the app notebook to html
+
+From your original notebook (important to avoid including the `!panel
+convert` line in your app notebook):
+
+* Click on the file browser in the left-hand sidebar, and select the
+  button to `Mount Drive`
+* Add a notebook cell to run:
+
+```code
+!panel convert "drive/MyDrive/Colab Notebooks/week7_app.ipynb" --to pyscript --out app_output
+```
+
+* Refresh the file browser
+* From the file browser, download `app_output/week7_app.html`
+* Open `week7_app.html` in your web browser to use your app!
+
+
+## Going further with user interfaces
+
+* Look at the [`panel` documentation](https://panel.holoviz.org/index.html)
+  * See what input widgets are available
+  * See what rich outputs are available (e.g. Plotly plots)
+* Other user interface libraries exist for:
+  * Notebook and web apps
+    * [ipywidgets](https://ipywidgets.readthedocs.io/en/stable/)
+    * [Streamlit](https://streamlit.io/)
+    * [Plotly Dash](https://dash.plotly.com/)
+  * Desktop apps (less popular these days)
+    * [Tkinter](https://docs.python.org/3/library/tkinter.html)
+    * [PyQt](https://wiki.python.org/moin/PyQt)
+
+
+<!--
 
 ## Separating Logic from Interface
 
@@ -239,16 +233,4 @@ def user_interface(produce_output):
 display(user_interface(produce_output=classify_text))
 ```
 
-## Going further with user interfaces
-
-* Look at the [available ipywidgets](https://ipywidgets.readthedocs.io/en/stable/examples/Widget%20List.html)
-* There are tools that can turn notebooks into web applications:
-  * [Voila](https://voila.readthedocs.io/)
-  * [Panel](https://panel.holoviz.org/index.html)
-* Other user interface libraries exist for:
-  * Web apps
-    * [Streamlit](https://streamlit.io/)
-    * [Plotly Dash](https://dash.plotly.com/)
-  * Desktop apps (less popular these days)
-    * [Tkinter](https://docs.python.org/3/library/tkinter.html)
-    * [PyQt](https://wiki.python.org/moin/PyQt)
+-->

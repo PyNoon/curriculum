@@ -72,56 +72,109 @@ achieves?</li>
 <li>WiFi</li>
 </ul>
 </section>
-<section id="lunch-talk-ai-assisted-python-programming"
-class="slide level3">
-<h3>Lunch Talk: AI-Assisted Python Programming</h3>
+<section id="lunch-talk-deploying-python-code" class="slide level3">
+<h3>Lunch Talk: Deploying Python Code</h3>
 <ul>
-<li>ChatGPT, GitHub Copilot, etc. are quite good at generating Python
-code</li>
-<li>Will programming become obsolete?</li>
-<li>Do’s/Dont’s of programming with AI</li>
+<li>Sharing a Jupyter notebook</li>
+<li>Users already have Python installed</li>
+<li>“Native” applications (e.g. desktop or mobile app)</li>
+<li>Python web applications
+<ul>
+<li>Beyond the scope of this course</li>
+</ul></li>
 </ul>
 </section>
-<section id="will-programming-become-obsolete" class="slide level3">
-<h3>Will programming become obsolete?</h3>
-<div style="font-size: 0.7em; display: flex; align-items: center;">
+<section id="sharing-a-notebook" class="slide level3">
+<h3>Sharing a notebook</h3>
 <ul>
-<li>Probably not</li>
-<li>If anything, programming is more important to “glue” AI to
-data/systems</li>
-<li>AI-generated code often needs fixing - <strong>you still need to
-know how to fix it</strong></li>
-<li>The essence of programming is about <em>precisely</em> instructing a
-computer - you still need to carefully <strong>consider</strong> and
-<strong>communicate</strong> those instructions</li>
+<li><strong>Option 1:</strong> Just send them the .ipynb file</li>
+<li><strong>Option 2:</strong> Export an <code>html</code> or
+<code>pdf</code> file
+<ul>
+<li>Won’t run your Python code, just show the code and its results</li>
+<li><code>html</code> files can be opened in a web browser and retain
+plot interactivity</li>
+<li>Use <a
+href="https://nbconvert.readthedocs.io/en/latest/">nbconvert</a></li>
+</ul></li>
+<li><strong>Option 3:</strong> Create a web application
+<ul>
+<li>E.g. <a href="https://panel.holoviz.org/">Panel</a>, <a
+href="https://voila.readthedocs.io/">Voilà</a>, <a
+href="https://dash.plotly.com/">Plotly Dash</a>, <a
+href="https://streamlit.io/">Streamlit</a></li>
+<li>You’ll need a web server to host it</li>
+</ul></li>
 </ul>
-<div>
-<p><img src="well.png" style="width: 1400px; margin: 0;">
-<a href="https://xkcd.com/568/">xkcd.com/568</a></p>
-</div>
-</div>
 </section>
-<section id="dosdonts-of-programming-with-ai" class="slide level3">
-<h3>Do’s/Dont’s of programming with AI</h3>
+<section id="sharing-a-notebook-1" class="slide level3">
+<h3>Sharing a notebook</h3>
 <ul>
-<li><strong>DON’T</strong> feed confidential data into public AI
-tools</li>
-<li><strong>DON’T</strong> use generated code you don’t understand</li>
-<li><strong>DON’T</strong> use it to replace reading documentation</li>
-<li><strong>DO</strong> ask it to explain code (as <em>one</em>
-perspective)</li>
-<li><strong>DO</strong> use it generate snippets for specific tasks</li>
-<li><strong>DO</strong> be specific in your
-instructions/requirements</li>
-<li><strong>DO</strong> ask it to try fix code when the result is
-wrong</li>
+<li><strong>Option 4:</strong> Create a runnable <code>html</code> file
+<ul>
+<li>A recent development; some Python libraries and functions won’t
+work</li>
+<li>E.g. <a
+href="https://panel.holoviz.org/how_to/wasm/convert.html">Panel
+convert</a>, <a
+href="https://github.com/voila-dashboards/voici">Voici</a>, <a
+href="https://github.com/whitphx/stlite">stlite</a></li>
+<li><a href="https://pyscript.net/">pyscript</a> also lets you write
+Python directly in a html file (without a notebook)</li>
+<li>We’ll look at <a
+href="https://panel.holoviz.org/how_to/wasm/convert.html">Panel
+convert</a> in today’s tutorial</li>
+</ul></li>
+</ul>
+</section>
+<section id="users-already-have-python-installed" class="slide level3">
+<h3>Users already have Python installed</h3>
+<ul>
+<li><strong>Option 1:</strong> Make a runnable zip file: <a
+href="https://docs.python.org/3/library/zipapp.html">zipapp</a></li>
+<li><strong>Option 2:</strong> Create a Python package
+<ul>
+<li><a href="https://python-poetry.org/">Poetry</a> makes packaging
+easy</li>
+<li>Share the package as a pip-installable file</li>
+<li>Publish on <a href="https://pypi.org/">pypi</a> for anyone to
+install with <code>pip</code></li>
+</ul></li>
+<li>Useful for:
+<ul>
+<li>Libraries of functions for other programmers</li>
+<li>Command-line apps - e.g. Built with <a
+href="https://docs.python.org/3/library/argparse.html">argparse</a></li>
+<li>Desktop/GUI apps - e.g. Built with <a
+href="https://docs.python.org/3/library/tkinter.html">Tkinter</a></li>
+</ul></li>
+</ul>
+</section>
+<section id="packaging-a-native-application" class="slide level3">
+<h3>Packaging a “native” application</h3>
+<ul>
+<li>Often a bit tricky…</li>
+<li>Lots of tools and libraries out there:
+<ul>
+<li><a href="https://pyinstaller.org/en/stable/">PyInstaller</a></li>
+<li><a
+href="https://marcelotduarte.github.io/cx_Freeze/">cx_Freeze</a></li>
+<li><a
+href="https://packaging.python.org/en/latest/overview/#bringing-your-own-python-executable">and
+more…</a></li>
+</ul></li>
+<li>Cross-platform development (desktop + mobile):
+<ul>
+<li><a href="https://kivy.org/doc/stable/">Kivy</a></li>
+<li><a href="https://beeware.org/">Beeware</a></li>
+</ul></li>
 </ul>
 </section>
 <section id="tutorial-objectives" class="slide level3">
 <h3>Tutorial Objectives</h3>
 <ul>
 <li>Building user interfaces in Jupyter notebooks</li>
-<li>Using an off-the-shelf AI model</li>
+<li>Deploying a notebook as a web page</li>
 </ul>
 </section>
 <section id="independent-workhomework" class="slide level3">
