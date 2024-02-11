@@ -32,6 +32,17 @@ It is based on:
 2. What's the first thing to do? RENAME IT!
 3. Name it `week6.ipynb`
 
+## Short aside: F-Strings
+
+* F-strings allow us to insert the value of a Python variable or
+  expression into a string:
+
+```code
+name = 'Ben'
+print(f'Hello {name}')
+print(f'Hello {name.upper()}')
+```
+
 ## Defining Functions
 
 * One of the key ways to reduce duplication of code in our projects is
@@ -78,7 +89,8 @@ print_greeting('Cooper')
 ```code
 def shorten_description(description, max_length):
     if len(description) > max_length:
-        return description[:max_length] + '...'
+        short_description = description[:max_length] + '...'
+        return short_description
     return description
 ```
 
@@ -89,10 +101,15 @@ short_description
 
 * A benefit of functions is that we can test that they return the
   values we expect for a variety of argument combinations.
-* An `assert` statement will raise an error if the Boolean expression
-  given to it returns `False`.
 * For example, let's test that `shorten_description` returns the
   `description` unchanged if it is equal to the `max_length`:
+
+```code
+shorten_description('12345', 5) == '12345'
+```
+
+* An `assert` statement will raise an error if the Boolean expression
+  given to it returns `False`:
 
 ```code
 assert shorten_description('12345', 5) == '12345'
@@ -117,7 +134,7 @@ Aha! we need take into account the length of the ellipsis:
 def shorten_description(description, max_length):
     if len(description) > max_length:
         ellipsis = '...'
-        return description[:max_length - len(ellipsis)] + ellipsis
+        return description[:(max_length - len(ellipsis))] + ellipsis
     return description
 ```
 
@@ -135,6 +152,13 @@ listings_df = pd.read_csv('https://pynoon.github.io/data/inside_airbnb_listings_
 listings_df
 ```
 
+To transform a listing ID into a URL, we can do the following:
+
+```
+id = 'l11909616'
+f'https://www.airbnb.co.nz/rooms/{id[1:]}'
+```
+
 Let's define a function to transform a listing ID into a URL:
 
 ```code
@@ -143,7 +167,7 @@ def id_to_url(id):
 ```
 
 ```code
-print(id_to_url('l11909616'))
+id_to_url('l11909616')
 ```
 
 Calling `.apply(id_to_url)` on a single column Series passes each item
@@ -160,9 +184,11 @@ to pass an entire row at a time to the function:
 
 ```code
 def listing_to_description(row):
-    return f'{row["room_type"]} by {row["host_name"]} in {row["region_name"]}'
+    room_type = row['room_type']
+    host_name = row['host_name']
+    return f'{room_type} by {host_name}'
 
-listings_df['description'] = listings_df.apply(listing_to_description, axis='index')
+listings_df['description'] = listings_df.apply(listing_to_description, axis='columns')
 listings_df
 ```
 
