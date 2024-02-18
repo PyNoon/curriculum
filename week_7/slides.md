@@ -35,14 +35,23 @@ title: PyNoon Week 7
 
 ### Sharing a notebook
 
+<div style="font-size: 0.8em;">
+
 * **Option 1:** Just send them the .ipynb file
+  * They'll need to open it with Colab or Jupyter
 * **Option 2:** Export an `html` or `pdf` file
-  * Won't run your Python code, just show the code and its results
+  * Won't run Python code, just show the code and its results
   * `html` files can be opened in a web browser and retain plot interactivity
-  * Use [nbconvert](https://nbconvert.readthedocs.io/en/latest/)
-* **Option 3:** Create a web application
+  * Use [nbconvert](https://saturncloud.io/blog/convert-google-colab-notebook-to-pdf-html/), e.g. to [export as `html`](example_notebook.html):
+    ```
+    !jupyter nbconvert --HTMLExporter.require_js_url "" --to html \
+        "drive/MyDrive/Colab Notebooks/week5.ipynb
+    ```
+* **Option 3:** Create an interactive web application
   * E.g. [Panel](https://panel.holoviz.org/), [Voilà](https://voila.readthedocs.io/), [Plotly Dash](https://dash.plotly.com/), [Streamlit](https://streamlit.io/)
   * You'll need a web server to host it
+
+</div>
 
 ### Sharing a notebook
 
@@ -56,7 +65,8 @@ title: PyNoon Week 7
 
 * **Option 1:** Make a runnable zip file: [zipapp](https://docs.python.org/3/library/zipapp.html)
 * **Option 2:** Create a Python package
-  * [Poetry](https://python-poetry.org/) makes packaging easy
+  * [Poetry](https://python-poetry.org/) or [Rye](https://rye-up.com/)
+    makes packaging easy
   * Share the package as a pip-installable file
   * Publish on [pypi](https://pypi.org/) for anyone to install with `pip`
 * Useful for:
@@ -79,7 +89,7 @@ title: PyNoon Week 7
 ### Tutorial Objectives
 
 * Building user interfaces in Jupyter notebooks
-* Deploying a notebook as a web page
+* Deploying a notebook as an html file (web page)
 
 ### Independent Work/Homework
 

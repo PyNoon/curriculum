@@ -77,6 +77,22 @@ submit_button</code></pre>
 <ul>
 <li>We can use <code>pn.bind()</code> to assign a “callback” function
 that should be called whenever the button is clicked.</li>
+</ul>
+<pre class="code"><code>submit_button = pn.widgets.Button(name=&#39;Submit&#39;)
+
+def on_submit(event):
+    if not event:
+        return
+
+    return text_field.value
+
+submit_output = pn.bind(on_submit, submit_button)
+
+pn.Column(
+    submit_button,
+    submit_output,
+)</code></pre>
+<ul>
 <li>The value returned by <code>pn.bind()</code> will display outputs
 returned by the callback.
 <ul>
@@ -89,22 +105,9 @@ updates, like text box changes.</li>
 will contain details of the button click “event”.
 <ul>
 <li>The callback will be called once initially, but the argument passed
-to it will only be <code>True</code> when the button has been
-clicked.</li>
+to it will only contain a value when the button has been clicked.</li>
 </ul></li>
 </ul>
-<pre class="code"><code>submit_button = pn.widgets.Button(name=&#39;Submit&#39;)
-
-def on_submit(clicked):
-    if clicked:
-        return text_field.value
-
-submit_output = pn.bind(on_submit, submit_button)
-
-pn.Column(
-    submit_button,
-    submit_output,
-)</code></pre>
 <p>Each time you click the button, the current value of the text input
 is displayed.</p>
 <h2 id="bringing-it-all-together-a-self-contained-form">Bringing it all
@@ -123,9 +126,11 @@ functions</li>
 <pre class="code"><code>text_field = pn.widgets.TextInput()
 submit_button = pn.widgets.Button(name=&#39;Submit&#39;)
 
-def on_submit(clicked):
-    if clicked:
-        return text_field.value
+def on_submit(event):
+    if not event:
+        return
+
+    return text_field.value
 
 submit_output = pn.bind(on_submit, submit_button)
 
@@ -187,8 +192,12 @@ interfaces</h2>
 <li>Look at the <a href="https://panel.holoviz.org/index.html"><code>panel</code>
 documentation</a>
 <ul>
-<li>See what input widgets are available</li>
-<li>See what rich outputs are available (e.g. Plotly plots)</li>
+<li>See what input widgets are available (under
+<code>Component Gallery</code> -&gt; <code>Widgets</code> in the
+documentation sidebar)</li>
+<li>See what rich outputs are available (e.g. Plotly plots, under
+<code>Component Gallery</code> -&gt; <code>Panes</code> in the
+documentation sidebar)</li>
 </ul></li>
 <li>Other user interface libraries exist for:
 <ul>

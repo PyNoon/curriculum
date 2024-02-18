@@ -75,6 +75,24 @@ submit_button
 
 * We can use `pn.bind()` to assign a "callback" function that should
   be called whenever the button is clicked.
+
+```code
+submit_button = pn.widgets.Button(name='Submit')
+
+def on_submit(event):
+    if not event:
+        return
+
+    return text_field.value
+
+submit_output = pn.bind(on_submit, submit_button)
+
+pn.Column(
+    submit_button,
+    submit_output,
+)
+```
+
 * The value returned by `pn.bind()` will display outputs returned by
   the callback.
   * We display the button and output together by wrapping them in a
@@ -84,22 +102,8 @@ submit_button
 * Note that the function we provide must accept a single argument that
   will contain details of the button click "event".
   * The callback will be called once initially, but the argument
-    passed to it will only be `True` when the button has been clicked.
-
-```code
-submit_button = pn.widgets.Button(name='Submit')
-
-def on_submit(clicked):
-    if clicked:
-        return text_field.value
-
-submit_output = pn.bind(on_submit, submit_button)
-
-pn.Column(
-    submit_button,
-    submit_output,
-)
-```
+    passed to it will only contain a value when the button has been
+    clicked.
 
 Each time you click the button, the current value of the text input
 is displayed.
@@ -118,9 +122,11 @@ is displayed.
 text_field = pn.widgets.TextInput()
 submit_button = pn.widgets.Button(name='Submit')
 
-def on_submit(clicked):
-    if clicked:
-        return text_field.value
+def on_submit(event):
+    if not event:
+        return
+
+    return text_field.value
 
 submit_output = pn.bind(on_submit, submit_button)
 
@@ -181,8 +187,10 @@ convert` line in your app notebook):
 ## Going further with user interfaces
 
 * Look at the [`panel` documentation](https://panel.holoviz.org/index.html)
-  * See what input widgets are available
-  * See what rich outputs are available (e.g. Plotly plots)
+  * See what input widgets are available (under `Component Gallery` ->
+    `Widgets` in the documentation sidebar)
+  * See what rich outputs are available (e.g. Plotly plots, under
+    `Component Gallery` -> `Panes` in the documentation sidebar)
 * Other user interface libraries exist for:
   * Notebook and web apps
     * [ipywidgets](https://ipywidgets.readthedocs.io/en/stable/)

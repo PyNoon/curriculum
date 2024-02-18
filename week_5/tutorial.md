@@ -51,7 +51,7 @@ listings_df
 We can see how big the DataFrame is using `.shape`:
 
 ```code
-listing_groups_df.shape
+listings_df.shape
 ```
 
 We can also see what columns we have available to work with:

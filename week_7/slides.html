@@ -86,18 +86,27 @@ achieves?</li>
 </section>
 <section id="sharing-a-notebook" class="slide level3">
 <h3>Sharing a notebook</h3>
+<div style="font-size: 0.8em;">
 <ul>
-<li><strong>Option 1:</strong> Just send them the .ipynb file</li>
+<li><strong>Option 1:</strong> Just send them the .ipynb file
+<ul>
+<li>They’ll need to open it with Colab or Jupyter</li>
+</ul></li>
 <li><strong>Option 2:</strong> Export an <code>html</code> or
 <code>pdf</code> file
 <ul>
-<li>Won’t run your Python code, just show the code and its results</li>
-<li><code>html</code> files can be opened in a web browser and retain
-plot interactivity</li>
-<li>Use <a
-href="https://nbconvert.readthedocs.io/en/latest/">nbconvert</a></li>
+<li><p>Won’t run Python code, just show the code and its
+results</p></li>
+<li><p><code>html</code> files can be opened in a web browser and retain
+plot interactivity</p></li>
+<li><p>Use <a
+href="https://saturncloud.io/blog/convert-google-colab-notebook-to-pdf-html/">nbconvert</a>,
+e.g. to <a href="example_notebook.html">export as
+<code>html</code></a>:</p>
+<pre><code>!jupyter nbconvert --HTMLExporter.require_js_url &quot;&quot; --to html \
+    &quot;drive/MyDrive/Colab Notebooks/week5.ipynb</code></pre></li>
 </ul></li>
-<li><strong>Option 3:</strong> Create a web application
+<li><strong>Option 3:</strong> Create an interactive web application
 <ul>
 <li>E.g. <a href="https://panel.holoviz.org/">Panel</a>, <a
 href="https://voila.readthedocs.io/">Voilà</a>, <a
@@ -106,6 +115,7 @@ href="https://streamlit.io/">Streamlit</a></li>
 <li>You’ll need a web server to host it</li>
 </ul></li>
 </ul>
+</div>
 </section>
 <section id="sharing-a-notebook-1" class="slide level3">
 <h3>Sharing a notebook</h3>
@@ -134,8 +144,8 @@ convert</a> in today’s tutorial</li>
 href="https://docs.python.org/3/library/zipapp.html">zipapp</a></li>
 <li><strong>Option 2:</strong> Create a Python package
 <ul>
-<li><a href="https://python-poetry.org/">Poetry</a> makes packaging
-easy</li>
+<li><a href="https://python-poetry.org/">Poetry</a> or <a
+href="https://rye-up.com/">Rye</a> makes packaging easy</li>
 <li>Share the package as a pip-installable file</li>
 <li>Publish on <a href="https://pypi.org/">pypi</a> for anyone to
 install with <code>pip</code></li>
@@ -174,7 +184,7 @@ more…</a></li>
 <h3>Tutorial Objectives</h3>
 <ul>
 <li>Building user interfaces in Jupyter notebooks</li>
-<li>Deploying a notebook as a web page</li>
+<li>Deploying a notebook as an html file (web page)</li>
 </ul>
 </section>
 <section id="independent-workhomework" class="slide level3">
