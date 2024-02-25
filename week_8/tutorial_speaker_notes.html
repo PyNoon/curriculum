@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="generator" content="pandoc" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
-  <title>PyNoon Week X - Tutorial</title>
+  <title>PyNoon Week 8 - Tutorial</title>
   <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -37,7 +37,7 @@ display: none;
 </head>
 <body>
 <header id="title-block-header">
-<h1 class="title">PyNoon Week X - Tutorial</h1>
+<h1 class="title">PyNoon Week 8 - Tutorial</h1>
 </header>
 <p>This week’s tutorial will cover retrieving data from web APIs,
 loading data from text files, and constructing DataFrames.</p>
@@ -56,8 +56,11 @@ simple set of functions for making web requests.</p>
 </blockquote>
 <pre class="code"><code>import requests</code></pre>
 <ul>
-<li>Let’s use a geocoding web API to get standard address fields for a
-given address query.</li>
+<li>Let’s use a <em>geocoding</em> web API:
+<ul>
+<li>Given an address string, it will return structured address
+fields</li>
+</ul></li>
 <li>We use <code>requests.get()</code> to make an HTTP <code>GET</code>
 request, which is the standard method for requests to retrieve data.
 <ul>
@@ -76,10 +79,12 @@ at: <a href="https://nominatim.org/release-docs/develop/api/Overview/">nominatim
         &#39;addressdetails&#39;: 1,
     },
 )</code></pre>
+<p>Let’s look at the response:</p>
+<pre class="code"><code>r</code></pre>
 <p>We can check the status of the response (<code>200</code> means the
 request was successful):</p>
 <pre class="code"><code>r.status_code</code></pre>
-<p>We can look at the text returned by the API:</p>
+<p>We can look at the data returned by the API:</p>
 <pre class="code"><code>r.text</code></pre>
 <ul>
 <li>The response text is formatted as JSON, a common data format used by
@@ -87,7 +92,18 @@ APIs.</li>
 <li><code>requests</code> can convert the JSON data to a structure of
 Python strings, numbers, lists and dictionaries:</li>
 </ul>
-<pre class="code"><code>r.json()</code></pre>
+<pre class="code"><code>data = r.json()</code></pre>
+<pre class="code"><code>data</code></pre>
+<ul>
+<li>We can check that the data is indeed made up of native Python data
+structures like lists, dictionaries, numbers, and strings:</li>
+</ul>
+<pre class="code"><code>type(data)</code></pre>
+<ul>
+<li>And we can access particular parts of the data using list and
+dictionary indexing:</li>
+</ul>
+<pre class="code"><code>data[0][&#39;address&#39;]</code></pre>
 <h3 id="handling-errors">Handling Errors</h3>
 <p>What happens if we change our request to specify an invalid
 format?</p>
@@ -108,6 +124,9 @@ specifically a “Bad Request”:</p>
 response has any non-successful status code:</p>
 <pre class="code"><code>r.raise_for_status()</code></pre>
 <ul>
+<li><code>r.raise_for_status()</code> <strong>only</strong> raises an
+exception when the status code indicates a failure - if the request
+succeeds, it effectively does nothing.</li>
 <li>If we want our program to continue even when an exception is raised,
 we can use a <strong>try/except</strong> statement to execute some code
 in the case of an exception.</li>
@@ -123,6 +142,7 @@ conventional.</li>
 </ul>
 <pre class="code"><code>try:
     r.raise_for_status()
+    print(&#39;Request succeeded!&#39;)
 except requests.HTTPError as ex:
     print(f&#39;Failed request: {ex}&#39;)</code></pre>
 <ul>
@@ -151,10 +171,11 @@ that.</li>
 <pre class="code"><code>from time import sleep
 
 def get_address_details(address):
-    &quot;&quot;&quot;Given a loosely-formatted address string,
-    return a dictionary of standard address details.
+    &quot;&quot;&quot;
+    Given a loosely-formatted address string, return a dictionary of standard address details.
 
-    If the request fails, None is returned.&quot;&quot;&quot;
+    If the request fails or no matching addresses are found, return None.
+    &quot;&quot;&quot;
     r = requests.get(
         &#39;https://nominatim.openstreetmap.org/search,
         params={
@@ -173,7 +194,10 @@ def get_address_details(address):
         return None
 
     data = r.json()
-    return data[&#39;address&#39;]
+    # Check for at least one matching address.
+    if len(data) == 0:
+        return None
+    return data[0][&#39;address&#39;]
 
 get_address_details(&#39;221B Baker Street, London&#39;)</code></pre>
 <h2 id="converting-a-file-of-addresses-to-a-dataframe-of-address-details">Converting

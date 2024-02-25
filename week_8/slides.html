@@ -72,48 +72,59 @@ achieves?</li>
 <li>WiFi</li>
 </ul>
 </section>
-<section id="lunch-talk-web-requests-and-apis" class="slide level3">
-<h3>Lunch Talk: Web Requests and APIs</h3>
+<section id="lunch-talk-web-apis" class="slide level3">
+<h3>Lunch Talk: Web APIs</h3>
 <ul>
-<li>Whenever you visit a web page, your web browser makes a request to a
-<strong>URL</strong>:</li>
-</ul>
-<p><img src="images/url.png"></p>
+<li>On the World Wide Web, there are:
 <ul>
-<li>Typically, these requests return web page content: Text, images,
-layout, and styling</li>
-</ul>
-</section>
-<section id="web-apis" class="slide level3">
-<h3>Web APIs</h3>
-<div style="font-size: 0.9em;">
+<li>Applications used by <em>humans</em> (i.e. websites)</li>
+<li>Applications used by <em>other software</em>
 <ul>
-<li>Some web applications, are designed to provide data to and receive
-data from other applications
-<ul>
-<li>We call these <strong>Application Programming Interfaces
-(APIs)</strong></li>
+<li><strong>Application Programming Interfaces (APIs)</strong></li>
 </ul></li>
-<li>Python can make requests to web APIs</li>
-<li>Responses typically contain data formatted as <strong>JSON</strong>
-or <strong>XML</strong></li>
-<li>Always check API <strong>terms &amp; conditions</strong></li>
-<li>Some APIs require you to sign up for an <strong>API key</strong> or
-otherwise identify your account to make requests</li>
-</ul>
-</div>
-</section>
-<section id="http-requests-responses" class="slide level3">
-<h3>HTTP Requests &amp; Responses</h3>
+</ul></li>
+<li>Python can make <em>requests</em> to <strong>web APIs</strong> that:
 <ul>
-<li>Every HTTP request has a <strong>method</strong>:
+<li>Get data (e.g. get news updates)</li>
+<li>Post data (e.g. publish a social media update)</li>
+</ul></li>
+</ul>
+</section>
+<section id="requests-and-responses" class="slide level3">
+<h3>Requests and Responses</h3>
+<p><img src="images/request-response.png" style="margin-bottom: 0; width: 80%;"></p>
+<ul>
+<li><strong>HTTP</strong> is the <em>protocol</em> for web
+communication</li>
+<li><strong>HTTPS</strong> is the <em>Secure</em> version of HTTP</li>
+</ul>
+</section>
+<section id="http-requests" class="slide level3">
+<h3>HTTP Requests</h3>
+<ul>
+<li>Every request has a <strong>method</strong>:
 <div style="font-size: 0.8em;">
 <ul>
 <li><code>GET</code> requests fetch data</li>
 <li><code>POST</code> requests submit data</li>
 </ul>
 </div></li>
-<li>Every HTTP response has a <strong>status code</strong>:
+<li>Every request is made to a <strong>Uniform Resource Locator
+(URL)</strong>:</li>
+</ul>
+<p><img src="images/url.png" style="margin-bottom: 0;"></p>
+</section>
+<section id="http-responses" class="slide level3">
+<h3>HTTP Responses</h3>
+<div style="font-size: 0.9em;">
+<ul>
+<li>Responses for web pages return text, images, etc.</li>
+<li>Responses from APIs return <em>data</em> your code can use
+<ul>
+<li>Typically formatted as <strong>JSON</strong> or
+<strong>XML</strong></li>
+</ul></li>
+<li>Every HTTP response also has a <strong>status code</strong>:
 <div style="font-size: 0.8em;">
 <ul>
 <li><code>200 OK</code> - The request succeeded</li>
@@ -123,16 +134,34 @@ otherwise identify your account to make requests</li>
 properly</li>
 </ul>
 </div></li>
-<li>The meanings of Methods and status codes are
-<strong>conventions</strong> - not all APIs use them consistently</li>
 </ul>
+</div>
+</section>
+<section id="tips-for-working-with-web-apis" class="slide level3">
+<h3>Tips for working with web APIs</h3>
+<div style="font-size: 0.9em;">
+<ul>
+<li>An API should provide <strong>documentation</strong> of:
+<ul>
+<li>Supported paths and methods for requests</li>
+<li>Supported parameters for each request</li>
+<li>The format of data in responses</li>
+</ul></li>
+<li>Meanings of methods and status codes are
+<strong>conventions</strong> - not all APIs use them consistently</li>
+<li>Always check API <strong>terms &amp; conditions</strong></li>
+<li>Some APIs require you to sign up for an <strong>API key</strong> or
+otherwise identify your account to make requests</li>
+<li>You can even use Python to make your own web API to service requests
+from other applications!</li>
+</ul>
+</div>
 </section>
 <section id="tutorial-objectives" class="slide level3">
 <h3>Tutorial Objectives</h3>
 <ul>
-<li>Retrieving data from web APIs</li>
-<li>Loading data from text files</li>
-<li>Constructing DataFrames</li>
+<li>Retrieving data from a web API</li>
+<li>Extra: Loading data from a text file to construct a DataFrame</li>
 </ul>
 </section>
 <section id="independent-workhomework" class="slide level3">

@@ -1,5 +1,5 @@
 ---
-title: PyNoon Week X - Tutorial
+title: PyNoon Week 8 - Tutorial
 jupyter:
   nbformat: 4
   nbformat_minor: 4
@@ -40,8 +40,8 @@ functions for making web requests.
 import requests
 ```
 
-* Let's use a geocoding web API to get standard address fields for a
-  given address query.
+* Let's use a *geocoding* web API:
+  * Given an address string, it will return structured address fields
 * We use `requests.get()` to make an HTTP `GET` request, which is the
   standard method for requests to retrieve data.
   * Other methods include `POST` and `PUT`, which are commonly used
@@ -60,6 +60,12 @@ r = requests.get(
 )
 ```
 
+Let's look at the response:
+
+```code
+r
+```
+
 We can check the status of the response (`200` means the request was
 successful):
 
@@ -67,7 +73,7 @@ successful):
 r.status_code
 ```
 
-We can look at the text returned by the API:
+We can look at the data returned by the API:
 
 ```code
 r.text
@@ -79,7 +85,25 @@ r.text
   strings, numbers, lists and dictionaries:
 
 ```code
-r.json()
+data = r.json()
+```
+
+```code
+data
+```
+
+* We can check that the data is indeed made up of native Python data
+  structures like lists, dictionaries, numbers, and strings:
+
+```code
+type(data)
+```
+
+* And we can access particular parts of the data using list and
+  dictionary indexing:
+
+```code
+data[0]['address']
 ```
 
 ### Handling Errors
@@ -117,6 +141,9 @@ non-successful status code:
 r.raise_for_status()
 ```
 
+* `r.raise_for_status()` **only** raises an exception when the status
+  code indicates a failure - if the request succeeds, it effectively
+  does nothing.
 * If we want our program to continue even when an exception is raised,
   we can use a **try/except** statement to execute some code in the
   case of an exception.
@@ -130,6 +157,7 @@ r.raise_for_status()
 ```code
 try:
     r.raise_for_status()
+    print('Request succeeded!')
 except requests.HTTPError as ex:
     print(f'Failed request: {ex}')
 ```
@@ -153,10 +181,11 @@ except requests.HTTPError as ex:
 from time import sleep
 
 def get_address_details(address):
-    """Given a loosely-formatted address string,
-    return a dictionary of standard address details.
+    """
+    Given a loosely-formatted address string, return a dictionary of standard address details.
 
-    If the request fails, None is returned."""
+    If the request fails or no matching addresses are found, return None.
+    """
     r = requests.get(
         'https://nominatim.openstreetmap.org/search,
         params={
@@ -175,7 +204,10 @@ def get_address_details(address):
         return None
 
     data = r.json()
-    return data['address']
+    # Check for at least one matching address.
+    if len(data) == 0:
+        return None
+    return data[0]['address']
 
 get_address_details('221B Baker Street, London')
 ```

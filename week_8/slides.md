@@ -25,53 +25,75 @@ title: PyNoon Week 8
 * WiFi
 
 
-### Lunch Talk: Web Requests and APIs
+### Lunch Talk: Web APIs
 
-* Whenever you visit a web page, your web browser makes a request to a
-  **URL**:
+* On the World Wide Web, there are:
+  * Applications used by *humans* (i.e. websites)
+  * Applications used by *other software*
+    * **Application Programming Interfaces (APIs)**
+* Python can make *requests* to **web APIs** that:
+  * Get data (e.g. get news updates)
+  * Post data (e.g. publish a social media update)
 
-<img src="images/url.png">
+### Requests and Responses
 
-* Typically, these requests return web page content: Text, images,
-  layout, and styling
+<img src="images/request-response.png" style="margin-bottom: 0; width: 80%;">
 
-### Web APIs
+* **HTTP** is the *protocol* for web communication
+* **HTTPS** is the *Secure* version of HTTP
 
-<div style="font-size: 0.9em;">
+### HTTP Requests
 
-* Some web applications, are designed to provide data to and receive
-  data from other applications
-  * We call these **Application Programming Interfaces (APIs)**
-* Python can make requests to web APIs
-* Responses typically contain data formatted as **JSON** or **XML**
-* Always check API **terms & conditions**
-* Some APIs require you to sign up for an **API key** or otherwise
-  identify your account to make requests
-
-</div>
-
-### HTTP Requests & Responses
-
-* Every HTTP request has a **method**:
+* Every request has a **method**:
   <div style="font-size: 0.8em;">
   * `GET` requests fetch data
   * `POST` requests submit data
   </div>
-* Every HTTP response has a **status code**:
+* Every request is made to a **Uniform Resource Locator (URL)**:
+
+<img src="images/url.png" style="margin-bottom: 0;">
+
+
+### HTTP Responses
+
+<div style="font-size: 0.9em;">
+
+* Responses for web pages return text, images, etc.
+* Responses from APIs return *data* your code can use
+  * Typically formatted as **JSON** or **XML**
+
+* Every HTTP response also has a **status code**:
   <div style="font-size: 0.8em;">
   * `200 OK` - The request succeeded
   * `404 Not Found` - The path couldn't be found
   * `400 Bad Request` - Request parameters were invalid
   * `500 Internal Server Error` - The server couldn't respond properly
   </div>
-* The meanings of Methods and status codes are **conventions** - not
-  all APIs use them consistently
+
+</div>
+
+### Tips for working with web APIs
+
+<div style="font-size: 0.9em;">
+
+* An API should provide **documentation** of:
+  * Supported paths and methods for requests
+  * Supported parameters for each request
+  * The format of data in responses
+* Meanings of methods and status codes are **conventions** - not all
+  APIs use them consistently
+* Always check API **terms & conditions**
+* Some APIs require you to sign up for an **API key** or otherwise
+  identify your account to make requests
+* You can even use Python to make your own web API to service requests
+  from other applications!
+
+</div>
 
 ### Tutorial Objectives
 
-* Retrieving data from web APIs
-* Loading data from text files
-* Constructing DataFrames
+* Retrieving data from a web API
+* Extra: Loading data from a text file to construct a DataFrame
 
 ### Independent Work/Homework
 

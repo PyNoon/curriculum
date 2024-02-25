@@ -20,7 +20,7 @@ jupyter:
 ---
 
 This week's tutorial will cover building user interfaces in Jupyter
-notebooks, and using an off-the-shelf AI model.
+notebooks.
 
 ## Setup
 
