@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="generator" content="pandoc" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
-  <title>PyNoon Week X - Tutorial</title>
+  <title>PyNoon Week 9 - Tutorial</title>
   <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -37,7 +37,7 @@ display: none;
 </head>
 <body>
 <header id="title-block-header">
-<h1 class="title">PyNoon Week X - Tutorial</h1>
+<h1 class="title">PyNoon Week 9 - Tutorial</h1>
 </header>
 <p>This week’s tutorial will cover use of AI models, loading data from
 text files, and constructing DataFrames.</p>
@@ -49,43 +49,55 @@ text files, and constructing DataFrames.</p>
 </ol>
 <h2 id="using-ai-models-from-python">Using AI models from Python</h2>
 <ul>
-<li>Let’s use an AI model to assign a label to a string of text!</li>
 <li><a href="https://huggingface.co/">huggingface.co</a> has LOTS of AI
-models available for different tasks that we can download and use.</li>
-<li>In this case, we’ll use a zero-shot classification model that picks
-which of a provided list of labels best fits a text snippet we
-provide.</li>
+<em>models</em> available for different tasks that we can download and
+use.
+<ul>
+<li>Many are free to use, even for commercial purposes.</li>
+</ul></li>
+<li>Let’s use an AI model to assign a label to a string of text!</li>
+<li>Specifically, we’ll use a zero-shot classification model that picks
+which of a provided list of labels best fits a text snippet we provide.
+<ul>
+<li>Zero-shot means we don’t need to provide examples of text snippets
+for our labels</li>
+</ul></li>
 </ul>
 <blockquote>
 <p>Normally we’d have to install <code>transformers</code> and its
 dependency <code>torch</code> using <code>pip</code>, but Colab already
 has these installed.</p>
 </blockquote>
+<ul>
+<li>Downloading and preparing the classifier is very
+straightforward.</li>
+<li>The model will be downloaded to the Colab instance running on
+Google’s servers - not your computer.</li>
+</ul>
 <pre class="code"><code>from transformers import pipeline
 
-classifier = pipeline(&#39;zero-shot-classification&#39;, model=&#39;facebook/bart-large-mnli&#39;)
-
-text_to_classify = &#39;one day I will see the world&#39;
-classifier(
-    text_to_classify,
+classifier = pipeline(&#39;zero-shot-classification&#39;, model=&#39;facebook/bart-large-mnli&#39;)</code></pre>
+<ul>
+<li>Applying the classifier to a snippet of text is similarly easy:</li>
+</ul>
+<pre class="code"><code>classifier(
+    &#39;one day I will see the world&#39;,
     candidate_labels=[&#39;travel&#39;, &#39;cooking&#39;, &#39;technology&#39;],
 )</code></pre>
 <ul>
+<li>The output is given as a dictionary, containing a list of labels
+ordered from most likely to least likely, as well as a list of
+<em>scores</em> for those labels, indicating the model’s confidence in
+assigning each label to the text.</li>
 <li>We can see that the model thinks that <code>travel</code> is the
 best fit, which seems reasonable.
 <ul>
 <li>Though AI models won’t always give reasonable responses!</li>
 </ul></li>
-<li>The output is given as a dictionary, which you’ll learn more about
-in this week’s Futurecoder lesson.</li>
 <li>Let’s create a function that we can use to call the classifier with
 a single argument - the text to classify:</li>
 </ul>
-<pre class="code"><code>from transformers import pipeline
-
-classifier = pipeline(&#39;zero-shot-classification&#39;, model=&#39;facebook/bart-large-mnli&#39;)
-
-def classify_text(text_to_classify):
+<pre class="code"><code>def classify_text(text_to_classify):
     result = classifier(
         text_to_classify,
         candidate_labels=[&#39;travel&#39;, &#39;cooking&#39;, &#39;dancing&#39;],
@@ -93,27 +105,41 @@ def classify_text(text_to_classify):
     return result[&#39;labels&#39;][0]
 
 classify_text(&#39;one day I will see the world&#39;)</code></pre>
-<h2 id="converting-a-file-of-addresses-to-a-dataframe-of-address-details">Converting
-a file of addresses to a DataFrame of address details</h2>
+<h2 id="processing-a-text-file-to-produce-a-dataframe">Processing a text
+file to produce a DataFrame</h2>
 <ul>
-<li><p>Now let’s classify a text file of blog post titles to produce a
-DataFrame of classification labels</p></li>
-<li><p>Download <code>titles.txt</code> from: <a href="https://pynoon.github.io/curriculum/week_9/titles.txt">pynoon.github.io/curriculum/week_9/titles.txt</a></p></li>
+<li>Now let’s classify a text file of blog post titles to produce a
+DataFrame of rows containing each title and label</li>
+<li>Download <code>titles.txt</code> from: <a href="https://pynoon.github.io/curriculum/week_9/titles.txt">pynoon.github.io/curriculum/week_9/titles.txt</a></li>
+<li>Click the folder icon on the left side of the Colab interface, then
+use the upload button to upload <code>titles.txt</code></li>
+<li><strong>ALTERNATIVELY:</strong>
+<ul>
 <li><p>Click the folder icon on the left side of the Colab interface,
-then use the upload button to upload <code>titles.txt</code></p></li>
-<li><p>Now, we can use <code>open()</code> to load</p></li>
-<li><p><code>open()</code> should be used with a <code>with</code>
+then right-click and select <code>New file</code></p></li>
+<li><p>Right-click and select <code>Rename file</code> to name it
+<code>titles.txt</code></p></li>
+<li><p>Double-click the file to open it, and enter the following
+content:</p>
+<pre><code>My weekend in Queenstown
+When to plant tomatoes
+Recommendations for 2024&#39;s best TVs
+The fastest ever cookie recipe</code></pre></li>
+<li><p><code>Ctrl-s</code> to save the file.</p></li>
+</ul></li>
+<li>Now, we can use <code>open()</code> to load the file</li>
+<li><code>open()</code> should be used with a <code>with</code>
 statement so that the file is automatically closed when we’re finished
-with it:</p></li>
+with it:</li>
 </ul>
-<pre class="code"><code>with open(titles.txt&#39;) as titles_file:
+<pre class="code"><code>with open(&#39;titles.txt&#39;) as titles_file:
     titles = titles_file.readlines()</code></pre>
 <p><code>.readlines()</code> has provided us with a list of strings
 representing each line in the file:</p>
 <pre class="code"><code>titles</code></pre>
 <p>We can use a list comprehension to transform each value in a
 list:</p>
-<pre class="code"><code>[len(title) for title in titles]</code></pre>
+<pre class="code"><code>[classify_text(title) for title in titles]</code></pre>
 <p>We can use a list comprehension to construct a list of dictionaries,
 where each dictionary contains the title and its label:</p>
 <pre class="code"><code>title_details = [
@@ -122,7 +148,8 @@ where each dictionary contains the title and its label:</p>
         &#39;label&#39;: classify_text(title),
     }
     for title in titles
-]</code></pre>
+]
+title_details</code></pre>
 <ul>
 <li><code>pd.DataFrame</code> can be used to construct a DataFrame from
 a list of dictionaries like <code>title_details</code>.</li>

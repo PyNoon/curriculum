@@ -1,5 +1,5 @@
 ---
-title: PyNoon Week X - Tutorial
+title: PyNoon Week 9 - Tutorial
 jupyter:
   nbformat: 4
   nbformat_minor: 4
@@ -30,41 +30,49 @@ text files, and constructing DataFrames.
 
 ## Using AI models from Python
 
-* Let's use an AI model to assign a label to a string of text!
-* [huggingface.co](https://huggingface.co/) has LOTS of AI models
+* [huggingface.co](https://huggingface.co/) has LOTS of AI *models*
   available for different tasks that we can download and use.
-* In this case, we'll use a zero-shot classification model that picks
+  * Many are free to use, even for commercial purposes.
+* Let's use an AI model to assign a label to a string of text!
+* Specifically, we'll use a zero-shot classification model that picks
   which of a provided list of labels best fits a text snippet we
   provide.
+  * Zero-shot means we don't need to provide examples of text snippets
+    for our labels
 
 > Normally we'd have to install `transformers` and its dependency
 > `torch` using `pip`, but Colab already has these installed.
 
+* Downloading and preparing the classifier is very straightforward.
+* The model will be downloaded to the Colab instance running on
+  Google's servers - not your computer.
+
 ```code
 from transformers import pipeline
 
 classifier = pipeline('zero-shot-classification', model='facebook/bart-large-mnli')
+```
 
-text_to_classify = 'one day I will see the world'
+* Applying the classifier to a snippet of text is similarly easy:
+
+```code
 classifier(
-    text_to_classify,
+    'one day I will see the world',
     candidate_labels=['travel', 'cooking', 'technology'],
 )
 ```
 
+* The output is given as a dictionary, containing a list of labels
+  ordered from most likely to least likely, as well as a list of
+  *scores* for those labels, indicating the model's confidence in
+  assigning each label to the text.
 * We can see that the model thinks that `travel` is the best fit,
   which seems reasonable.
   * Though AI models won't always give reasonable responses!
-* The output is given as a dictionary, which you'll learn more about
-  in this week's Futurecoder lesson.
 * Let's create a function that we can use to call the classifier with
   a single argument - the text to classify:
 
 ```code
-from transformers import pipeline
-
-classifier = pipeline('zero-shot-classification', model='facebook/bart-large-mnli')
-
 def classify_text(text_to_classify):
     result = classifier(
         text_to_classify,
@@ -75,21 +83,33 @@ def classify_text(text_to_classify):
 classify_text('one day I will see the world')
 ```
 
-## Converting a file of addresses to a DataFrame of address details
+## Processing a text file to produce a DataFrame
 
 * Now let's classify a text file of blog post titles to produce a
-  DataFrame of classification labels
+  DataFrame of rows containing each title and label
 * Download `titles.txt` from:
   [pynoon.github.io/curriculum/week_9/titles.txt](https://pynoon.github.io/curriculum/week_9/titles.txt)
 * Click the folder icon on the left side of the Colab interface, then
   use the upload button to upload `titles.txt`
+* **ALTERNATIVELY:**
+  * Click the folder icon on the left side of the Colab interface, then
+    right-click and select `New file`
+  * Right-click and select `Rename file` to name it `titles.txt`
+  * Double-click the file to open it, and enter the following content:
+    ```
+    My weekend in Queenstown
+    When to plant tomatoes
+    Recommendations for 2024's best TVs
+    The fastest ever cookie recipe
+    ```
+  * `Ctrl-s` to save the file.
 
-* Now, we can use `open()` to load
+* Now, we can use `open()` to load the file
 * `open()` should be used with a `with` statement so that the file is
   automatically closed when we're finished with it:
 
 ```code
-with open(titles.txt') as titles_file:
+with open('titles.txt') as titles_file:
     titles = titles_file.readlines()
 ```
 
@@ -103,7 +123,7 @@ titles
 We can use a list comprehension to transform each value in a list:
 
 ```code
-[len(title) for title in titles]
+[classify_text(title) for title in titles]
 ```
 
 We can use a list comprehension to construct a list of dictionaries,
@@ -117,6 +137,7 @@ title_details = [
     }
     for title in titles
 ]
+title_details
 ```
 
 * `pd.DataFrame` can be used to construct a DataFrame from a list of
