@@ -93,7 +93,6 @@ title: PyNoon Week 8
 ### Tutorial Objectives
 
 * Retrieving data from a web API
-* Extra: Loading data from a text file to construct a DataFrame
 
 ### Independent Work/Homework
 

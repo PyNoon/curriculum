@@ -72,7 +72,7 @@ API.</li>
 at: <a href="https://nominatim.org/release-docs/develop/api/Overview/">nominatim.org/release-docs/develop/api/Overview</a></li>
 </ul>
 <pre class="code"><code>r = requests.get(
-    &#39;https://nominatim.openstreetmap.org/search,
+    &#39;https://nominatim.openstreetmap.org/search&#39;,
     params={
         &#39;q&#39;: &#39;221B Baker Street, London&#39;,
         &#39;format&#39;: &#39;jsonv2&#39;,
@@ -108,7 +108,7 @@ dictionary indexing:</li>
 <p>What happens if we change our request to specify an invalid
 format?</p>
 <pre class="code"><code>r = requests.get(
-    &#39;https://nominatim.openstreetmap.org/search,
+    &#39;https://nominatim.openstreetmap.org/search&#39;,
     params={
         &#39;q&#39;: &#39;221B Baker Street, London&#39;,
         &#39;format&#39;: &#39;oops&#39;,
@@ -177,7 +177,7 @@ def get_address_details(address):
     If the request fails or no matching addresses are found, return None.
     &quot;&quot;&quot;
     r = requests.get(
-        &#39;https://nominatim.openstreetmap.org/search,
+        &#39;https://nominatim.openstreetmap.org/search&#39;,
         params={
             &#39;q&#39;: address,
             &#39;format&#39;: &#39;jsonv2&#39;,
@@ -200,56 +200,5 @@ def get_address_details(address):
     return data[0][&#39;address&#39;]
 
 get_address_details(&#39;221B Baker Street, London&#39;)</code></pre>
-<h2 id="converting-a-file-of-addresses-to-a-dataframe-of-address-details">Converting
-a file of addresses to a DataFrame of address details</h2>
-<ul>
-<li><p>Now let’s process a text file of addresses to produce a DataFrame
-of address details</p></li>
-<li><p>Download <code>addresses.txt</code> from: <a href="https://pynoon.github.io/curriculum/week_8/addresses.txt">pynoon.github.io/curriculum/week_8/addresses.txt</a></p></li>
-<li><p>Click the folder icon on the left side of the Colab interface,
-then use the upload button to upload <code>addresses.txt</code></p></li>
-<li><p>Now, we can use <code>open()</code> to load</p></li>
-<li><p><code>open()</code> should be used with a <code>with</code>
-statement so that the file is automatically closed when we’re finished
-with it:</p></li>
-</ul>
-<pre class="code"><code>with open(&#39;addresses.txt&#39;) as addresses_file:
-    addresses = addresses_file.readlines()</code></pre>
-<p><code>.readlines()</code> has provided us with a list of strings
-representing each line in the file:</p>
-<pre class="code"><code>addresses</code></pre>
-<p>We can use a list comprehension to apply our function to each
-address, producing a list of corresponding address details:</p>
-<pre class="code"><code>address_details = [get_address_details(address) for address in addresses]</code></pre>
-<p>Because of our exception handling in
-<code>get_address_details</code>, we should remove any <code>None</code>
-values from the list of details:</p>
-<pre class="code"><code>address_details = [
-    address_detail for address_detail in address_details
-    if address_detail is not None
-]
-address_details</code></pre>
-<ul>
-<li><code>pd.DataFrame</code> can be used to construct a DataFrame from
-a list of dictionaries like <code>address_details</code>.</li>
-<li>Where each dictionary represents the values for each column in a
-given row.</li>
-</ul>
-<pre class="code"><code>import pandas as pd
-
-address_df = pd.DataFrame(address_details)
-address_df</code></pre>
-<h2 id="reflection">Reflection</h2>
-<ul>
-<li>In this tutorial, we:
-<ul>
-<li>Took a list of addresses in a simple text file.</li>
-<li>Retrieved more details for each address from an API.</li>
-<li>And reformatted those details into a DataFrame, which we could
-export to a CSV file, or even an SQL database.</li>
-</ul></li>
-<li>This kind of data transformation is a common task that Python is
-very helpful for.</li>
-</ul>
 </body>
 </html>

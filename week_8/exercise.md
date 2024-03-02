@@ -30,8 +30,7 @@ longitude for an address:
 [nominatim.org/release-docs/develop/api/Search/#json-with-address-details](https://nominatim.org/release-docs/develop/api/Search/#json-with-address-details)
 
 Extend the code from the tutorial to add the latitude and longitude to
-the dictionary returned by `get_address_details` so that your
-DataFrame will also include latitude and longitude.
+the dictionary returned by `get_address_details`.
 
 ### 1b. Reverse geo-coding
 

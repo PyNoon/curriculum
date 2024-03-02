@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="generator" content="pandoc">
-  <title>PyNoon Week 8</title>
+  <title>PyNoon Week 9</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -39,19 +39,19 @@
     <div class="slides">
 
 <section id="title-slide">
-  <h1 class="title">PyNoon Week 8</h1>
+  <h1 class="title">PyNoon Week 9</h1>
 </section>
 
 <section id="warm-up-exercise" class="slide level3">
 <h3>Warm-Up Exercise</h3>
 <ul>
 <li>Continue working on your Personal Python Project</li>
-<li>Pair up and review each other’s project work
+<li>Search online for any Python packages or web APIs that could be used
+to perform any parts of your project, such as:
 <ul>
-<li>Without explaining your code, can they understand what each line
-achieves?</li>
-<li>What changes would make it easier to read?</li>
-<li>Do you have any suggestions to DRY out your partner’s code?</li>
+<li>Sending an email or message</li>
+<li>Automatically retrieving required data</li>
+<li>Handling a tricky data processing task</li>
 </ul></li>
 </ul>
 </section>
@@ -72,111 +72,72 @@ achieves?</li>
 <li>WiFi</li>
 </ul>
 </section>
-<section id="lunch-talk-web-apis" class="slide level3">
-<h3>Lunch Talk: Web APIs</h3>
+<section id="lunch-talk-ai-assisted-python-programming"
+class="slide level3">
+<h3>Lunch Talk: AI-Assisted Python Programming</h3>
 <ul>
-<li>On the World Wide Web, there are:
-<ul>
-<li>Applications used by <em>humans</em> (i.e. websites)</li>
-<li>Applications used by <em>other software</em>
-<ul>
-<li><strong>Application Programming Interfaces (APIs)</strong></li>
-</ul></li>
-</ul></li>
-<li>Python can make <em>requests</em> to <strong>web APIs</strong> that:
-<ul>
-<li>Get data (e.g. get news updates)</li>
-<li>Post data (e.g. publish a social media update)</li>
-</ul></li>
+<li>ChatGPT, GitHub Copilot, etc. are quite good at generating Python
+code</li>
+<li>Will programming become obsolete?</li>
+<li>Do’s/Dont’s of programming with AI</li>
 </ul>
 </section>
-<section id="requests-and-responses" class="slide level3">
-<h3>Requests and Responses</h3>
-<p><img src="images/request-response.png" style="margin-bottom: 0; width: 80%;"></p>
+<section id="will-programming-become-obsolete" class="slide level3">
+<h3>Will programming become obsolete?</h3>
+<div style="font-size: 0.7em; display: flex; align-items: center;">
 <ul>
-<li><strong>HTTP</strong> is the <em>protocol</em> for web
-communication</li>
-<li><strong>HTTPS</strong> is the <em>Secure</em> version of HTTP</li>
+<li>Probably not</li>
+<li>If anything, programming is more important to “glue” AI to
+data/systems</li>
+<li>AI-generated code often needs fixing - <strong>you still need to
+know how to fix it</strong></li>
+<li>The essence of programming is about <em>precisely</em> instructing a
+computer - you still need to carefully <strong>consider</strong> and
+<strong>communicate</strong> those instructions</li>
 </ul>
-</section>
-<section id="http-requests" class="slide level3">
-<h3>HTTP Requests</h3>
-<ul>
-<li>Every request has a <strong>method</strong>:
-<div style="font-size: 0.8em;">
-<ul>
-<li><code>GET</code> requests fetch data</li>
-<li><code>POST</code> requests submit data</li>
-</ul>
-</div></li>
-<li>Every request is made to a <strong>Uniform Resource Locator
-(URL)</strong>:</li>
-</ul>
-<p><img src="images/url.png" style="margin-bottom: 0;"></p>
-</section>
-<section id="http-responses" class="slide level3">
-<h3>HTTP Responses</h3>
-<div style="font-size: 0.9em;">
-<ul>
-<li>Responses for web pages return text, images, etc.</li>
-<li>Responses from APIs return <em>data</em> your code can use
-<ul>
-<li>Typically formatted as <strong>JSON</strong> or
-<strong>XML</strong></li>
-</ul></li>
-<li>Every HTTP response also has a <strong>status code</strong>:
-<div style="font-size: 0.8em;">
-<ul>
-<li><code>200 OK</code> - The request succeeded</li>
-<li><code>404 Not Found</code> - The path couldn’t be found</li>
-<li><code>400 Bad Request</code> - Request parameters were invalid</li>
-<li><code>500 Internal Server Error</code> - The server couldn’t respond
-properly</li>
-</ul>
-</div></li>
-</ul>
+<div>
+<p><img src="well.png" style="width: 1400px; margin: 0;">
+<a href="https://xkcd.com/568/">xkcd.com/568</a></p>
+</div>
 </div>
 </section>
-<section id="tips-for-working-with-web-apis" class="slide level3">
-<h3>Tips for working with web APIs</h3>
-<div style="font-size: 0.9em;">
+<section id="dosdonts-of-programming-with-ai" class="slide level3">
+<h3>Do’s/Dont’s of programming with AI</h3>
 <ul>
-<li>An API should provide <strong>documentation</strong> of:
-<ul>
-<li>Supported paths and methods for requests</li>
-<li>Supported parameters for each request</li>
-<li>The format of data in responses</li>
-</ul></li>
-<li>Meanings of methods and status codes are
-<strong>conventions</strong> - not all APIs use them consistently</li>
-<li>Always check API <strong>terms &amp; conditions</strong></li>
-<li>Some APIs require you to sign up for an <strong>API key</strong> or
-otherwise identify your account to make requests</li>
-<li>You can even use Python to make your own web API to service requests
-from other applications!</li>
+<li><strong>DON’T</strong> feed confidential data into public AI
+tools</li>
+<li><strong>DON’T</strong> use generated code you don’t understand</li>
+<li><strong>DON’T</strong> use it to replace reading documentation</li>
+<li><strong>DO</strong> ask it to explain code (as <em>one</em>
+perspective)</li>
+<li><strong>DO</strong> use it generate snippets for specific tasks</li>
+<li><strong>DO</strong> be specific in your
+instructions/requirements</li>
+<li><strong>DO</strong> ask it to try fix code when the result is
+wrong</li>
 </ul>
-</div>
 </section>
 <section id="tutorial-objectives" class="slide level3">
 <h3>Tutorial Objectives</h3>
-<ul>
-<li>Retrieving data from a web API</li>
-</ul>
+<ol type="1">
+<li>Using AI models from Python</li>
+<li>Loading data from a text file to construct a DataFrame</li>
+</ol>
 </section>
 <section id="independent-workhomework" class="slide level3">
 <h3>Independent Work/Homework</h3>
 <ol type="1">
 <li><strong>Exercise Notebook:</strong>
 <ul>
-<li>API Exercises</li>
-<li>See the Exercise Notebook for Week 8 at <a
+<li>AI Exercises</li>
+<li>See the Exercise Notebook for Week 9 at <a
 href="https://pynoon.github.io/schedule">pynoon.github.io/schedule</a></li>
 </ul></li>
-<li><strong>Work through <a
-href="https://futurecoder.io">futurecoder.io</a> sections</strong>:
-<ol type="1">
-<li>Boolean operators</li>
-</ol></li>
+<li><strong>Work through the final <a
+href="https://futurecoder.io">futurecoder.io</a> section</strong>:
+<ul>
+<li>Tic Tac Toe Project</li>
+</ul></li>
 <li>Work on your own Python project</li>
 </ol>
 </section>
