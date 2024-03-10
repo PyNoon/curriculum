@@ -1,17 +1,3 @@
-# Other Topics
-
-* Importing Python functions from a Python file
-* Documentation
-* Version control
-* Structuring a project
-* Debugging
-* dataclasses
-* sqlite
-* wordcloud
-* regexes
-* OOP
-
-
 <!--
 ### DataFrame Indexing and Slicing
 
