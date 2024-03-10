@@ -114,8 +114,9 @@ specify arguments for a command-line interface:
 
 </div>
 
-* [`opencv`](https://opencv.org/) for processing images and video
-  streams (e.g. home security)
+* [`opencv`](https://opencv.org/) and
+   [Pillow](https://python-pillow.org/) for processing video streams
+   and images (e.g. home security)
 
 ### Internet-of-Things
 
@@ -192,6 +193,19 @@ def hello_world():
   [`ruff`](https://docs.astral.sh/ruff/)
 * Version control to track file changes, e.g.
   [`git`](https://git-scm.com/)
+
+### Miscellaneous
+
+* [Python coming to Excel soon](https://support.microsoft.com/en-gb/office/get-started-with-python-in-excel-a33fbcbe-065b-41d3-82cf-23d05397f53d)
+* Distributed Computing:
+  * [PySpark](https://spark.apache.org/docs/latest/api/python/index.html)
+  * [Dask](https://www.dask.org/)
+* Game development:
+  * [PyGame](https://www.pygame.org) engine for 2D games
+  * [Pyxel](https://github.com/kitao/pyxel) for retro games
+  * [Panda3D](https://github.com/panda3d/panda3d),
+    [Ursina](https://github.com/pokepetter/ursina), and
+    [Harfang3D](https://www.harfang3d.com/en_US/) for 3D games
 
 ### The Python Community
 
