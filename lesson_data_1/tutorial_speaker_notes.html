@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang xml:lang>
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>PyNoon Data Lesson 1 - Tutorial</title>
+  <style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+
+ul.task-list[class]{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+font-size: inherit;
+width: 0.8em;
+margin: 0 0.8em 0.2em -1.6em;
+vertical-align: middle;
+}
+.display.math{display: block; text-align: center; margin: 0.5rem auto;}
+</style>
+  <style type="text/css">body {
+font-size: 16px;
+}
+pre.code {
+font-size: 1.4em;
+}
+blockquote {
+font-style: italic;
+}
+.notebook-only {
+display: none;
+}
+</style>
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">PyNoon Data Lesson 1 - Tutorial</h1>
+</header>
+<p>This tutorial will cover:</p>
+<ul>
+<li>Working with built-in and third party libraries</li>
+<li>Loading and exploring tabular data with Pandas</li>
+</ul>
+<p>It is based on:</p>
+<ul>
+<li><a href="https://swcarpentry.github.io/python-novice-gapminder/04-built-in.html">swcarpentry.github.io/python-novice-gapminder/04-built-in.html</a></li>
+<li><a href="https://swcarpentry.github.io/python-novice-gapminder/06-libraries.html">swcarpentry.github.io/python-novice-gapminder/06-libraries.html</a></li>
+<li><a href="https://swcarpentry.github.io/python-novice-gapminder/07-reading-tabular.html">swcarpentry.github.io/python-novice-gapminder/07-reading-tabular.html</a></li>
+<li><a href="https://swcarpentry.github.io/python-novice-gapminder/08-data-frames.html">swcarpentry.github.io/python-novice-gapminder/08-data-frames.html</a></li>
+</ul>
+<blockquote>
+<p>DEMO-ONLY TUTORIAL BEGINS HERE</p>
+</blockquote>
+<h2 id="modules-and-libraries">Modules and Libraries</h2>
+<p>To get more functions (and other things) to use in Python, you can
+import <strong>modules</strong>, which are just files of Python
+code.</p>
+<p>To use the contents of a module, we must import it once (usually at
+the top of our notebook or script):</p>
+<pre class="code"><code>import math</code></pre>
+<p>Then we can use functions and variables from the module:</p>
+<pre class="code"><code>math.pi</code></pre>
+<pre class="code"><code>math.sqrt(4)</code></pre>
+<p>We can use the <code>help()</code> function to find out what is
+available in a module:</p>
+<pre class="code"><code>help(math)</code></pre>
+<div class="notebook-only">
+<p>Sometimes we want to import only certain functions or variables from
+a module…</p>
+</div>
+<div class="cell code notebook-only">
+<pre class="code"><code>from math import pi, e</code></pre>
+</div>
+<div class="notebook-only">
+<p>Or import the module under an aliased name…</p>
+</div>
+<div class="cell code notebook-only">
+<pre class="code"><code>import pandas as pd</code></pre>
+</div>
+<ul>
+<li><code>math</code> is one of the many modules in Python’s
+<strong>standard library</strong>, which is well known for its extensive
+functionality.
+<ul>
+<li>You can find out more about the modules available at: <a href="https://docs.python.org/3/library/index.html">docs.python.org/3/library</a></li>
+</ul></li>
+<li>Python is also well known for its many <strong>3rd party
+libraries</strong> that provide more modules, but before they can be
+imported they must be downloaded to your computer.
+<ul>
+<li>You can search for available Python libraries at: <a href="https://pypi.org/">pypi.org</a></li>
+</ul></li>
+</ul>
+<p>3rd party Python libraries can be downloaded with <code>pip</code>,
+which can be run as follows in a notebook:</p>
+<pre class="code"><code>%pip install pandas</code></pre>
+<blockquote>
+<p><strong>Anyone</strong> can publish a 3rd party library, so it’s
+prudent to ask the following questions before installing a library:</p>
+<ul>
+<li>Has someone you trust recommended this library?</li>
+<li>Is there concrete evidence of an active user base for this
+library?</li>
+<li>Am I sure I am spelling the library’s name correctly? (malicious
+users have been known to publish “typo-squatting” libraries with similar
+names to popular libraries)</li>
+</ul>
+</blockquote>
+<p>The webpage for a library on <code>pypi.org</code> will often have
+links to:</p>
+<ul>
+<li>A <strong>GitHub (or similar) page</strong> where you can read the
+library’s code, report issues, and contribute improvements.</li>
+<li>A <strong>quick start</strong> to briefly demonstrate you how to use
+the library</li>
+<li>More extensive <strong>documentation</strong> or an <strong>API
+reference</strong> that documents all the functions and capabilities of
+the library.</li>
+</ul>
+<p>For example, check out: <a href="https://pypi.org/project/pandas/">pypi.org/project/pandas</a></p>
+<blockquote>
+<p>FOLLOW-ALONG TUTORIAL BEGINS HERE</p>
+</blockquote>
+<h2 id="setup">Setup</h2>
+<ol type="1">
+<li>Make a new notebook for this lesson</li>
+<li>What’s the first thing to do? RENAME IT!</li>
+<li>Name it <code>pynoon_data_1.ipynb</code></li>
+</ol>
+<p>Let’s look at the data we’re going to analyse:</p>
+<p>Use the link on<a href="https://pynoon.github.io/schedule/">pynoon.github.io/schedule</a>
+to open <code>inside_airbnb_listings_nz_2023_09.csv</code></p>
+<ul>
+<li>Look at the data dictionary linked to from that page to learn what
+each column means.</li>
+</ul>
+<h2 id="pandas-dataframes">Pandas DataFrames</h2>
+<p>We can use the <code>pandas</code> library to work with tabular data
+in Python.</p>
+<ul>
+<li>Pandas is based on a lower-level maths library called
+<code>numpy</code></li>
+<li>Pandas DataFrames are similar to R’s DataFrames</li>
+</ul>
+<pre class="code"><code>import pandas as pd</code></pre>
+<blockquote>
+<p>Importing Pandas as the alias <code>pd</code> is conventional, and
+saves us typing out <code>pandas</code> everytime we want to use it.</p>
+</blockquote>
+<p>To load the CSV into a DataFrame:</p>
+<pre class="code"><code>listings_df = pd.read_csv(&#39;https://pynoon.github.io/data/inside_airbnb_listings_nz_2023_09.csv&#39;)</code></pre>
+<ul>
+<li><code>df</code> is a <em>conventional</em> variable suffix for a
+DataFrame.</li>
+<li>Pandas has many different <code>read_*</code> functions for reading
+from different types of files (e.g. <code>read_excel()</code>,
+<code>read_parquet()</code>).</li>
+</ul>
+<pre class="code"><code>type(listings_df)</code></pre>
+<p>Let’s look at the DataFrame:</p>
+<pre class="code"><code>listings_df</code></pre>
+<blockquote>
+<p>Only a few rows from the top and bottom of the DataFrame are
+shown</p>
+</blockquote>
+<p>We can sort the DataFrame by a column:</p>
+<pre class="code"><code>listings_df.sort_values(&#39;review_scores_rating&#39;)</code></pre>
+<blockquote>
+<p>Note: This doesn’t change the original DataFrame, it produced a new
+DataFrame that is sorted</p>
+</blockquote>
+<p>We can extract a single column from the DataFrame:</p>
+<pre class="code"><code>listings_df[&#39;name&#39;]</code></pre>
+<p>The type of a single column or row from a Pandas
+<code>DataFrame</code> is a <code>Series</code>:</p>
+<pre class="code"><code>type(listings_df[&#39;name&#39;])</code></pre>
+<p>Also handy to get a new DataFrame that only contains a subset of
+columns:</p>
+<pre class="code"><code>listings_df[[&#39;latitude&#39;, &#39;longitude&#39;]]</code></pre>
+<h3 id="summary-statistics">Summary Statistics</h3>
+<p>We can get summary statistics for all numeric columns:</p>
+<pre class="code"><code>listings_df.describe()</code></pre>
+<p>And we can get specific summary statistics for column’s
+individually:</p>
+<pre class="code"><code>listings_df[&#39;last_review&#39;].max()</code></pre>
+<pre class="code"><code>listings_df[&#39;review_scores_rating&#39;].mean()</code></pre>
+<h3 id="plotting-demo">Plotting Demo</h3>
+<p>As a quick demo of the power of DataFrames, we can install and use
+the Plotly library to create plots from DataFrame columns:</p>
+<pre class="code"><code>%pip install plotly nbformat</code></pre>
+<pre class="code"><code>import plotly.express as px</code></pre>
+<pre class="code"><code>px.scatter(listings_df, x=&#39;longitude&#39;, y=&#39;latitude&#39;)</code></pre>
+<pre class="code"><code>px.histogram(listings_df, x=&#39;review_scores_rating&#39;)</code></pre>
+</body>
+</html>

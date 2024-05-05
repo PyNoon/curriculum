@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang xml:lang>
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>PyNoon Data Lesson 3 - Tutorial</title>
+  <style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+
+ul.task-list[class]{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+font-size: inherit;
+width: 0.8em;
+margin: 0 0.8em 0.2em -1.6em;
+vertical-align: middle;
+}
+.display.math{display: block; text-align: center; margin: 0.5rem auto;}
+</style>
+  <style type="text/css">body {
+font-size: 16px;
+}
+pre.code {
+font-size: 1.4em;
+}
+blockquote {
+font-style: italic;
+}
+.notebook-only {
+display: none;
+}
+</style>
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">PyNoon Data Lesson 3 - Tutorial</h1>
+</header>
+<p>This tutorial will cover grouping and summarising data with Pandas
+and Plotly, and handling missing data with Pandas.</p>
+<p>It is based on:</p>
+<ul>
+<li><a href="https://swcarpentry.github.io/python-novice-gapminder/08-data-frames.html">swcarpentry.github.io/python-novice-gapminder/08-data-frames.html</a></li>
+<li><a href="https://swcarpentry.github.io/python-novice-gapminder/09-plotting.html">swcarpentry.github.io/python-novice-gapminder/09-plotting.html</a></li>
+</ul>
+<h2 id="setup">Setup</h2>
+<ol type="1">
+<li>Make a new notebook for this lesson</li>
+<li>What’s the first thing to do? RENAME IT!</li>
+<li>Name it <code>pynoon_data_3.ipynb</code></li>
+</ol>
+<h2 id="load-data-into-pandas">Load Data into Pandas</h2>
+<p>As we did last lesson, let’s load the Pandas and Plotly libraries,
+and load our AirBnB listings data into Pandas:</p>
+<pre class="code"><code>import pandas as pd
+import plotly.express as px</code></pre>
+<pre class="code"><code>listings_df = pd.read_csv(&#39;https://pynoon.github.io/data/inside_airbnb_listings_nz_2023_09.csv&#39;)
+listings_df</code></pre>
+<p>We can see how big the DataFrame is using <code>.shape</code>:</p>
+<pre class="code"><code>listings_df.shape</code></pre>
+<p>We can also see what columns we have available to work with:</p>
+<pre class="code"><code>listings_df.columns</code></pre>
+<h2 id="grouping-data-in-plotly">Grouping Data in Plotly</h2>
+<p>When analysing data, we often want to compare different groups.</p>
+<p>One simple way is to colour data points by a categorical column when
+plotting. For example, colouring listings by their room type:</p>
+<pre class="code"><code>px.scatter_geo(listings_df, lon=&#39;longitude&#39;, lat=&#39;latitude&#39;, color=&#39;room_type&#39;)</code></pre>
+<p>We can also specify a categorical column as a <code>facet_row</code>
+or <code>facet_col</code> to generate a separate graph for data points
+having each “facet” value.</p>
+<p>In the plot below, note that we:</p>
+<ul>
+<li>Sort the data by the <code>accommodates</code>, so that the facet
+plots are sorted by value.</li>
+<li>Increase the height of the output to better view the large number of
+plots.</li>
+<li>Set <code>histnorm=&#39;percent&#39;</code> so that groups with few data
+points still have a “full size” plot.</li>
+</ul>
+<pre class="code"><code>px.histogram(
+    listings_df.sort_values(by=&#39;accommodates&#39;),
+    x=&#39;price_nzd&#39;,
+    facet_row=&#39;accommodates&#39;,
+    height=2000,
+    histnorm=&#39;percent&#39;,
+)</code></pre>
+<p>It can be useful to compute our own categorical columns, such as to
+compare one category against all others:</p>
+<pre class="code"><code>listings_df[&#39;is_queenstown&#39;] = listings_df[&#39;region_parent_name&#39;] == &#39;Queenstown-Lakes District&#39;
+px.histogram(
+    listings_df,
+    x=&#39;price_nzd&#39;,
+    facet_row=&#39;is_queenstown&#39;,
+    histnorm=&#39;percent&#39;,
+)</code></pre>
+<h2 id="grouping-data-in-pandas">Grouping Data in Pandas</h2>
+<p>We can also use Pandas’ <code>groupby()</code> to split up a
+DataFrame according to a categorical attribute:</p>
+<pre class="code"><code>for accommodates, accommodates_group_df in listings_df.groupby(&#39;accommodates&#39;):
+    print(&#39;Accommodates:&#39;, accommodates)
+    display(accommodates_group_df)</code></pre>
+<p><code>groupby()</code> can also be used to produce a DataFrame of
+aggregate statistics for each group. In the following, see how we:</p>
+<ul>
+<li>Specify the columns from which to create a group for each
+combinations of values (<code>[&#39;accommodates&#39;, &#39;room_type&#39;]</code>)</li>
+<li>Use indexing to select a list of columns to calculate the statistic
+for (<code>[&#39;price_nzd&#39;, &#39;review_scores_rating&#39;]</code>)</li>
+<li>Choose a statistic to calculate: <code>mean()</code>
+<ul>
+<li>You can also compute <code>sum()</code>, <code>std()</code>, and
+more.</li>
+</ul></li>
+</ul>
+<pre class="code"><code>listings_df.groupby([&#39;accommodates&#39;, &#39;room_type&#39;])[[&#39;price_nzd&#39;, &#39;review_scores_rating&#39;]].mean()</code></pre>
+<p>Note that <code>groupby()</code> turns the group columns into an
+<em>index</em>. We can turn it back into a regular column with
+<code>reset_index()</code>:</p>
+<pre class="code"><code>listing_groups_df = listings_df.groupby([&#39;accommodates&#39;, &#39;room_type&#39;])[[&#39;price_nzd&#39;, &#39;review_scores_rating&#39;]].mean().reset_index()
+listing_groups_df</code></pre>
+<p>Such DataFrames produced with <code>groupby()</code> can be very
+useful for producing plots of statistics, like bar charts:</p>
+<pre class="code"><code>px.bar(
+    listing_groups_df,
+    x=&#39;accommodates&#39;,
+    y=&#39;price_nzd&#39;,
+    color=&#39;room_type&#39;,
+    barmode=&#39;group&#39;,
+    title=&#39;Mean Price&#39;,
+)</code></pre>
+<p>We can also export our new DataFrame to a CSV file:</p>
+<pre class="code"><code>listing_groups_df.to_csv(&#39;listing_groups.csv&#39;)</code></pre>
+<h2 id="handling-missing-data-in-pandas">Handling Missing Data in
+Pandas</h2>
+<p>We can also use <code>.count()</code> to count the number of rows in
+each group, but notice that the count for the rating column is less than
+the price column:</p>
+<pre class="code"><code>listings_df.groupby(&#39;accommodates&#39;)[[&#39;price_nzd&#39;, &#39;review_scores_rating&#39;]].count().reset_index()</code></pre>
+<p>This is because there are <code>missing</code> (aka
+<code>null</code>, aka <code>NA</code>) values in the rating column that
+are ignored by <code>count()</code>.</p>
+<p>We can use <code>isna()</code> to get a mask of rows where a value is
+missing:</p>
+<pre class="code"><code>listings_df[&#39;review_scores_rating&#39;].isna()</code></pre>
+<pre class="code"><code>listings_df[listings_df[&#39;review_scores_rating&#39;].isna()]</code></pre>
+<p>We can then invert the mask with <code>~</code> and filter out rows
+with missing values:</p>
+<pre class="code"><code>listings_df[~listings_df[&#39;review_scores_rating&#39;].isna()]</code></pre>
+<p>Alternatively, we can use <code>fillna()</code> to replace missing
+values with a fixed value. For example, we make want to consider
+un-reviewed listings with a mid-point rating:</p>
+<pre class="code"><code>listings_df[&#39;review_scores_rating_filled&#39;] = listings_df[&#39;review_scores_rating&#39;].fillna(2.5)
+listings_df</code></pre>
+<p>Finally, <code>dropna()</code> on a DataFrame can be used to simply
+remove any rows where any column contains a missing value:</p>
+<pre class="code"><code>listings_df.dropna()</code></pre>
+</body>
+</html>

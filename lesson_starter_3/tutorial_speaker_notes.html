@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang xml:lang>
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>PyNoon Starter Lesson 3 - Tutorial</title>
+  <style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+
+ul.task-list[class]{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+font-size: inherit;
+width: 0.8em;
+margin: 0 0.8em 0.2em -1.6em;
+vertical-align: middle;
+}
+.display.math{display: block; text-align: center; margin: 0.5rem auto;}
+</style>
+  <style type="text/css">body {
+font-size: 16px;
+}
+pre.code {
+font-size: 1.4em;
+}
+blockquote {
+font-style: italic;
+}
+.notebook-only {
+display: none;
+}
+</style>
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">PyNoon Starter Lesson 3 - Tutorial</h1>
+</header>
+<p>This tutorial will cover:</p>
+<ul>
+<li>A review of functions</li>
+<li>Lists</li>
+<li>Dictionaries</li>
+</ul>
+<p>This tutorial is based on:</p>
+<ul>
+<li><a href="https://swcarpentry.github.io/python-novice-gapminder/11-lists.html">swcarpentry.github.io/python-novice-gapminder/11-lists.html</a></li>
+</ul>
+<blockquote>
+<p>DEMO-ONLY TUTORIAL BEGINS HERE</p>
+</blockquote>
+<section id="functions" class="notebook-only">
+<h2>Functions</h2>
+<p>We’re going to be using a lot of functions from Python data
+libraries, so lets summarise their key facts:</p>
+<p><strong>Functions are like small Python scripts that we can
+<em>call</em> to perform some operation or return some
+value.</strong></p>
+<p><strong>Functions are <em>called</em> using parentheses, with
+<em>arguments</em> inside the parentheses.</strong></p>
+</section>
+<div class="cell code notebook-only">
+<pre class="code"><code>print(&#39;hello&#39;)</code></pre>
+</div>
+<div class="notebook-only">
+<p>Using a function’s name without parentheses refers to the function
+itself <em>as</em> a value:</p>
+</div>
+<div class="cell code notebook-only">
+<pre class="code"><code>print</code></pre>
+</div>
+<div class="notebook-only">
+<p><strong>Functions attached to values are called
+<em>methods</em></strong></p>
+</div>
+<div class="cell code notebook-only">
+<pre class="code"><code>&#39;hello&#39;.upper()</code></pre>
+</div>
+<div class="notebook-only">
+<p><strong>Some functions take multiple arguments</strong></p>
+</div>
+<div class="cell code notebook-only">
+<pre class="code"><code>round(3.14159, 2)</code></pre>
+</div>
+<div class="notebook-only">
+<p><strong>Functions may have default values for some
+arguments</strong></p>
+<p><code>round()</code> defaults to rounding a number to zero decimal
+places:</p>
+</div>
+<div class="cell code notebook-only">
+<pre class="code"><code>round(3.14159)</code></pre>
+</div>
+<div class="notebook-only">
+<p><strong>Every function returns a value</strong></p>
+<p>Even functions that don’t seem to return a value (like
+<code>print</code>) actually return a special value called
+<code>None</code> (similar to <code>null</code> in SQL or other
+languages):</p>
+</div>
+<div class="cell code notebook-only">
+<pre class="code"><code>returned_value = print(&#39;hello&#39;)</code></pre>
+</div>
+<div class="cell code notebook-only">
+<pre class="code"><code>returned_value</code></pre>
+</div>
+<div class="cell code notebook-only">
+<pre class="code"><code>type(returned_value)</code></pre>
+</div>
+<div class="notebook-only">
+<p><strong>Functions accept named arguments (and some require
+it):</strong></p>
+</div>
+<div class="cell code notebook-only">
+<pre class="code"><code>round(3.14159, ndigits=2)</code></pre>
+</div>
+<div class="notebook-only">
+<p><strong>Use the built-in function help to get help for a
+function</strong></p>
+</div>
+<div class="cell code notebook-only">
+<pre class="code"><code>help(round)</code></pre>
+</div>
+<div class="cell code notebook-only">
+<pre class="code"><code>help(&#39;hello&#39;.upper)</code></pre>
+</div>
+<div class="notebook-only">
+<p><strong>Use <code>dir()</code> and <code>dir(__builtins__)</code> to
+list available functions (and non-function variables)</strong></p>
+</div>
+<div class="cell code notebook-only">
+<pre class="code"><code>dir()</code></pre>
+</div>
+<div class="cell code notebook-only">
+<pre class="code"><code>dir(__builtins__)</code></pre>
+</div>
+<div class="notebook-only">
+<blockquote>
+<p>Don’t worry about the underscored names</p>
+</blockquote>
+<p><strong>Use <code>dir(some_value)</code> to list methods (and
+non-function variables called attributes) of a value</strong></p>
+</div>
+<div class="cell code notebook-only">
+<pre class="code"><code>dir(&#39;hello&#39;)</code></pre>
+</div>
+<div class="notebook-only">
+<ul>
+<li>See <a href="https://docs.python.org/3/library/functions.html">docs.python.org/3/library/functions.html</a>
+for more about functions that are built-in and always available in
+Python.</li>
+<li>A key power of Python is that you can define your own functions as
+Python code to execute when the function is called.</li>
+</ul>
+</div>
+<blockquote>
+<p>FOLLOW-ALONG TUTORIAL BEGINS HERE</p>
+</blockquote>
+<ul>
+<li>Last lesson we looked at different types of values, primarily
+numbers and strings</li>
+<li>This lesson we’ll look at <em>collection</em> types that can store
+multiple values (even other collections)</li>
+<li>Specifically, we’ll look at <em>lists</em> and
+<em>dictionaries</em>, which when used together are sufficient for
+managing data in many programming domains.</li>
+</ul>
+<h2 id="lists">Lists</h2>
+<ul>
+<li>We can use a list to store an <strong>ordered sequence</strong> of
+multiple values</li>
+<li>Lists are created using <em>square bracket</em> syntax:</li>
+</ul>
+<pre class="code"><code>scores = [95, 89, 64, 91]
+print(scores)</code></pre>
+<p>Like strings, we can get the length of a list:</p>
+<pre class="code"><code>len(scores)</code></pre>
+<p>Also similar to strings, we can use positional indexing and slicing
+to get specific elements out of a list:</p>
+<pre class="code"><code>print(scores[0])
+print(scores[-1])
+print(scores[1:2])</code></pre>
+<p>Unlike strings, we can replace the value at a specific index:</p>
+<pre class="code"><code>scores[2] = 99
+print(scores)</code></pre>
+<p>We can append an element to the end of a list with the
+<code>.append()</code> method:</p>
+<pre class="code"><code>scores.append(75)
+print(scores)</code></pre>
+<p>One of the most useful things we can do with lists is to
+<em>loop</em> over a list and execute some code for each elment:</p>
+<pre class="code"><code>for score in scores:
+    print(&#39;Score:&#39;, score)
+    print(&#39;Score percent:&#39;, score / 100)</code></pre>
+<p>Pay careful attention to the colon at the end of the first line, and
+the indented line(s) after</p>
+<h2 id="dictionaries">Dictionaries</h2>
+<ul>
+<li><em>Dictionaries</em> are another common type of collection in
+Python</li>
+<li>Dictionaries contain a number of <em>keys</em> that are each
+associated with some other <em>value</em>.</li>
+<li>We create a dictionary using <em>curly brace</em> syntax:</li>
+</ul>
+<pre class="code"><code>user = {&#39;first_name&#39;: &#39;Bob&#39;, &#39;last_name&#39;: &#39;Smith&#39;}
+print(user)</code></pre>
+<blockquote>
+<p>Dictionary keys are most commonly strings, but many other data types
+can also be used.</p>
+</blockquote>
+<p>Similar to strings and lists, we can use <code>len()</code> to count
+the number of key/value pairs in a dictionary:</p>
+<pre class="code"><code>len(user)</code></pre>
+<p>Instead of indexing values within a dictionary by their positional
+index, we index them by their associated key:</p>
+<pre class="code"><code>user[&#39;first_name&#39;]</code></pre>
+<p>Similar to lists, we can update the value for a given key:</p>
+<pre class="code"><code>user[&#39;first_name&#39;] = &#39;Alice&#39;
+print(user)</code></pre>
+<p>We can also insert new key/value pairs by simply “updating” a key
+that doesn’t already exist in the dictionary:</p>
+<pre class="code"><code>user[&#39;middle_name&#39;] = &#39;Mallory&#39;
+print(user)</code></pre>
+<p>We can also remove an item from the dictionary with the
+<code>del</code> statement:</p>
+<pre class="code"><code>del user[&#39;middle_name&#39;]
+print(user)</code></pre>
+<p>Looping over a dictionary will loop over its keys:</p>
+<pre class="code"><code>for key in user:
+    print(key)</code></pre>
+<p>It is more common to use <code>.items()</code> to loop over each
+key/value pair:</p>
+<pre class="code"><code>for key, value in user.items():
+    print(key, value)</code></pre>
+<blockquote>
+<p>Extra: We can also loop over the keys and values with
+<code>.keys()</code> and <code>.values()</code> respectively. These
+methods return list-like <em>iterables</em> that can be looped over, and
+can also be turned into proper lists by wrapping them with the
+<code>list()</code> function.</p>
+</blockquote>
+<h2 id="reducing-code-duplication-with-loops-and-list-comprehensions">Reducing
+code duplication with loops and list comprehensions</h2>
+<ul>
+<li>Looping over lists can help us reduce code duplication.</li>
+<li>For example, take the following code that transforms several fields
+of a dictionary to lowercase:</li>
+</ul>
+<pre class="code"><code>user[&#39;first_name&#39;] = user[&#39;first_name&#39;].lower()
+user[&#39;last_name&#39;] = user[&#39;last_name&#39;].lower()</code></pre>
+<ul>
+<li>We can loop over a list of keys, meaning we only have to define the
+transformation once.</li>
+<li>If we ever need to change the transformation, we only need to change
+it in once place.</li>
+</ul>
+<pre class="code"><code>text_keys = [&#39;first_name&#39;, &#39;last_name&#39;]
+
+for text_key in text_keys:
+    user[text_key] = user[text_key].str.lower()</code></pre>
+<ul>
+<li>It is quite common to want to transform one list of values into
+another list of values.</li>
+<li>One way you might do that is as follows:</li>
+</ul>
+<pre class="code"><code>names = [&#39;Alice&#39;, &#39;Bob&#39;, &#39;Mallory&#39;]
+
+name_lengths = []
+for name in names:
+    name_lengths.append(len(name))
+name_lengths</code></pre>
+<p>Python’s <em>list comprehensions</em> provide a more
+<strong>succinct</strong> and <strong>idiomatic</strong> way to do
+this:</p>
+<pre class="code"><code>names = [&#39;Alice&#39;, &#39;Bob&#39;, &#39;Mallory&#39;]
+
+name_lengths = [len(name) for name in names]
+name_lengths</code></pre>
+<p>List comprehensions are particularly useful when we don’t even want
+to keep the list itself in a variable, but just to use it as an
+intermediate value in some computation:</p>
+<pre class="code"><code>names = [&#39;Alice&#39;, &#39;Bob&#39;, &#39;Mallory&#39;]
+
+max_name_length = max([len(name) for name in names])
+max_name_length</code></pre>
+<p>List comprehensions can also be used to <em>filter out</em> items
+from a list:</p>
+<pre class="code"><code>longest_names = [
+    name for name in names
+    if len(name) == max_name_length
+]
+longest_names</code></pre>
+</body>
+</html>

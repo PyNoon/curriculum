@@ -1,5 +1,5 @@
 ---
-title: PyNoon Week X - Exercise
+title: PyNoon X Lesson X - Exercise
 jupyter:
   nbformat: 4
   nbformat_minor: 4
@@ -19,6 +19,6 @@ jupyter:
      version: "3.8"
 ---
 
-# PyNoon Week X - Exercise
+# PyNoon X: Lesson X - Exercise
 
 ## 1. ...

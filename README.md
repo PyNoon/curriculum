@@ -1,6 +1,6 @@
 # PyNoon Curriculum
 
-Weekly slides and tutorials for PyNoon.
+Slides and tutorials for PyNoon.
 
 ## Tips for instructors
 
@@ -31,69 +31,86 @@ Git repository to exclude the outputs of notebook cells when running
 2. Run `nbstripout --install` in this directory (installs hooks into
    `.git`).
 
-## Week 1
+## Introduction
 
-* [Slides](https://pynoon.github.io/curriculum/week_1/slides.html)
-* [Tutorial Speaker Notes](https://pynoon.github.io/curriculum/week_1/tutorial_speaker_notes.html)
-* [Tutorial Notebook](https://colab.research.google.com/github/pynoon/curriculum/blob/main/week_1/week_1_tutorial.ipynb)
-* [Exercise Notebook](https://colab.research.google.com/github/pynoon/curriculum/blob/main/week_1/week_1_exercise.ipynb)
+[Slides to present at the start of each course]({base_url}/introduction/pynoon_introduction.pdf)
 
-## Week 10
+## PyNoon Starter
 
-* [Slides](https://pynoon.github.io/curriculum/week_10/slides.html)
+### Lesson Starter 1
 
-## Week 2
+* [Slides](https://pynoon.github.io/curriculum/lesson_starter_1/slides.html)
+* [Tutorial Speaker Notes](https://pynoon.github.io/curriculum/lesson_starter_1/tutorial_speaker_notes.html)
+* [Tutorial Notebook](https://colab.research.google.com/github/pynoon/curriculum/blob/main/lesson_starter_1/lesson_starter_1_tutorial.ipynb)
+* [Exercise Notebook](https://colab.research.google.com/github/pynoon/curriculum/blob/main/lesson_starter_1/lesson_starter_1_exercise.ipynb)
 
-* [Slides](https://pynoon.github.io/curriculum/week_2/slides.html)
-* [Tutorial Speaker Notes](https://pynoon.github.io/curriculum/week_2/tutorial_speaker_notes.html)
-* [Tutorial Notebook](https://colab.research.google.com/github/pynoon/curriculum/blob/main/week_2/week_2_tutorial.ipynb)
-* [Exercise Notebook](https://colab.research.google.com/github/pynoon/curriculum/blob/main/week_2/week_2_exercise.ipynb)
+### Lesson Starter 2
 
-## Week 3
+* [Slides](https://pynoon.github.io/curriculum/lesson_starter_2/slides.html)
+* [Tutorial Speaker Notes](https://pynoon.github.io/curriculum/lesson_starter_2/tutorial_speaker_notes.html)
+* [Tutorial Notebook](https://colab.research.google.com/github/pynoon/curriculum/blob/main/lesson_starter_2/lesson_starter_2_tutorial.ipynb)
+* [Exercise Notebook](https://colab.research.google.com/github/pynoon/curriculum/blob/main/lesson_starter_2/lesson_starter_2_exercise.ipynb)
 
-* [Slides](https://pynoon.github.io/curriculum/week_3/slides.html)
-* [Tutorial Speaker Notes](https://pynoon.github.io/curriculum/week_3/tutorial_speaker_notes.html)
-* [Tutorial Notebook](https://colab.research.google.com/github/pynoon/curriculum/blob/main/week_3/week_3_tutorial.ipynb)
-* [Exercise Notebook](https://colab.research.google.com/github/pynoon/curriculum/blob/main/week_3/week_3_exercise.ipynb)
+### Lesson Starter 3
 
-## Week 4
+* [Slides](https://pynoon.github.io/curriculum/lesson_starter_3/slides.html)
+* [Tutorial Speaker Notes](https://pynoon.github.io/curriculum/lesson_starter_3/tutorial_speaker_notes.html)
+* [Tutorial Notebook](https://colab.research.google.com/github/pynoon/curriculum/blob/main/lesson_starter_3/lesson_starter_3_tutorial.ipynb)
+* [Exercise Notebook](https://colab.research.google.com/github/pynoon/curriculum/blob/main/lesson_starter_3/lesson_starter_3_exercise.ipynb)
 
-* [Slides](https://pynoon.github.io/curriculum/week_4/slides.html)
-* [Tutorial Speaker Notes](https://pynoon.github.io/curriculum/week_4/tutorial_speaker_notes.html)
-* [Tutorial Notebook](https://colab.research.google.com/github/pynoon/curriculum/blob/main/week_4/week_4_tutorial.ipynb)
-* [Exercise Notebook](https://colab.research.google.com/github/pynoon/curriculum/blob/main/week_4/week_4_exercise.ipynb)
+## PyNoon Data
 
-## Week 5
+### Lesson Data 1
 
-* [Slides](https://pynoon.github.io/curriculum/week_5/slides.html)
-* [Tutorial Speaker Notes](https://pynoon.github.io/curriculum/week_5/tutorial_speaker_notes.html)
-* [Tutorial Notebook](https://colab.research.google.com/github/pynoon/curriculum/blob/main/week_5/week_5_tutorial.ipynb)
-* [Exercise Notebook](https://colab.research.google.com/github/pynoon/curriculum/blob/main/week_5/week_5_exercise.ipynb)
+* [Slides](https://pynoon.github.io/curriculum/lesson_data_1/slides.html)
+* [Tutorial Speaker Notes](https://pynoon.github.io/curriculum/lesson_data_1/tutorial_speaker_notes.html)
+* [Tutorial Notebook](https://colab.research.google.com/github/pynoon/curriculum/blob/main/lesson_data_1/lesson_data_1_tutorial.ipynb)
+* [Exercise Notebook](https://colab.research.google.com/github/pynoon/curriculum/blob/main/lesson_data_1/lesson_data_1_exercise.ipynb)
 
-## Week 6
+### Lesson Data 2
 
-* [Slides](https://pynoon.github.io/curriculum/week_6/slides.html)
-* [Tutorial Speaker Notes](https://pynoon.github.io/curriculum/week_6/tutorial_speaker_notes.html)
-* [Tutorial Notebook](https://colab.research.google.com/github/pynoon/curriculum/blob/main/week_6/week_6_tutorial.ipynb)
-* [Exercise Notebook](https://colab.research.google.com/github/pynoon/curriculum/blob/main/week_6/week_6_exercise.ipynb)
+* [Slides](https://pynoon.github.io/curriculum/lesson_data_2/slides.html)
+* [Tutorial Speaker Notes](https://pynoon.github.io/curriculum/lesson_data_2/tutorial_speaker_notes.html)
+* [Tutorial Notebook](https://colab.research.google.com/github/pynoon/curriculum/blob/main/lesson_data_2/lesson_data_2_tutorial.ipynb)
+* [Exercise Notebook](https://colab.research.google.com/github/pynoon/curriculum/blob/main/lesson_data_2/lesson_data_2_exercise.ipynb)
 
-## Week 7
+### Lesson Data 3
 
-* [Slides](https://pynoon.github.io/curriculum/week_7/slides.html)
-* [Tutorial Speaker Notes](https://pynoon.github.io/curriculum/week_7/tutorial_speaker_notes.html)
-* [Tutorial Notebook](https://colab.research.google.com/github/pynoon/curriculum/blob/main/week_7/week_7_tutorial.ipynb)
-* [Exercise Notebook](https://colab.research.google.com/github/pynoon/curriculum/blob/main/week_7/week_7_exercise.ipynb)
+* [Slides](https://pynoon.github.io/curriculum/lesson_data_3/slides.html)
+* [Tutorial Speaker Notes](https://pynoon.github.io/curriculum/lesson_data_3/tutorial_speaker_notes.html)
+* [Tutorial Notebook](https://colab.research.google.com/github/pynoon/curriculum/blob/main/lesson_data_3/lesson_data_3_tutorial.ipynb)
+* [Exercise Notebook](https://colab.research.google.com/github/pynoon/curriculum/blob/main/lesson_data_3/lesson_data_3_exercise.ipynb)
 
-## Week 8
+### Lesson Data 4
 
-* [Slides](https://pynoon.github.io/curriculum/week_8/slides.html)
-* [Tutorial Speaker Notes](https://pynoon.github.io/curriculum/week_8/tutorial_speaker_notes.html)
-* [Tutorial Notebook](https://colab.research.google.com/github/pynoon/curriculum/blob/main/week_8/week_8_tutorial.ipynb)
-* [Exercise Notebook](https://colab.research.google.com/github/pynoon/curriculum/blob/main/week_8/week_8_exercise.ipynb)
+* [Slides](https://pynoon.github.io/curriculum/lesson_data_4/slides.html)
+* [Tutorial Speaker Notes](https://pynoon.github.io/curriculum/lesson_data_4/tutorial_speaker_notes.html)
+* [Tutorial Notebook](https://colab.research.google.com/github/pynoon/curriculum/blob/main/lesson_data_4/lesson_data_4_tutorial.ipynb)
+* [Exercise Notebook](https://colab.research.google.com/github/pynoon/curriculum/blob/main/lesson_data_4/lesson_data_4_exercise.ipynb)
 
-## Week 9
+## PyNoon Plus
 
-* [Slides](https://pynoon.github.io/curriculum/week_9/slides.html)
-* [Tutorial Speaker Notes](https://pynoon.github.io/curriculum/week_9/tutorial_speaker_notes.html)
-* [Tutorial Notebook](https://colab.research.google.com/github/pynoon/curriculum/blob/main/week_9/week_9_tutorial.ipynb)
-* [Exercise Notebook](https://colab.research.google.com/github/pynoon/curriculum/blob/main/week_9/week_9_exercise.ipynb)
+### Lesson Plus 1
+
+* [Slides](https://pynoon.github.io/curriculum/lesson_plus_1/slides.html)
+* [Tutorial Speaker Notes](https://pynoon.github.io/curriculum/lesson_plus_1/tutorial_speaker_notes.html)
+* [Tutorial Notebook](https://colab.research.google.com/github/pynoon/curriculum/blob/main/lesson_plus_1/lesson_plus_1_tutorial.ipynb)
+* [Exercise Notebook](https://colab.research.google.com/github/pynoon/curriculum/blob/main/lesson_plus_1/lesson_plus_1_exercise.ipynb)
+
+### Lesson Plus 2
+
+* [Slides](https://pynoon.github.io/curriculum/lesson_plus_2/slides.html)
+* [Tutorial Speaker Notes](https://pynoon.github.io/curriculum/lesson_plus_2/tutorial_speaker_notes.html)
+* [Tutorial Notebook](https://colab.research.google.com/github/pynoon/curriculum/blob/main/lesson_plus_2/lesson_plus_2_tutorial.ipynb)
+* [Exercise Notebook](https://colab.research.google.com/github/pynoon/curriculum/blob/main/lesson_plus_2/lesson_plus_2_exercise.ipynb)
+
+### Lesson Plus 3
+
+* [Slides](https://pynoon.github.io/curriculum/lesson_plus_3/slides.html)
+* [Tutorial Speaker Notes](https://pynoon.github.io/curriculum/lesson_plus_3/tutorial_speaker_notes.html)
+* [Tutorial Notebook](https://colab.research.google.com/github/pynoon/curriculum/blob/main/lesson_plus_3/lesson_plus_3_tutorial.ipynb)
+* [Exercise Notebook](https://colab.research.google.com/github/pynoon/curriculum/blob/main/lesson_plus_3/lesson_plus_3_exercise.ipynb)
+
+### Lesson Plus 4
+
+* [Slides](https://pynoon.github.io/curriculum/lesson_plus_4/slides.html)

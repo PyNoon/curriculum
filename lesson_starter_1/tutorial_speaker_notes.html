@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang xml:lang>
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>PyNoon Starter Lesson 1 - Tutorial</title>
+  <style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+
+ul.task-list[class]{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+font-size: inherit;
+width: 0.8em;
+margin: 0 0.8em 0.2em -1.6em;
+vertical-align: middle;
+}
+.display.math{display: block; text-align: center; margin: 0.5rem auto;}
+</style>
+  <style type="text/css">body {
+font-size: 16px;
+}
+pre.code {
+font-size: 1.4em;
+}
+blockquote {
+font-style: italic;
+}
+.notebook-only {
+display: none;
+}
+</style>
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">PyNoon Starter Lesson 1 - Tutorial</h1>
+</header>
+<h1 id="intro-to-python-coding">Intro to Python Coding</h1>
+<p>The following tutorial is an introduction to writing and running
+Python code in the <a href="https://futurecoder.io/">futurecoder.io</a>
+and <a href="https://colab.google">Google Colab/Jupyter</a>
+environments, loosely based on <a href="https://swcarpentry.github.io/python-novice-gapminder/01-run-quit.html">swcarpentry.github.io/python-novice-gapminder/01-run-quit.html</a>,
+(but more streamlined - not covering topics like shortcut keys).</p>
+<p>In this tutorial, we will look at three ways of running Python code
+inside JupyterLite:</p>
+<ul>
+<li>The Python console</li>
+<li>Python scripts</li>
+<li>Python notebooks</li>
+</ul>
+<h2 id="the-python-console">The Python Console</h2>
+<ul>
+<li>The Python console is great for running short snippets of Python
+code</li>
+<li>Use it to experiment and play with Python to learn more about how it
+works</li>
+<li>It’s also useful as a general purpose calculator</li>
+</ul>
+<p><strong>Open a Python Console in Futurecoder</strong>:</p>
+<ul>
+<li>Visit <a href="https://futurecoder.io/">futurecoder.io</a></li>
+<li>Click the link that says “Just code”</li>
+<li>You will see the Console on the right-side of the screen, indicated
+by the <code>&gt;&gt;&gt;</code> (three angle brackets) called the
+<em>prompt</em>.</li>
+<li>Click anywhere in the Console to be able to type into it.</li>
+</ul>
+<p>Enter the following code, then press the <code>enter</code> key to
+run it:</p>
+<pre class="code"><code>print(&#39;Hello world&#39;)</code></pre>
+<p>Congratulations! You’ve just run your first Python program!</p>
+<blockquote>
+<p>Note: Casing is important in Python, so make sure you write
+<code>print</code> in lower-case.</p>
+</blockquote>
+<p>We can also use Python to perform maths; try running the
+following:</p>
+<pre class="code"><code>1 + 1</code></pre>
+<pre class="code"><code>5 - 3</code></pre>
+<blockquote>
+<p>Note: The spaces around mathematical operators are optional, but they
+are important to make the code more readable!</p>
+</blockquote>
+<p><strong>It is important to remember that any work you do in the
+console is lost when you close the console (or refresh the futurecoder
+webpage).</strong></p>
+<blockquote>
+<p>Tip: You can press the “up arrow” key in the Console to bring up
+lines you’ve previously run (saving you from typing them again).</p>
+</blockquote>
+<h2 id="python-scripts">Python scripts</h2>
+<p>Python scripts are ideal for creating re-usable programs.</p>
+<ul>
+<li>You can write a Python script in the left-hand side of the screen of
+the futurecoder interface.</li>
+<li>Click on the left-hand side of the screen to be able to type your
+script into it.</li>
+<li>Write the following code in your script:</li>
+</ul>
+<pre class="code"><code>print(&#39;Hello world&#39;)</code></pre>
+<ul>
+<li>Press the <code>Run</code> button to run your script</li>
+<li>You should see <code>Hello world</code> printed again in the
+console.</li>
+<li>Now try adding a new line to your script with the following
+code:</li>
+</ul>
+<pre class="code"><code>1 + 1</code></pre>
+<ul>
+<li>Now run it again.</li>
+<li>When you run your script, you won’t see the result of
+<code>1 + 1</code>.</li>
+<li>This is because <strong>Python scripts only output what we
+explicitly tell Python to print!</strong></li>
+<li>To print the result of <code>1 + 1</code>, change the line in your
+script to be:</li>
+</ul>
+<pre class="code"><code>print(1 + 1)</code></pre>
+<ul>
+<li>Run the script again and you should see the following output:</li>
+</ul>
+<pre><code>Hello world
+2</code></pre>
+<ul>
+<li>If you refresh or close and re-open futurecoder, the last script you
+wrote will be saved.</li>
+<li>To save your scripts for future use, copy and save them save them
+somewhere else.</li>
+</ul>
+<blockquote>
+<p>Running python scripts locally: You can use a <em>plain text
+editor</em> (e.g. Notepad, Notepad++, Visual Studio Code) to create a
+Python script file that ends in a <code>.py</code> extension. If you
+have Python installed on your computer, you can run your script from the
+Terminal/Command Prompt with <code>python my_script.py</code> (assuming
+you have used <code>cd</code> commands to move your terminal session
+into the same folder as <code>my_script.py</code>). It is is important
+to remember to save changes to your script files before you re-run
+them!</p>
+</blockquote>
+<h2 id="python-notebooks">Python Notebooks</h2>
+<ul>
+<li>You may have heard of Jupyter notebooks, as they are a very popular
+platform for Python coding, particularly for data analysis and
+visualisation.</li>
+<li>We will create Jupyter notebooks in Google Colab, which is a service
+that will allow us to run Jupyter notebooks without installing Python or
+Jupyter on your own computer.</li>
+<li>Note: Because your notebooks will run on Google’s servers, you
+shouldn’t upload any company data or code you are not authorised to use
+outside of company-approved systems.</li>
+<li>Jupyter notebooks can also be run on your own desktop or server with
+a piece of software called JupyterLab - a popular format for writing
+Python code that we will be using in this course.</li>
+<li>Python notebooks are:
+<ul>
+<li>Interactive like the Console</li>
+<li>Re-usable like scripts</li>
+<li>Support rich formatting of notes and outputs</li>
+</ul></li>
+</ul>
+<p><strong>To create a new notebook in Google Colab:</strong></p>
+<ul>
+<li>Open <a href="https://colab.google">colab.google</a> in your web
+browser</li>
+<li>Click the <code>New Notebook</code> link</li>
+<li>Click on the title at the top of the page, and rename it
+<code>pynoon_starter_1.ipynb</code> - helpful names are important!</li>
+</ul>
+<p>In the “cell” prompt at the at the top of your notebook, enter the
+following code, and run it with <code>shift + enter</code> (like at the
+Console):</p>
+<pre class="code"><code>print(&#39;Hello world&#39;)</code></pre>
+<p>The result is printed and a new “cell” appears below.</p>
+<p>Run this code in the new cell:</p>
+<pre class="code"><code>1.5 + 10</code></pre>
+<p>Each time you press <code>shift+enter</code>, a new cell is
+created</p>
+<p><strong>You can edit and re-run cells;</strong> update your previous
+cell to have the following content, then re-run it:</p>
+<pre class="code"><code>(1.5 * 10) / (5 - 2)</code></pre>
+<blockquote>
+<p>Note that we can use <code>*</code> for multiplication,
+<code>/</code> for
+division<code>, and group operations with parentheses</code>()`.</p>
+</blockquote>
+<p><strong>You can add non-code cells for formatted notes:</strong></p>
+<ul>
+<li>Click the <code>+ Text</code> button at the top of the notebook</li>
+<li>Add the following content:</li>
+</ul>
+<pre><code>My First Notebook</code></pre>
+<ul>
+<li>Press <code>shift+enter</code>, and see the text displayed.</li>
+</ul>
+<p><strong>You can add formatting in Markdown cells:</strong></p>
+<ul>
+<li>Double-click <code>My First Notebook</code> to edit the cell</li>
+<li>Add a <code>#</code> at the beginning of the line:</li>
+</ul>
+<pre><code># My First Notebook</code></pre>
+<ul>
+<li>Press shift-enter and see it formatted as a heading</li>
+</ul>
+<p><strong>Markdown code is similar to shortcuts supported by software
+like Slack and Teams</strong></p>
+<p>For example, add a bullet list with:</p>
+<pre><code>* item 1
+* item 2
+* item 3</code></pre>
+<ul>
+<li>To see what else is possible with Markdown, see: <a href="https://www.markdownguide.org/">www.markdownguide.org/</a></li>
+</ul>
+<p><strong>You can re-order notebook cells</strong></p>
+<ul>
+<li>Click on a cell you want to move up or down in the notebook</li>
+<li>Click on the up/down arrows that appear in the top-right of the
+cell.</li>
+</ul>
+<p><strong>Notebooks also support rich output from Python
+code</strong></p>
+<ul>
+<li>Run a cell with the following code (you don’t need to understand the
+code yet):</li>
+</ul>
+<pre class="code"><code>%pip install plotly nbformat pandas
+import plotly.express as px
+px.bar(x=[&#39;a&#39;, &#39;b&#39;, &#39;c&#39;], y=[1, 2, 3])</code></pre>
+<p><strong>You should see an interactive plot</strong></p>
+<ul>
+<li>Click and drag to zoom to a selection</li>
+<li>Double click to reset zoom</li>
+<li>Find the camera button in the plot header to download the plot as an
+image</li>
+</ul>
+<p>Try changing <code>y=[1, 2, 3]</code> in your cell to use different
+numbers, then re-execute the cell.</p>
+<ul>
+<li>Notebooks are really good for presenting the results of your code -
+they are very popular in data science and just for data exploration</li>
+<li>We’ll primarily use notebooks in this course so that you can save
+the commands you run and add notes</li>
+</ul>
+<blockquote>
+<p>Note: Your notebooks will all be saved to your Google Drive account,
+you can find previous notebooks from the
+<code>File -&gt; Open notebook</code> menu.</p>
+</blockquote>
+</body>
+</html>

@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang xml:lang>
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>PyNoon Plus Lesson 1 - Tutorial</title>
+  <style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+
+ul.task-list[class]{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+font-size: inherit;
+width: 0.8em;
+margin: 0 0.8em 0.2em -1.6em;
+vertical-align: middle;
+}
+.display.math{display: block; text-align: center; margin: 0.5rem auto;}
+</style>
+  <style type="text/css">body {
+font-size: 16px;
+}
+pre.code {
+font-size: 1.4em;
+}
+blockquote {
+font-style: italic;
+}
+.notebook-only {
+display: none;
+}
+</style>
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">PyNoon Plus Lesson 1 - Tutorial</h1>
+</header>
+<p>This tutorial will cover use of AI models, loading data from text
+files, and constructing DataFrames.</p>
+<h2 id="setup">Setup</h2>
+<ol type="1">
+<li>Make a new notebook for this lesson</li>
+<li>What’s the first thing to do? RENAME IT!</li>
+<li>Name it <code>pynoon_plus_1.ipynb</code></li>
+</ol>
+<h2 id="using-ai-models-from-python">Using AI models from Python</h2>
+<ul>
+<li><a href="https://huggingface.co/">huggingface.co</a> has LOTS of AI
+<em>models</em> available for different tasks that we can download and
+use.
+<ul>
+<li>Many are free to use, even for commercial purposes.</li>
+</ul></li>
+<li>Let’s use an AI model to assign a label to a string of text!</li>
+<li>Specifically, we’ll use a zero-shot classification model that picks
+which of a provided list of labels best fits a text snippet we provide.
+<ul>
+<li>Zero-shot means we don’t need to provide examples of text snippets
+for our labels</li>
+</ul></li>
+</ul>
+<blockquote>
+<p>Normally we’d have to install <code>transformers</code> and its
+dependency <code>torch</code> using <code>pip</code>, but Colab already
+has these installed.</p>
+</blockquote>
+<ul>
+<li>Downloading and preparing the classifier is very
+straightforward.</li>
+<li>The model will be downloaded to the Colab instance running on
+Google’s servers - not your computer.</li>
+</ul>
+<pre class="code"><code>from transformers import pipeline
+
+classifier = pipeline(&#39;zero-shot-classification&#39;, model=&#39;facebook/bart-large-mnli&#39;)</code></pre>
+<ul>
+<li>Applying the classifier to a snippet of text is similarly easy:</li>
+</ul>
+<pre class="code"><code>classifier(
+    &#39;one day I will see the world&#39;,
+    candidate_labels=[&#39;travel&#39;, &#39;cooking&#39;, &#39;technology&#39;],
+)</code></pre>
+<ul>
+<li>The output is given as a dictionary, containing a list of labels
+ordered from most likely to least likely, as well as a list of
+<em>scores</em> for those labels, indicating the model’s confidence in
+assigning each label to the text.</li>
+<li>We can see that the model thinks that <code>travel</code> is the
+best fit, which seems reasonable.
+<ul>
+<li>Though AI models won’t always give reasonable responses!</li>
+</ul></li>
+<li>Let’s create a function that we can use to call the classifier with
+a single argument - the text to classify:</li>
+</ul>
+<pre class="code"><code>def classify_text(text_to_classify):
+    result = classifier(
+        text_to_classify,
+        candidate_labels=[&#39;travel&#39;, &#39;cooking&#39;, &#39;dancing&#39;],
+    )
+    return result[&#39;labels&#39;][0]
+
+classify_text(&#39;one day I will see the world&#39;)</code></pre>
+<h2 id="processing-a-text-file-to-produce-a-dataframe">Processing a text
+file to produce a DataFrame</h2>
+<ul>
+<li>Now let’s classify a text file of blog post titles to produce a
+DataFrame of rows containing each title and label</li>
+<li>Download <code>titles.txt</code> from: <a href="https://pynoon.github.io/curriculum/lesson_plus_1/titles.txt">pynoon.github.io/curriculum/lesson_plus_1/titles.txt</a></li>
+<li>Click the folder icon on the left side of the Colab interface, then
+use the upload button to upload <code>titles.txt</code></li>
+<li><strong>ALTERNATIVELY:</strong>
+<ul>
+<li><p>Click the folder icon on the left side of the Colab interface,
+then right-click and select <code>New file</code></p></li>
+<li><p>Right-click and select <code>Rename file</code> to name it
+<code>titles.txt</code></p></li>
+<li><p>Double-click the file to open it, and enter the following
+content:</p>
+<pre><code>My weekend in Queenstown
+When to plant tomatoes
+Recommendations for 2024&#39;s best TVs
+The fastest ever cookie recipe</code></pre></li>
+<li><p><code>Ctrl-s</code> to save the file.</p></li>
+</ul></li>
+<li>Now, we can use <code>open()</code> to load the file</li>
+<li><code>open()</code> should be used with a <code>with</code>
+statement so that the file is automatically closed when we’re finished
+with it:</li>
+</ul>
+<pre class="code"><code>with open(&#39;titles.txt&#39;) as titles_file:
+    titles = titles_file.readlines()</code></pre>
+<p><code>.readlines()</code> has provided us with a list of strings
+representing each line in the file:</p>
+<pre class="code"><code>titles</code></pre>
+<p>We can use a list comprehension to transform each value in a
+list:</p>
+<pre class="code"><code>[classify_text(title) for title in titles]</code></pre>
+<p>We can use a list comprehension to construct a list of dictionaries,
+where each dictionary contains the title and its label:</p>
+<pre class="code"><code>title_details = [
+    {
+        &#39;title&#39;: title,
+        &#39;label&#39;: classify_text(title),
+    }
+    for title in titles
+]
+title_details</code></pre>
+<ul>
+<li><code>pd.DataFrame</code> can be used to construct a DataFrame from
+a list of dictionaries like <code>title_details</code>.</li>
+<li>Each dictionary should represent the values for each column in a
+given row.</li>
+</ul>
+<pre class="code"><code>import pandas as pd
+
+title_df = pd.DataFrame(title_details)
+title_df</code></pre>
+<ul>
+<li>Processing a text file line-by-line to construct a DataFrame like
+this is a common pattern that is useful in many situations.</li>
+</ul>
+</body>
+</html>

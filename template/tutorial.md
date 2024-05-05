@@ -1,5 +1,5 @@
 ---
-title: PyNoon Week X - Tutorial
+title: PyNoon X Lesson X - Tutorial
 jupyter:
   nbformat: 4
   nbformat_minor: 4

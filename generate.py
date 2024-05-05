@@ -8,19 +8,10 @@ colab_url = 'https://colab.research.google.com/github/pynoon/curriculum/blob/mai
 curriculum_dir = Path(__file__).parent
 
 def main():
-    week_dirs = sorted([
-        child for child in curriculum_dir.iterdir()
-        if (
-                child.is_dir()
-                and child.name not in ['template', 'revealjs']
-                and not child.name.startswith('.')
-        )
-    ])
-
     index_markdown = '''
 # PyNoon Curriculum
 
-Weekly slides and tutorials for PyNoon.
+Slides and tutorials for PyNoon.
 
 ## Tips for instructors
 
@@ -50,63 +41,80 @@ Git repository to exclude the outputs of notebook cells when running
 1. `python3 -m pip install nbstripout nbconvert`
 2. Run `nbstripout --install` in this directory (installs hooks into
    `.git`).
+
+## Introduction
+
+[Slides to present at the start of each course]({base_url}/introduction/pynoon_introduction.pdf)
 '''
 
-    for week_dir in week_dirs:
-        week_links = []
-        notebook_paths = []
-
-        if (week_dir / 'slides.md').exists():
-            subprocess.run([
-                'pandoc',
-                '-s', '-t', 'revealjs',
-                '--template', str(curriculum_dir / 'revealjs' / 'pandoc.html'),
-                '-o', str(week_dir / 'slides.html'),
-                str(week_dir / 'slides.md'),
-                '-V', 'revealjs-url=../revealjs',
-            ], check=True)
-            week_links.append(f'[Slides]({base_url}/{week_dir.name}/slides.html)')
-
-        if (week_dir / 'tutorial.md').exists():
-            subprocess.run([
-                'pandoc',
-                '-s', '--embed-resources',
-                '--css', str(curriculum_dir / 'revealjs' / 'tutorial.css'),
-                '-o', str(week_dir / 'tutorial_speaker_notes.html'),
-                str(week_dir / 'tutorial.md'),
-            ], check=True)
-            week_links.append(f'[Tutorial Speaker Notes]({base_url}/{week_dir.name}/tutorial_speaker_notes.html)')
-
-            tutorial_notebook_path = str(week_dir / f'{week_dir.name}_tutorial.ipynb')
-            subprocess.run([
-                'pandoc', '-s',
-                '-o', tutorial_notebook_path,
-                str(week_dir / 'tutorial.md'),
-            ], check=True)
-            week_links.append(f'[Tutorial Notebook]({colab_url}/{week_dir.name}/{week_dir.name}_tutorial.ipynb)')
-            notebook_paths.append(tutorial_notebook_path)
-
-        if (week_dir / 'exercise.md').exists():
-            exercise_notebook_path = str(week_dir / f'{week_dir.name}_exercise.ipynb')
-            subprocess.run([
-                'pandoc', '-s',
-                '-o', exercise_notebook_path,
-                str(week_dir / 'exercise.md'),
-            ], check=True)
-            week_links.append(f'[Exercise Notebook]({colab_url}/{week_dir.name}/{week_dir.name}_exercise.ipynb)')
-            notebook_paths.append(exercise_notebook_path)
-
-        # Quick fix for `"execution_count": null` that JupyterLite doesn't like.
-        for notebook_path in notebook_paths:
-            subprocess.run([
-                f'''jq '.cells[] |= if has("execution_count") then .execution_count = 0 else . end' {notebook_path} > {notebook_path}.tmp && mv {notebook_path}.tmp {notebook_path}''',
-            ], check=True, shell=True)
-
-        week_link_bullets = '\n'.join([f'* {week_link}' for week_link in week_links])
+    for course in ['starter', 'data', 'plus']:
         index_markdown += f'''
-## {week_dir.name.capitalize().replace('_', ' ')}
+## PyNoon {course.capitalize()}
+'''
+        lesson_dirs = sorted([
+            child for child in curriculum_dir.iterdir()
+            if (
+                    child.is_dir()
+                    and child.name.startswith(f'lesson_{course}_')
+                    and not child.name.startswith('.')
+            )
+        ])
 
-{week_link_bullets}
+        for lesson_dir in lesson_dirs:
+            lesson_links = []
+            notebook_paths = []
+
+            if (lesson_dir / 'slides.md').exists():
+                subprocess.run([
+                    'pandoc',
+                    '-s', '-t', 'revealjs',
+                    '--template', str(curriculum_dir / 'revealjs' / 'pandoc.html'),
+                    '-o', str(lesson_dir / 'slides.html'),
+                    str(lesson_dir / 'slides.md'),
+                    '-V', 'revealjs-url=../revealjs',
+                ], check=True)
+                lesson_links.append(f'[Slides]({base_url}/{lesson_dir.name}/slides.html)')
+
+            if (lesson_dir / 'tutorial.md').exists():
+                subprocess.run([
+                    'pandoc',
+                    '-s', '--embed-resources',
+                    '--css', str(curriculum_dir / 'revealjs' / 'tutorial.css'),
+                    '-o', str(lesson_dir / 'tutorial_speaker_notes.html'),
+                    str(lesson_dir / 'tutorial.md'),
+                ], check=True)
+                lesson_links.append(f'[Tutorial Speaker Notes]({base_url}/{lesson_dir.name}/tutorial_speaker_notes.html)')
+
+                tutorial_notebook_path = str(lesson_dir / f'{lesson_dir.name}_tutorial.ipynb')
+                subprocess.run([
+                    'pandoc', '-s',
+                    '-o', tutorial_notebook_path,
+                    str(lesson_dir / 'tutorial.md'),
+                ], check=True)
+                lesson_links.append(f'[Tutorial Notebook]({colab_url}/{lesson_dir.name}/{lesson_dir.name}_tutorial.ipynb)')
+                notebook_paths.append(tutorial_notebook_path)
+
+            if (lesson_dir / 'exercise.md').exists():
+                exercise_notebook_path = str(lesson_dir / f'{lesson_dir.name}_exercise.ipynb')
+                subprocess.run([
+                    'pandoc', '-s',
+                    '-o', exercise_notebook_path,
+                    str(lesson_dir / 'exercise.md'),
+                ], check=True)
+                lesson_links.append(f'[Exercise Notebook]({colab_url}/{lesson_dir.name}/{lesson_dir.name}_exercise.ipynb)')
+                notebook_paths.append(exercise_notebook_path)
+
+            # Quick fix for `"execution_count": null` that JupyterLite doesn't like.
+            for notebook_path in notebook_paths:
+                subprocess.run([
+                    f'''jq '.cells[] |= if has("execution_count") then .execution_count = 0 else . end' {notebook_path} > {notebook_path}.tmp && mv {notebook_path}.tmp {notebook_path}''',
+                ], check=True, shell=True)
+
+            lesson_link_bullets = '\n'.join([f'* {lesson_link}' for lesson_link in lesson_links])
+            index_markdown += f'''
+### {lesson_dir.name.replace('_', ' ').title()}
+
+{lesson_link_bullets}
 '''
 
     with Path(curriculum_dir / 'README.md').open('w') as readme_file:

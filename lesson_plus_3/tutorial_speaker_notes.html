@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang xml:lang>
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>PyNoon Plus Lesson 2 - Tutorial</title>
+  <style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+
+ul.task-list[class]{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+font-size: inherit;
+width: 0.8em;
+margin: 0 0.8em 0.2em -1.6em;
+vertical-align: middle;
+}
+.display.math{display: block; text-align: center; margin: 0.5rem auto;}
+</style>
+  <style type="text/css">body {
+font-size: 16px;
+}
+pre.code {
+font-size: 1.4em;
+}
+blockquote {
+font-style: italic;
+}
+.notebook-only {
+display: none;
+}
+</style>
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">PyNoon Plus Lesson 2 - Tutorial</h1>
+</header>
+<p>This tutorial will cover building user interfaces in Jupyter
+notebooks.</p>
+<h2 id="setup">Setup</h2>
+<ol type="1">
+<li>Make a new notebook for this lesson</li>
+<li>What’s the first thing to do? RENAME IT!</li>
+<li>Name it <code>pynoon_plus_3.ipynb</code></li>
+</ol>
+<h2 id="ui-widget-basics">UI Widget Basics</h2>
+<p>To get started, let’s import the <code>panel</code> module that
+provides widgets for building user interfaces</p>
+<ul>
+<li>Usually installed with <code>%pip install panel</code>, but it’s
+pre-installed in Colab.</li>
+<li>We also need to call <code>pn.extension()</code> to finish loading
+panel.</li>
+</ul>
+<pre class="code"><code>import panel as pn
+
+pn.extension()</code></pre>
+<p>Now let’s make a text field:</p>
+<pre class="code"><code>text_field = pn.widgets.TextInput()</code></pre>
+<p>We can display it:</p>
+<pre class="code"><code>text_field</code></pre>
+<p>And we can get the current contents of the field:</p>
+<pre class="code"><code>text_field.value</code></pre>
+<ul>
+<li>Try entering some text, then re-run
+<code>text_field.value</code>.</li>
+<li>See that the value has changed.</li>
+</ul>
+<h2 id="buttons">Buttons</h2>
+<p>Now let’s make a button:</p>
+<pre class="code"><code>submit_button = pn.widgets.Button(name=&#39;Submit&#39;)
+submit_button</code></pre>
+<ul>
+<li>We can use <code>pn.bind()</code> to assign a “callback” function
+that should be called whenever the button is clicked.</li>
+</ul>
+<pre class="code"><code>submit_button = pn.widgets.Button(name=&#39;Submit&#39;)
+
+def on_submit(event):
+    if not event:
+        return
+
+    return text_field.value
+
+submit_output = pn.bind(on_submit, submit_button)
+
+pn.Column(
+    submit_button,
+    submit_output,
+)</code></pre>
+<ul>
+<li>The value returned by <code>pn.bind()</code> will display outputs
+returned by the callback.
+<ul>
+<li>We display the button and output together by wrapping them in a
+<code>pn.Column</code>.</li>
+<li><code>pn.bind()</code> can also bind functions to any widget
+updates, like text box changes.</li>
+</ul></li>
+<li>Note that the function we provide must accept a single argument that
+will contain details of the button click “event”.
+<ul>
+<li>The callback will be called once initially, but the argument passed
+to it will only contain a value when the button has been clicked.</li>
+</ul></li>
+</ul>
+<p>Each time you click the button, the current value of the text input
+is displayed.</p>
+<h2 id="bringing-it-all-together-a-self-contained-form">Bringing it all
+together a self-contained form</h2>
+<ul>
+<li>Use a consistent structure:
+<ul>
+<li>Start by defining widgets.</li>
+<li>Then define and bind event handlers.</li>
+<li>Then define a layout that includes all of the widgets to be
+displayed.</li>
+</ul></li>
+<li>If your interface gets too big, consider splitting it up into
+functions</li>
+</ul>
+<pre class="code"><code>text_field = pn.widgets.TextInput()
+submit_button = pn.widgets.Button(name=&#39;Submit&#39;)
+
+def on_submit(event):
+    if not event:
+        return
+
+    return text_field.value
+
+submit_output = pn.bind(on_submit, submit_button)
+
+layout = pn.Column(
+    text_field,
+    submit_button,
+    submit_output,
+)
+layout</code></pre>
+<h2 id="deploying-our-app">Deploying our app</h2>
+<ul>
+<li>One way we can share a <code>panel</code> application with users is
+to convert it to a shareable <code>.html</code> file.</li>
+<li><code>html</code> is the language web pages are written in, so any
+user will be able to open the file in their web browser.</li>
+<li>Recent developments in web and Python technologies allow us to
+create <code>html</code> files that can run Python code.</li>
+</ul>
+<h3 id="preparing-the-app-notebook">Preparing the app notebook</h3>
+<ul>
+<li>Make a new notebook, call it
+<code>pynoon_plus_3_app.ipynb</code></li>
+<li>Add from above:</li>
+</ul>
+<pre class="code"><code>import panel as pn
+
+pn.extension()
+
+...interface...
+
+layout.servable()</code></pre>
+<ul>
+<li>Make sure your <code>layout</code> ends with
+<code>.servable()</code>
+<ul>
+<li>This tells panel what components make up the “app”</li>
+</ul></li>
+<li>Save the file</li>
+</ul>
+<h3 id="converting-the-app-notebook-to-html">Converting the app notebook
+to html</h3>
+<p>From your original notebook (important to avoid including the
+<code>!panel convert</code> line in your app notebook):</p>
+<ul>
+<li>Click on the file browser in the left-hand sidebar, and select the
+button to <code>Mount Drive</code></li>
+<li>Add a notebook cell to run:</li>
+</ul>
+<pre class="code"><code>!panel convert &quot;drive/MyDrive/Colab Notebooks/pynoon_plus_3_app.ipynb&quot; --to pyscript --out app_output</code></pre>
+<ul>
+<li>Refresh the file browser</li>
+<li>From the file browser, download
+<code>app_output/pynoon_plus_3_app.html</code></li>
+<li>Open <code>pynoon_plus_3_app.html</code> in your web browser to use
+your app!</li>
+</ul>
+<h2 id="going-further-with-user-interfaces">Going further with user
+interfaces</h2>
+<ul>
+<li>Look at the <a href="https://panel.holoviz.org/index.html"><code>panel</code>
+documentation</a>
+<ul>
+<li>See what input widgets are available (under
+<code>Component Gallery</code> -&gt; <code>Widgets</code> in the
+documentation sidebar)</li>
+<li>See what rich outputs are available (e.g. Plotly plots, under
+<code>Component Gallery</code> -&gt; <code>Panes</code> in the
+documentation sidebar)</li>
+</ul></li>
+<li>Other user interface libraries exist for:
+<ul>
+<li>Notebook and web apps
+<ul>
+<li><a href="https://ipywidgets.readthedocs.io/en/stable/">ipywidgets</a></li>
+<li><a href="https://streamlit.io/">Streamlit</a></li>
+<li><a href="https://dash.plotly.com/">Plotly Dash</a></li>
+</ul></li>
+<li>Desktop apps (less popular these days)
+<ul>
+<li><a href="https://docs.python.org/3/library/tkinter.html">Tkinter</a></li>
+<li><a href="https://wiki.python.org/moin/PyQt">PyQt</a></li>
+</ul></li>
+</ul></li>
+</ul>
+<!--
+
+## Separating Logic from Interface
+
+* Now let's make our interface classify the entered text whenever the
+  submit button is clicked.
+* Instead of changing our interface to call the classifier, let's make
+  the user interface accept *any* function that can transform the
+  entered text into some output.
+* This will:
+  * Logically separate our interface code from our "business logic".
+  * Make our form re-usable for different actions.
+  * Make it easier to test both our interface and classifier.
+
+> For those interested, this is an example of the [**dependency
+> inversion**](https://en.wikipedia.org/wiki/Dependency_inversion_principle)
+> design principle.
+
+```code
+def user_interface(produce_output):
+    text_field = widgets.Text()
+    submit_button = widgets.Button(description='Submit')
+    output = widgets.Output()
+
+    def on_submit(event):
+        output.clear_output()
+        with output:
+            display(produce_output(text_field.value))
+
+    submit_button.on_click(on_submit)
+
+    return widgets.VBox([
+        text_field,
+        submit_button,
+        output,
+    ])
+
+display(user_interface(produce_output=classify_text))
+```
+
+-->
+</body>
+</html>

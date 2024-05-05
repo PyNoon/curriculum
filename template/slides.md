@@ -1,5 +1,5 @@
 ---
-title: PyNoon Week X
+title: PyNoon X Lesson X
 ---
 
 ### Warm-Up Exercise
@@ -8,8 +8,7 @@ title: PyNoon Week X
 ### Thanks
 
 * To the host for the great venue!
-* Our supporting employers
-* New Zealand Python User Group (NZPUG) for support
+* To our sponsors
 
 ### Administrivia
 
