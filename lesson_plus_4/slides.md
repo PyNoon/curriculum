@@ -207,7 +207,7 @@ def hello_world():
 
 ### The Python Community
 
-* [New Zealand Python User Group](https://python.nz/)
+* [Python New Zealand](https://python.nz/)
   * [KiwiPycon](https://kiwipycon.nz/) - videos on
     [YouTube](https://www.youtube.com/@KiwiPyCon)
   * Meetups
