@@ -187,7 +187,7 @@ height_cm / cm_per_inch
 Also note how helpful it is to include the units in the name of the
 variable.
 
-**Variables are also useful for strong the result of an operation for later use:**
+**Variables are also useful for storing the result of an operation for later use:**
 
 ```code
 cm_per_inch = 2.54
