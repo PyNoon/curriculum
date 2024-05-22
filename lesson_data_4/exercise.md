@@ -6,7 +6,7 @@ jupyter:
   kernelspec:
      display_name: Python (Pyodide)
      language: python
-     name: python
+     name: python3
   language_info:
      codemirror_mode:
        name: python
