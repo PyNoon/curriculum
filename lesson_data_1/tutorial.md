@@ -215,7 +215,7 @@ listings_df.describe()
 And we can get specific summary statistics for column's individually:
 
 ```code
-listings_df['last_review'].max()
+listings_df['price_nzd'].max()
 ```
 
 ```code
