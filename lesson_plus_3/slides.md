@@ -95,5 +95,5 @@ title: PyNoon Plus Lesson 3
 1. **Exercise Notebook:**
    * User interface practice
    * See the Exercise Notebook for PyNoon Plus Lesson 3 at
-     [pynoon.github.io/schedule](https://pynoon.github.io/schedule)
+     [pynoon.github.io/lessons](https://pynoon.github.io/lessons)
 2. Work on your own Python project

@@ -112,7 +112,7 @@ Which is a more helpful comment?
 1. **Exercise Notebook:**
    * Function and de-duplication exercises
    * See the Exercise Notebook for PyNoon Data Lesson 4 at
-     [pynoon.github.io/schedule](https://pynoon.github.io/schedule)
+     [pynoon.github.io/lessons](https://pynoon.github.io/lessons)
 2. **Work through [futurecoder.io](https://futurecoder.io) sections**:
    1. Dictionaries (note: this lesson is at the end of the Futurecoder
       course, so you will need to skip ahead using the Table of

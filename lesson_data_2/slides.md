@@ -55,7 +55,7 @@ title: PyNoon Data Lesson 2
 1. **Exercise Notebook:**
    * Answering questions from data
    * See the Exercise Notebook for PyNoon Data: Lesson 2 at
-     [pynoon.github.io/schedule](https://pynoon.github.io/schedule)
+     [pynoon.github.io/lessons](https://pynoon.github.io/lessons)
 2. **Work through [futurecoder.io](https://futurecoder.io) sections**:
    1. A bit more about strings
    2. Nested loops

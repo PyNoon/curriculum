@@ -76,7 +76,7 @@ title: PyNoon Plus Lesson 1
 1. **Exercise Notebook:**
    * AI Exercises
    * See the Exercise Notebook for PyNoon Plus Lesson 1 at
-     [pynoon.github.io/schedule](https://pynoon.github.io/schedule)
+     [pynoon.github.io/lessons](https://pynoon.github.io/lessons)
 2. **Work through the following [futurecoder.io](https://futurecoder.io) section**:
    * Boolean operators
 3. Identify a **Personal Python Project** to work on

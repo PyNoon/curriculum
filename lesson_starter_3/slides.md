@@ -39,6 +39,6 @@ title: PyNoon Starter Lesson 3
 1. **Exercise Notebook:**
    * Function and de-duplication exercises
    * See the Exercise Notebook for PyNoon Starter Lesson 3 at
-     [pynoon.github.io/schedule](https://pynoon.github.io/schedule)
+     [pynoon.github.io/lessons](https://pynoon.github.io/lessons)
 2. **Work through [futurecoder.io](https://futurecoder.io) sections**:
    1. If statements

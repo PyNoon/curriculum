@@ -97,7 +97,7 @@ title: PyNoon Plus Lesson 2
 1. **Exercise Notebook:**
    * API Exercises
    * See the Exercise Notebook for PyNoon Plus Lesson 2 at
-     [pynoon.github.io/schedule](https://pynoon.github.io/schedule)
+     [pynoon.github.io/lessons](https://pynoon.github.io/lessons)
 2. **Work through the final [futurecoder.io](https://futurecoder.io) section**:
    1. Tic Tac Toe Project
 3. Work on your own Python project

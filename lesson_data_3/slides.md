@@ -96,6 +96,6 @@ title: PyNoon Data Lesson 3
 1. **Exercise Notebook:**
    * Grouping and summarising exercises
    * See the Exercise Notebook for PyNoon Data Lesson 3 at
-     [pynoon.github.io/schedule](https://pynoon.github.io/schedule)
+     [pynoon.github.io/lessons](https://pynoon.github.io/lessons)
 2. **Work through [futurecoder.io](https://futurecoder.io) sections**:
    1. Functions (we'll also be covering functions in the next lesson)

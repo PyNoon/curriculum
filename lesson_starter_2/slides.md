@@ -40,6 +40,6 @@ title: PyNoon Starter Lesson 2
    * More variable and value examples
    * Write a password generator
    * See the Exercise Notebook for PyNoon Starter Lesson 2 at
-     [pynoon.github.io/schedule](https://pynoon.github.io/schedule)
+     [pynoon.github.io/lessons](https://pynoon.github.io/lessons)
 2. **Work through [futurecoder.io](https://futurecoder.io) sections**:
    1. For Loops

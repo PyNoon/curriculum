@@ -39,6 +39,6 @@ title: PyNoon Starter Lesson 1
    3. Variables
 2. **Exercise:** Write a notebook for a calculation
    * See the Exercise Notebook for PyNoon Starter Lesson 1 at
-     [pynoon.github.io/schedule](https://pynoon.github.io/schedule)
+     [pynoon.github.io/lessons](https://pynoon.github.io/lessons)
 
 </div>

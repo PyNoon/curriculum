@@ -29,6 +29,6 @@ title: PyNoon Data Lesson 1
    * Function and DataFrame exercises
    * Exploratory Data Analysis assignment
    * See the Exercise Notebook for PyNoon Data Lesson 1 at
-     [pynoon.github.io/schedule](https://pynoon.github.io/schedule)
+     [pynoon.github.io/lessons](https://pynoon.github.io/lessons)
 2. **Work through [futurecoder.io](https://futurecoder.io) sections**:
    1. Lists

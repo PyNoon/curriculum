@@ -130,9 +130,9 @@ For example, check out:
 
 Let's look at the data we're going to analyse:
 
-Use the link
-on[pynoon.github.io/schedule](https://pynoon.github.io/schedule/) to
-open `inside_airbnb_listings_nz_2023_09.csv`
+Use the link on
+[pynoon.github.io/lessons](https://pynoon.github.io/lessons/) to open
+`inside_airbnb_listings_nz_2023_09.csv`
 
 * Look at the data dictionary linked to from that page to learn what
   each column means.
