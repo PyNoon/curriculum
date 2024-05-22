@@ -8,7 +8,7 @@ colab_url = 'https://colab.research.google.com/github/pynoon/curriculum/blob/mai
 curriculum_dir = Path(__file__).parent
 
 def main():
-    index_markdown = '''
+    index_markdown = f'''
 # PyNoon Curriculum
 
 Slides and tutorials for PyNoon.

@@ -33,7 +33,7 @@ Git repository to exclude the outputs of notebook cells when running
 
 ## Introduction
 
-[Slides to present at the start of each course]({base_url}/introduction/pynoon_introduction.pdf)
+[Slides to present at the start of each course](https://pynoon.github.io/curriculum/introduction/pynoon_introduction.pdf)
 
 ## PyNoon Starter
 
