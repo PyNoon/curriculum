@@ -4,9 +4,9 @@ title: PyNoon Data Lesson 2
 
 ### Warm-Up Exercise
 
-<div style="text-align: left; font-size: 0.65em;">
-
 #### Plot some data
+
+<div style="text-align: left; font-size: 0.65em;">
 
 <style>
 .plot-exercise pre {
