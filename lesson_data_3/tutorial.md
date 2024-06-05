@@ -77,8 +77,8 @@ We can also specify a categorical column as a `facet_row` or
 
 In the plot below, note that we:
 
-* Sort the data by the `accommodates`, so that the facet plots are
-  sorted by value.
+* Sort the data by the `accommodates` column, so that the facet plots
+  are sorted by value.
 * Increase the height of the output to better view the large number of
   plots.
 * Set `histnorm='percent'` so that groups with few data points still
