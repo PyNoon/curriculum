@@ -32,17 +32,6 @@ It is based on:
 2. What's the first thing to do? RENAME IT!
 3. Name it `pynoon_starter_3.ipynb`
 
-## Short aside: F-Strings
-
-* F-strings allow us to insert the value of a Python variable or
-  expression into a string:
-
-```code
-name = 'Ben'
-print(f'Hello {name}')
-print(f'Hello {name.upper()}')
-```
-
 ## Defining Functions
 
 * One of the key ways to reduce duplication of code in our projects is
@@ -136,6 +125,17 @@ def shorten_description(description, max_length):
         ellipsis = '...'
         return description[:(max_length - len(ellipsis))] + ellipsis
     return description
+```
+
+## Short aside: F-Strings
+
+* F-strings allow us to insert the value of a Python variable or
+  expression into a string:
+
+```code
+name = 'Ben'
+print(f'Hello {name}')
+print(f'Hello {name.upper()}')
 ```
 
 ## Applying functions to DataFrames
@@ -253,7 +253,7 @@ wlg_above_average_rating_df = get_above_average_listings_df(
 
 * Whenever *refactoring* code to make it more readable, maintainable,
   or re-usable - it is important to make sure that we have *NOT*
-  changed it's behaviour.
+  changed its behaviour.
 * Writing tests is a great way to check that code produces the same
   results.
   * That will be part of this lesson's exercise

@@ -51,14 +51,6 @@ reducing duplication in your code.</p>
 <li>What’s the first thing to do? RENAME IT!</li>
 <li>Name it <code>pynoon_starter_3.ipynb</code></li>
 </ol>
-<h2 id="short-aside-f-strings">Short aside: F-Strings</h2>
-<ul>
-<li>F-strings allow us to insert the value of a Python variable or
-expression into a string:</li>
-</ul>
-<pre class="code"><code>name = &#39;Ben&#39;
-print(f&#39;Hello {name}&#39;)
-print(f&#39;Hello {name.upper()}&#39;)</code></pre>
 <h2 id="defining-functions">Defining Functions</h2>
 <ul>
 <li>One of the key ways to reduce duplication of code in our projects is
@@ -123,6 +115,14 @@ given <code>max_length</code>:</p>
         ellipsis = &#39;...&#39;
         return description[:(max_length - len(ellipsis))] + ellipsis
     return description</code></pre>
+<h2 id="short-aside-f-strings">Short aside: F-Strings</h2>
+<ul>
+<li>F-strings allow us to insert the value of a Python variable or
+expression into a string:</li>
+</ul>
+<pre class="code"><code>name = &#39;Ben&#39;
+print(f&#39;Hello {name}&#39;)
+print(f&#39;Hello {name.upper()}&#39;)</code></pre>
 <h2 id="applying-functions-to-dataframes">Applying functions to
 DataFrames</h2>
 <ul>
@@ -216,7 +216,7 @@ filtered (or even unfiltered) DataFrame of listings.</li>
 </ul></li>
 <li>Whenever <em>refactoring</em> code to make it more readable,
 maintainable, or re-usable - it is important to make sure that we have
-<em>NOT</em> changed it’s behaviour.</li>
+<em>NOT</em> changed its behaviour.</li>
 <li>Writing tests is a great way to check that code produces the same
 results.
 <ul>
