@@ -203,7 +203,7 @@ listings_df
 ```code
 akl_listings_df = listings_df[listings_df['region_parent_name'] == 'Auckland']
 akl_average_price = akl_listings_df['price_nzd'].median()
-akl_above_average_price_df = akl_listings_df[akl_listings_df['price_nzd'] > akl_median_price]
+akl_above_average_price_df = akl_listings_df[akl_listings_df['price_nzd'] > akl_average_price]
 display(akl_above_average_price_df)
 
 wlg_listings_df = listings_df[listings_df['region_parent_name'] == 'Wellington City']

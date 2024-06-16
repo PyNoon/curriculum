@@ -165,7 +165,7 @@ average” listings.</li>
 </ul>
 <pre class="code"><code>akl_listings_df = listings_df[listings_df[&#39;region_parent_name&#39;] == &#39;Auckland&#39;]
 akl_average_price = akl_listings_df[&#39;price_nzd&#39;].median()
-akl_above_average_price_df = akl_listings_df[akl_listings_df[&#39;price_nzd&#39;] &gt; akl_median_price]
+akl_above_average_price_df = akl_listings_df[akl_listings_df[&#39;price_nzd&#39;] &gt; akl_average_price]
 display(akl_above_average_price_df)
 
 wlg_listings_df = listings_df[listings_df[&#39;region_parent_name&#39;] == &#39;Wellington City&#39;]
