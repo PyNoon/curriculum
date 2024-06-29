@@ -180,7 +180,7 @@ listings_df['url'] = listings_df['id'].apply(id_to_url)
 listings_df
 ```
 
-We can also use `.apply()` with `axis='index'` on an entire DataFrame
+We can also use `.apply()` with `axis='columns` on an entire DataFrame
 to pass an entire row at a time to the function:
 
 ```code

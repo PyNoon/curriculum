@@ -49,8 +49,9 @@ the keyword "home", then use appropriate `groupby()`s and/or plotting.
 
 ### 1d. Of hosts with at least 10 reviewed listings, who has the highest average rating?
 
-Hint: Use a `groupby()` on `review_scores_rating` with `.agg(['count',
-'mean'])` to get both the count and mean of the ratings (see:
+Hint: Use a `groupby('host_name')` on `review_scores_rating` with
+`.agg(['count', 'mean'])` to get both the count and mean of the
+ratings (see:
 https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.agg.html).
 Then filter hosts based on the count of listings.
 

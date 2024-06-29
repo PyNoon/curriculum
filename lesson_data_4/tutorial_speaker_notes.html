@@ -146,7 +146,7 @@ can then assign the resulting Series into a new <code>url</code>
 column:</p>
 <pre class="code"><code>listings_df[&#39;url&#39;] = listings_df[&#39;id&#39;].apply(id_to_url)
 listings_df</code></pre>
-<p>We can also use <code>.apply()</code> with <code>axis=&#39;index&#39;</code>
+<p>We can also use <code>.apply()</code> with <code>axis=&#39;columns</code>
 on an entire DataFrame to pass an entire row at a time to the
 function:</p>
 <pre class="code"><code>def listing_to_description(row):
