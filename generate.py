@@ -49,7 +49,14 @@ Slides and tutorials for PyNoon.
 2. Direct attendees to [pynoon.github.io/lessons](https://pynoon.github.io/lessons/) to find the lesson's slides, tutorial notebook, and exercise notebook
 3. Also offer to help with any other course-related problems that attendees may have - such as from applying what they've learned in their job
 
-Find more tips for presenting from [Software Carpentry](https://carpentries.github.io/instructor-training/instructor/17-live.html#top-ten-tips-for-participatory-live-coding-in-a-workshop)
+### Assets
+
+* [PyNoon logo](https://pynoon.github.io/_images/cooper.svg)
+* [HTML Template for lanyards](https://pynoon.github.io/static_files/lanyards.html)
+* [Poster to blu-tack up and direct attendees to the room](https://pynoon.github.io/static_files/pynoon_poster.svg) ([source](https://pynoon.github.io/static_files/pynoon_poster.odg))
+  * Useful to put in foyers and outside lifts
+  * Laminating them is optional but can be useful. Also makes it easy to write extra information on them in whiteboard pen if required.
+* Find more tips for presenting from [Software Carpentry](https://carpentries.github.io/instructor-training/instructor/17-live.html#top-ten-tips-for-participatory-live-coding-in-a-workshop)
 
 ## Introduction
 
