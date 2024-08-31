@@ -13,38 +13,47 @@ def main():
 
 Slides and tutorials for PyNoon.
 
-## Tips for instructors
+## Lesson Guide for instructors
 
-* [Software Carpentry instructor tips](https://carpentries.github.io/instructor-training/instructor/17-live.html#top-ten-tips-for-participatory-live-coding-in-a-workshop)
-* Ensure font is big enough
-  * In JupyterLite -> View -> Presentation Mode
-* Draw up bottom of browser window if it won't be visible from all seats
-* Turn off notifications
-* Have a print-out of the course content so that you don't have to
-  bring it up on your screen
-* Give sticky notes to learners
-  * "Completed last task" note
-  * "I'm stuck" note
+### Before the Lesson
 
-## Notebook Outputs
+1. Print out the **Tutorial Speaker Notes** for the lesson so that you can read from them as you type code in a notebook
+2. Familiarise yourself with the slides and speaker notes for the lesson
+   * Practising the material, even by yourself, helps build confidence in the flow of the lesson!
 
-(The instructions in this section are for course authors only, you can
-ignore these instructions if you are a learner using these notebooks.)
+### Slides
 
-When updating the notebooks in this repo that are shared with
-learners, you should not commit the outputs of notebook cells to your
-Git repository. If you have Python 3 installed, you can use
-[nbstripout](https://github.com/kynan/nbstripout) to configure your
-Git repository to exclude the outputs of notebook cells when running
-`git add`:
+1. From the start of the lesson, have the initial "Get ready" or "Warm-Up Exercise" slide in the lesson's slide deck displayed on the screen.
+   * Disable auto-sleep on your machine so the slides stay up even when you're not moving the mouse
+   * Turn off notifications on your machine
+2. Once all attendees have arrived, continue through the administration slides in the slide deck
+   * For the first lesson of any course, there is a [special set of introduction slides]({base_url}/introduction/pynoon_introduction.pdf)
+3. If there is a **Lunch Talk** (or **DEMO-ONLY** portion of the tutorial), present that during the lunch time (usually during the last 15 minutes of the break)
 
-1. `python3 -m pip install nbstripout nbconvert`
-2. Run `nbstripout --install` in this directory (installs hooks into
-   `.git`).
+### Tutorial
+
+1. After the lunch time, show the **Tutorial Objectives** slide to outline the material that the tutorial will cover
+2. Open up an empty Colab notebook on your screen
+   * Zoom-in on Colab to ensure the font is big enough for all attendees to see
+   * Bring up the bottom of your browser window if it won't be visible from all seats
+3. Direct all attendees to also open an empty notebook by following the **`Colab Notebooks`** link on [pynoon.github.io](https://pynoon.github.io)
+4. Work through the **Tutorial Speaker Notes** for the lesson
+   * Have the speaker notes printed out ahead of time
+   * Read out (or paraphrase) written material
+   * Demonstrate each code example in a new cell in your notebook
+   * Have attendees type along and run code with you, and regularly check if anyone needs assistance from a helper
+
+### Exercise and self-directed learning
+
+1. After the tutorial, present the **Independent Work/Homework** slide
+2. Direct attendees to [pynoon.github.io/lessons](https://pynoon.github.io/lessons/) to find the lesson's slides, tutorial notebook, and exercise notebook
+3. Also offer to help with any other course-related problems that attendees may have - such as from applying what they've learned in their job
+
+Find more tips for presenting from [Software Carpentry](https://carpentries.github.io/instructor-training/instructor/17-live.html#top-ten-tips-for-participatory-live-coding-in-a-workshop)
 
 ## Introduction
 
-[Slides to present at the start of each course]({base_url}/introduction/pynoon_introduction.pdf)
+[Slides to present at the start of the first session of a course]({base_url}/introduction/pynoon_introduction.pdf)
 '''
 
     for course in ['starter', 'data', 'plus']:
