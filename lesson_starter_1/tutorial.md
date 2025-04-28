@@ -28,8 +28,7 @@ based on
 [swcarpentry.github.io/python-novice-gapminder/01-run-quit.html](https://swcarpentry.github.io/python-novice-gapminder/01-run-quit.html),
 (but more streamlined - not covering topics like shortcut keys).
 
-In this tutorial, we will look at three ways of running Python code
-inside JupyterLite:
+In this tutorial, we will look at three ways of running Python code:
 
 * The Python console
 * Python scripts
@@ -165,11 +164,14 @@ Hello world
   `pynoon_starter_1.ipynb` - helpful names are important!
 
 In the "cell" prompt at the at the top of your notebook, enter the
-following code, and run it with `shift + enter` (like at the Console):
+following code, and run it with `shift + enter`:
 
 ```code
 print('Hello world')
 ```
+
+> The first cell you run in each Colab session may take a few seconds
+> longer than usual while the session is being started.
 
 The result is printed and a new "cell" appears below.
 
