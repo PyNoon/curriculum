@@ -77,7 +77,7 @@ futurecoder lessons about maths and variables.
 
 ### 2b. Create a notebook for your calculation
 
-* Create a new notebook in JupyterLite for your calculation.
+* Create a new notebook in Google Colab for your calculation.
 * Give the notebook a meaningful name that describes your calculation.
   * The name should contain only lowercase letters, numbers, and
     underscores.
