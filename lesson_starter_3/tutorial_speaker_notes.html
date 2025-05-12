@@ -52,8 +52,7 @@ display: none;
 <blockquote>
 <p>DEMO-ONLY TUTORIAL BEGINS HERE</p>
 </blockquote>
-<section id="functions" class="notebook-only">
-<h2>Functions</h2>
+<h2 id="functions">Functions</h2>
 <p>We’re going to be using a lot of functions from Python data
 libraries, so lets summarise their key facts:</p>
 <p><strong>Functions are like small Python scripts that we can
@@ -61,93 +60,45 @@ libraries, so lets summarise their key facts:</p>
 value.</strong></p>
 <p><strong>Functions are <em>called</em> using parentheses, with
 <em>arguments</em> inside the parentheses.</strong></p>
-</section>
-<div class="cell code notebook-only">
 <pre class="code"><code>print(&#39;hello&#39;)</code></pre>
-</div>
-<div class="notebook-only">
 <p>Using a function’s name without parentheses refers to the function
 itself <em>as</em> a value:</p>
-</div>
-<div class="cell code notebook-only">
 <pre class="code"><code>print</code></pre>
-</div>
-<div class="notebook-only">
 <p><strong>Functions attached to values are called
 <em>methods</em></strong></p>
-</div>
-<div class="cell code notebook-only">
 <pre class="code"><code>&#39;hello&#39;.upper()</code></pre>
-</div>
-<div class="notebook-only">
 <p><strong>Some functions take multiple arguments</strong></p>
-</div>
-<div class="cell code notebook-only">
 <pre class="code"><code>round(3.14159, 2)</code></pre>
-</div>
-<div class="notebook-only">
 <p><strong>Functions may have default values for some
 arguments</strong></p>
 <p><code>round()</code> defaults to rounding a number to zero decimal
 places:</p>
-</div>
-<div class="cell code notebook-only">
 <pre class="code"><code>round(3.14159)</code></pre>
-</div>
-<div class="notebook-only">
 <p><strong>Every function returns a value</strong></p>
 <p>Even functions that don’t seem to return a value (like
 <code>print</code>) actually return a special value called
 <code>None</code> (similar to <code>null</code> in SQL or other
 languages):</p>
-</div>
-<div class="cell code notebook-only">
 <pre class="code"><code>returned_value = print(&#39;hello&#39;)</code></pre>
-</div>
-<div class="cell code notebook-only">
 <pre class="code"><code>returned_value</code></pre>
-</div>
-<div class="cell code notebook-only">
 <pre class="code"><code>type(returned_value)</code></pre>
-</div>
-<div class="notebook-only">
 <p><strong>Functions accept named arguments (and some require
 it):</strong></p>
-</div>
-<div class="cell code notebook-only">
 <pre class="code"><code>round(3.14159, ndigits=2)</code></pre>
-</div>
-<div class="notebook-only">
 <p><strong>Use the built-in function help to get help for a
 function</strong></p>
-</div>
-<div class="cell code notebook-only">
 <pre class="code"><code>help(round)</code></pre>
-</div>
-<div class="cell code notebook-only">
 <pre class="code"><code>help(&#39;hello&#39;.upper)</code></pre>
-</div>
-<div class="notebook-only">
 <p><strong>Use <code>dir()</code> and <code>dir(__builtins__)</code> to
 list available functions (and non-function variables)</strong></p>
-</div>
-<div class="cell code notebook-only">
 <pre class="code"><code>dir()</code></pre>
-</div>
-<div class="cell code notebook-only">
 <pre class="code"><code>dir(__builtins__)</code></pre>
-</div>
-<div class="notebook-only">
 <blockquote>
 <p>Don’t worry about the underscored names</p>
 </blockquote>
 <p><strong>Use <code>dir(some_value)</code> to list methods (and
 non-function variables called attributes) of a value</strong></p>
-</div>
-<div class="cell code notebook-only">
 <pre class="code"><code>dir(&#39;hello&#39;)</code></pre>
-</div>
-<div class="notebook-only">
 <ul>
 <li>See <a href="https://docs.python.org/3/library/functions.html">docs.python.org/3/library/functions.html</a>
 for more about functions that are built-in and always available in
@@ -155,7 +106,6 @@ Python.</li>
 <li>A key power of Python is that you can define your own functions as
 Python code to execute when the function is called.</li>
 </ul>
-</div>
 <blockquote>
 <p>FOLLOW-ALONG TUTORIAL BEGINS HERE</p>
 </blockquote>

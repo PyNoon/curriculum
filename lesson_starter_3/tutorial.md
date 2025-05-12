@@ -31,7 +31,6 @@ This tutorial is based on:
 
 > DEMO-ONLY TUTORIAL BEGINS HERE
 
-:::::: {.notebook-only}
 ## Functions
 
 We're going to be using a lot of functions from Python data libraries,
@@ -41,147 +40,98 @@ so lets summarise their key facts:
 perform some operation or return some value.**
 
 **Functions are *called* using parentheses, with *arguments* inside the parentheses.**
-::::::
 
-:::::: {.cell .code .notebook-only}
 ```code
 print('hello')
 ```
-::::::
 
-:::::: {.notebook-only}
 Using a function's name without parentheses refers to the function
 itself *as* a value:
-::::::
 
-:::::: {.cell .code .notebook-only}
 ```code
 print
 ```
-::::::
 
-:::::: {.notebook-only}
 **Functions attached to values are called *methods***
-::::::
 
-:::::: {.cell .code .notebook-only}
 ```code
 'hello'.upper()
 ```
-::::::
 
-:::::: {.notebook-only}
 **Some functions take multiple arguments**
-::::::
 
-:::::: {.cell .code .notebook-only}
 ```code
 round(3.14159, 2)
 ```
-::::::
 
-:::::: {.notebook-only}
 **Functions may have default values for some arguments**
 
 `round()` defaults to rounding a number to zero decimal places:
-::::::
 
-:::::: {.cell .code .notebook-only}
 ```code
 round(3.14159)
 ```
-::::::
 
-:::::: {.notebook-only}
 **Every function returns a value**
 
 Even functions that don't seem to return a value (like `print`)
 actually return a special value called `None` (similar to `null` in
 SQL or other languages):
-:::::::
 
-:::::: {.cell .code .notebook-only}
 ```code
 returned_value = print('hello')
 ```
-::::::
 
-:::::: {.cell .code .notebook-only}
 ```code
 returned_value
 ```
-::::::
 
-:::::: {.cell .code .notebook-only}
 ```code
 type(returned_value)
 ```
-::::::
 
-:::::: {.notebook-only}
 **Functions accept named arguments (and some require it):**
-::::::
 
-:::::: {.cell .code .notebook-only}
 ```code
 round(3.14159, ndigits=2)
 ```
-::::::
 
-:::::: {.notebook-only}
 **Use the built-in function help to get help for a function**
-::::::
 
-:::::: {.cell .code .notebook-only}
 ```code
 help(round)
 ```
-::::::
 
-:::::: {.cell .code .notebook-only}
 ```code
 help('hello'.upper)
 ```
-::::::
 
-:::::: {.notebook-only}
 **Use `dir()` and `dir(__builtins__)` to list available functions (and
 non-function variables)**
-::::::
 
-:::::: {.cell .code .notebook-only}
 ```code
 dir()
 ```
-::::::
 
-:::::: {.cell .code .notebook-only}
 ```code
 dir(__builtins__)
 ```
-::::::
 
-:::::: {.notebook-only}
 > Don't worry about the underscored names
 
 **Use `dir(some_value)` to list methods (and non-function variables
 called attributes) of a value**
-::::::
 
-:::::: {.cell .code .notebook-only}
 ```code
 dir('hello')
 ```
-::::::
 
-:::::: {.notebook-only}
 * See
   [docs.python.org/3/library/functions.html](https://docs.python.org/3/library/functions.html)
   for more about functions that are built-in and always available in
   Python.
 * A key power of Python is that you can define your own functions as
   Python code to execute when the function is called.
-::::::
 
 
 > FOLLOW-ALONG TUTORIAL BEGINS HERE
