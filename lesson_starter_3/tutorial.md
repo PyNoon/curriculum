@@ -287,7 +287,7 @@ user['last_name'] = user['last_name'].lower()
 text_keys = ['first_name', 'last_name']
 
 for text_key in text_keys:
-    user[text_key] = user[text_key].str.lower()
+    user[text_key] = user[text_key].lower()
 ```
 
 * It is quite common to want to transform one list of values into
