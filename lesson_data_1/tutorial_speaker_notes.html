@@ -41,6 +41,7 @@ display: none;
 </header>
 <p>This tutorial will cover:</p>
 <ul>
+<li>A brief intro to Colab/Jupyter notebooks</li>
 <li>Working with built-in and third party libraries</li>
 <li>Loading and exploring tabular data with Pandas</li>
 </ul>
@@ -54,6 +55,34 @@ display: none;
 <blockquote>
 <p>DEMO-ONLY TUTORIAL BEGINS HERE</p>
 </blockquote>
+<h2 id="intro-to-colab">Intro to Colab</h2>
+<blockquote>
+<p>Skip this section if continuing on from the PyNoon Starter
+course.</p>
+</blockquote>
+<ul>
+<li><strong>Jupyter notebooks</strong> are a very popular platform for
+Python coding, particularly for data analysis and visualisation.</li>
+<li>You can run Jupyter notebooks on your own computer with
+<strong>jupyterlab</strong>, but today we are running Jupyter notebooks
+in <strong>Google Colab</strong> so that you don’t need to install
+Python or Jupyter on your own computer.
+<ul>
+<li>Note: Because your notebooks will run on Google’s servers, you
+shouldn’t upload any company data or code you are not authorised to use
+outside of company-approved systems.</li>
+</ul></li>
+<li>Your notebooks in Google Colab will be saved to your Google Drive
+account, you can find previous notebooks from the
+<code>File -&gt; Open notebook</code> menu.</li>
+<li>Cells can be run in any order we choose, so we need to be careful of
+the order we run cells.
+<ul>
+<li>When working in notebooks, it is a good idea to regularly select
+<code>Runtime &gt; Restart</code> session and run all from the menu to
+ensure our code executes as we expect when run in order.</li>
+</ul></li>
+</ul>
 <h2 id="modules-and-libraries">Modules and Libraries</h2>
 <p>To get more functions (and other things) to use in Python, you can
 import <strong>modules</strong>, which are just files of Python
@@ -159,6 +188,7 @@ DataFrame.</li>
 from different types of files (e.g. <code>read_excel()</code>,
 <code>read_parquet()</code>).</li>
 </ul>
+<p>We can check whether any variable refers to a DataFrame:</p>
 <pre class="code"><code>type(listings_df)</code></pre>
 <p>Let’s look at the DataFrame:</p>
 <pre class="code"><code>listings_df</code></pre>
@@ -168,10 +198,17 @@ shown</p>
 </blockquote>
 <p>We can sort the DataFrame by a column:</p>
 <pre class="code"><code>listings_df.sort_values(&#39;review_scores_rating&#39;)</code></pre>
-<blockquote>
-<p>Note: This doesn’t change the original DataFrame, it produced a new
-DataFrame that is sorted</p>
-</blockquote>
+<ul>
+<li><strong>This doesn’t change the original DataFrame</strong>, it
+produced a new DataFrame that is sorted.</li>
+<li>Notice that the ratings sorted “last” are <code>NaN</code> (aka
+<code>null</code> or <code>None</code> or “missing”). <strong>By default
+<code>sort_values()</code> puts all <code>NaN</code> values at the end,
+regardless of sort order.</strong></li>
+<li>Indeed, these listings have a <code>number_of_reviews</code> equal
+to 0. We’ll need to consider how to handle these rating-less listings
+later.</li>
+</ul>
 <p>We can extract a single column from the DataFrame:</p>
 <pre class="code"><code>listings_df[&#39;name&#39;]</code></pre>
 <p>The type of a single column or row from a Pandas
@@ -183,13 +220,31 @@ columns:</p>
 <h3 id="summary-statistics">Summary Statistics</h3>
 <p>We can get summary statistics for all numeric columns:</p>
 <pre class="code"><code>listings_df.describe()</code></pre>
+<p><code>.describe()</code> gives us:</p>
+<ul>
+<li>The count of non-NaN values</li>
+<li>The mean and standard deviation (i.e. how far values spread from the
+mean)</li>
+<li>Min/max values</li>
+<li>The 25%, 50%, and 75% quantiles</li>
+</ul>
 <p>And we can get specific summary statistics for column’s
 individually:</p>
 <pre class="code"><code>listings_df[&#39;price_nzd&#39;].max()</code></pre>
-<pre class="code"><code>listings_df[&#39;review_scores_rating&#39;].mean()</code></pre>
+<p>The maximum price looks suspiciously large for a price per night,
+this will warrant further investigation!</p>
+<p>For categorical values, we can get an initial picture by counting the
+frequency of each distinct value:</p>
+<pre class="code"><code>listings_df[&#39;room_type&#39;].value_counts()</code></pre>
 <h3 id="plotting-demo">Plotting Demo</h3>
-<p>As a quick demo of the power of DataFrames, we can install and use
-the Plotly library to create plots from DataFrame columns:</p>
+<ul>
+<li>While useful, summary statistics only tell us part of the
+story.</li>
+<li>With the power of Python, there’s nothing stopping us from plotting
+our data to give us a clearer picture!</li>
+<li>As a quick demo of the power of DataFrames, we can install and use
+the Plotly library to create plots from DataFrame columns:</li>
+</ul>
 <pre class="code"><code>%pip install plotly nbformat</code></pre>
 <pre class="code"><code>import plotly.express as px</code></pre>
 <pre class="code"><code>px.scatter(listings_df, x=&#39;longitude&#39;, y=&#39;latitude&#39;)</code></pre>

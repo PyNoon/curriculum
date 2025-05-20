@@ -21,6 +21,7 @@ jupyter:
 
 This tutorial will cover:
 
+* A brief intro to Colab/Jupyter notebooks
 * Working with built-in and third party libraries
 * Loading and exploring tabular data with Pandas
 
@@ -32,6 +33,28 @@ It is based on:
 * [swcarpentry.github.io/python-novice-gapminder/08-data-frames.html](https://swcarpentry.github.io/python-novice-gapminder/08-data-frames.html)
 
 > DEMO-ONLY TUTORIAL BEGINS HERE
+
+## Intro to Colab
+
+> Skip this section if continuing on from the PyNoon Starter course.
+
+* **Jupyter notebooks** are a very popular platform for Python coding,
+  particularly for data analysis and visualisation.
+* You can run Jupyter notebooks on your own computer with
+  **jupyterlab**, but today we are running Jupyter notebooks in
+  **Google Colab** so that you don’t need to install Python or Jupyter
+  on your own computer.
+  * Note: Because your notebooks will run on Google’s servers, you
+    shouldn’t upload any company data or code you are not authorised
+    to use outside of company-approved systems.
+* Your notebooks in Google Colab will be saved to your Google Drive
+  account, you can find previous notebooks from the
+  `File -> Open notebook` menu.
+* Cells can be run in any order we choose, so we need to be careful of
+  the order we run cells.
+  * When working in notebooks, it is a good idea to regularly select
+    `Runtime > Restart` session and run all from the menu to ensure
+    our code executes as we expect when run in order.
 
 ## Modules and Libraries
 
@@ -162,6 +185,8 @@ listings_df = pd.read_csv('https://pynoon.github.io/data/inside_airbnb_listings_
 * Pandas has many different `read_*` functions for reading from
   different types of files (e.g. `read_excel()`, `read_parquet()`).
 
+We can check whether any variable refers to a DataFrame:
+
 ```code
 type(listings_df)
 ```
@@ -180,8 +205,14 @@ We can sort the DataFrame by a column:
 listings_df.sort_values('review_scores_rating')
 ```
 
-> Note: This doesn't change the original DataFrame, it produced a new
-> DataFrame that is sorted
+* **This doesn't change the original DataFrame**, it produced a new
+  DataFrame that is sorted.
+* Notice that the ratings sorted "last" are `NaN` (aka `null` or
+  `None` or "missing"). **By default `sort_values()` puts all `NaN`
+  values at the end, regardless of sort order.**
+* Indeed, these listings have a `number_of_reviews` equal to 0. We’ll
+  need to consider how to handle these rating-less listings later.
+
 
 We can extract a single column from the DataFrame:
 
@@ -212,20 +243,36 @@ We can get summary statistics for all numeric columns:
 listings_df.describe()
 ```
 
+`.describe()` gives us:
+
+* The count of non-NaN values
+* The mean and standard deviation (i.e. how far values spread from the mean)
+* Min/max values
+* The 25%, 50%, and 75% quantiles
+
 And we can get specific summary statistics for column's individually:
 
 ```code
 listings_df['price_nzd'].max()
 ```
 
+The maximum price looks suspiciously large for a price per night, this
+will warrant further investigation!
+
+For categorical values, we can get an initial picture by counting the
+frequency of each distinct value:
+
 ```code
-listings_df['review_scores_rating'].mean()
+listings_df['room_type'].value_counts()
 ```
 
 ### Plotting Demo
 
-As a quick demo of the power of DataFrames, we can install and use the
-Plotly library to create plots from DataFrame columns:
+* While useful, summary statistics only tell us part of the story.
+* With the power of Python, there’s nothing stopping us from plotting
+  our data to give us a clearer picture!
+* As a quick demo of the power of DataFrames, we can install and use
+  the Plotly library to create plots from DataFrame columns:
 
 ```code
 %pip install plotly nbformat
