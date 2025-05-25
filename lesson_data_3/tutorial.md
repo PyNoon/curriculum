@@ -48,32 +48,33 @@ listings_df = pd.read_csv('https://pynoon.github.io/data/inside_airbnb_listings_
 listings_df
 ```
 
-We can see how big the DataFrame is using `.shape`:
-
-```code
-listings_df.shape
-```
-
-We can also see what columns we have available to work with:
-
-```code
-listings_df.columns
-```
-
 ## Grouping Data in Plotly
 
-When analysing data, we often want to compare different groups.
+When analysing data, we often want to compare different groups or
+subsets.
 
-One simple way is to colour data points by a categorical column when
-plotting. For example, colouring listings by their room type:
+Plotly makes a lot of group comparisons easy if we have a *tidy*
+DataFrame - with a **row for each data point** and a **column for each
+attribute** - including *categorical* attributes we want to group by.
+
+For example, we can specify a categorical column to colour data points
+by:
 
 ```code
 px.scatter_geo(listings_df, lon='longitude', lat='latitude', color='room_type')
 ```
 
-We can also specify a categorical column as a `facet_row` or
-`facet_col` to generate a separate graph for data points having each
-"facet" value.
+> Note: You can select/deselect colours in the legend.
+
+We can also specify a numerical column to determine the colour:
+
+```code
+px.scatter_geo(listings_df, lon='longitude', lat='latitude', color='price_nzd')
+```
+
+We can go further and create a separate subplot for the data points
+belonging to each group by specifying a categorical column as a
+`facet_row` or `facet_col`.
 
 In the plot below, note that we:
 
@@ -94,28 +95,49 @@ px.histogram(
 )
 ```
 
-It can be useful to compute our own categorical columns, such as to
-compare one category against all others:
+Sometimes we'd like to treat a numeric column like a categorical
+column in our visualisation.
+
+We can do this by using `pd.qcut()` to create a categorical column by
+dividing a numeric column into *bins*.
+
+* Using `pd.qcut()` makes each bin **have the same number of data
+  points**, while `pd.cut()` makes each bin **cover an equal-length
+  interval of the numeric column**.
+* We need to convert each "bin" value to a string in order to display
+  it with Plotly.
+
+For example, we can plot the distribution of review counts for
+different tiers of pricing:
 
 ```code
-listings_df['is_queenstown'] = listings_df['region_parent_name'] == 'Queenstown-Lakes District'
-px.histogram(
-    listings_df,
-    x='price_nzd',
-    facet_row='is_queenstown',
-    histnorm='percent',
+listings_df['price_bin'] = pd.qcut(listings_df['price_nzd'], q=10).astype(str)
+
+px.box(
+    # Ensure lower price bins are shown first.
+    listings_df.sort_values(by='price_nzd'),
+    x='price_bin',
+    y='number_of_reviews',
 )
 ```
 
 ## Grouping Data in Pandas
 
 We can also use Pandas' `groupby()` to split up a DataFrame according
-to a categorical attribute:
+to a categorical attribute.
+
+If you're familiar with SQL, you'll see similarities to the `GROUP BY`
+clause.
+
+* We can loop over the "groups", getting the attribute value and a
+  DataFrame of rows having that attribute value
+* `.shape` returns the number of rows and number of columns as a pair
+  (tuple)
 
 ```code
-for accommodates, accommodates_group_df in listings_df.groupby('accommodates'):
-    print('Accommodates:', accommodates)
-    display(accommodates_group_df)
+for room_type, room_type_group_df in listings_df.groupby('room_type'):
+    print('Room type', room_type)
+    print(room_type_group_df.shape[0])
 ```
 
 `groupby()` can also be used to produce a DataFrame of aggregate
@@ -136,16 +158,19 @@ Note that `groupby()` turns the group columns into an *index*. We can
 turn it back into a regular column with `reset_index()`:
 
 ```code
-listing_groups_df = listings_df.groupby(['accommodates', 'room_type'])[['price_nzd', 'review_scores_rating']].mean().reset_index()
-listing_groups_df
+stats_df = listings_df.groupby(['accommodates', 'room_type'])[['price_nzd', 'review_scores_rating']].mean().reset_index()
+stats_df
 ```
+
+`.groupby()` is a very powerful tool for reshaping data into the right
+*tidy* format that will support the plot you want.
 
 Such DataFrames produced with `groupby()` can be very useful for
 producing plots of statistics, like bar charts:
 
 ```code
 px.bar(
-    listing_groups_df,
+    stats_df.sort_values(by='accommodates'),
     x='accommodates',
     y='price_nzd',
     color='room_type',
@@ -162,28 +187,13 @@ listing_groups_df.to_csv('listing_groups.csv')
 
 ## Handling Missing Data in Pandas
 
-We can also use `.count()` to count the number of rows in each group,
-but notice that the count for the rating column is less than the price
-column:
-
-```code
-listings_df.groupby('accommodates')[['price_nzd', 'review_scores_rating']].count().reset_index()
-```
-
-This is because there are `missing` (aka `null`, aka `NA`) values in
-the rating column that are ignored by `count()`.
-
 We can use `isna()` to get a mask of rows where a value is missing:
-
-```code
-listings_df['review_scores_rating'].isna()
-```
 
 ```code
 listings_df[listings_df['review_scores_rating'].isna()]
 ```
 
-We can then invert the mask with `~` and filter out rows with missing
+We can invert the mask with `~` and filter out rows with missing
 values:
 
 ```code

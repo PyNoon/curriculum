@@ -53,14 +53,11 @@ analysing and manipulating tabular data.</p>
 <p><em>Comparison operators</em> can be used to compare two values:</p>
 <pre class="code"><code>1 &lt; 2</code></pre>
 <p>In the code above, we are effectively asking “is 1 less than 2?”.</p>
-<p>Let’s try the “greater than or equal to” operator next:</p>
-<pre class="code"><code>1 &gt;= 2</code></pre>
 <p>The value returned is either <code>True</code> or <code>False</code>,
 a <strong>Boolean</strong> value:</p>
 <pre class="code"><code>type(1 &lt; 2)</code></pre>
 <p>To check if two values are equal, use two equal signs (as a single
 equal sign is used by Python for assignment):</p>
-<pre class="code"><code>&#39;pynoon&#39; == &#39;pynoon&#39;</code></pre>
 <pre class="code"><code>&#39;pynoon&#39; == &#39;PYNOON&#39;</code></pre>
 <p>We can directly state a Boolean value by name - but remember to start
 with a capital letter!</p>
@@ -77,11 +74,14 @@ with a capital letter!</p>
 code using <code>if</code> statements (as seen in more detail in the
 Futurecoder lessons):</p>
 <pre class="code"><code>bag_kg = 3
-if bag_kg &lt; 7:
+if bag_kg &lt;= 7:
     print(&#39;Bag allowed as carry-on&#39;)
     print(&#39;Please proceed to board the plane&#39;)
 else:
     print(&#39;Please check your bag&#39;)</code></pre>
+<blockquote>
+<p><code>&lt;=</code> is “less than or equal to”</p>
+</blockquote>
 <blockquote>
 <p>Note: The <code>else:</code> clause is optional</p>
 </blockquote>
@@ -104,12 +104,42 @@ Pandas:</p>
 URL.</p>
 </blockquote>
 <pre class="code"><code>listings_df</code></pre>
+<p>We can see how big the DataFrame is using <code>.shape</code>:</p>
+<pre class="code"><code>listings_df.shape</code></pre>
+<p>We can also see what columns we have available to work with:</p>
+<pre class="code"><code>listings_df.columns</code></pre>
+<h2 id="column-types-and-data-preparation">Column Types and Data
+Preparation</h2>
+<p>Every column has a type of value stored in it:</p>
+<pre class="code"><code>listings_df.info()</code></pre>
+<ul>
+<li>Even though the CSV provided no data type information, numeric types
+have been automatically inferred by Pandas</li>
+<li>Non-numeric types like strings are listed as <code>object</code> (we
+only have strings here)</li>
+<li><strong>Types aren’t always what we want</strong> - the
+<code>last_review</code> column should be a datetime</li>
+</ul>
+<p>We can convert date columns from strings to dates:</p>
+<pre class="code"><code>pd.to_datetime(listings_df[&#39;last_review&#39;])</code></pre>
+<p>We must assign the transformed column to replace the original
+column:</p>
+<pre class="code"><code>listings_df[&#39;last_review&#39;] = pd.to_datetime(listings_df[&#39;last_review&#39;])</code></pre>
+<pre class="code"><code>listings_df.info()</code></pre>
+<h2 id="computing-new-columns">Computing new columns</h2>
+<p>Applying standard Python maths operators on a Series performs the
+operation on each value in the Series and returns a new Series:</p>
+<pre class="code"><code>listings_df[&#39;price_nzd&#39;] * 0.5</code></pre>
+<p>Performing maths with two Series applies the operation
+<em>element-wise</em> to each pair of values from the two Series:</p>
+<pre class="code"><code>listings_df[&#39;price_nzd&#39;] / listings_df[&#39;accommodates&#39;]</code></pre>
+<p>Just as we can updated columns, we can add a new column to an
+existing DataFrame by assigning to a new column name that doesn’t exist
+in the DataFrame yet:</p>
+<pre class="code"><code>listings_df[&#39;price_per_person&#39;] = listings_df[&#39;price_nzd&#39;] / listings_df[&#39;accommodates&#39;]</code></pre>
+<pre class="code"><code>listings_df</code></pre>
 <h2 id="use-comparisons-to-select-data-based-on-value.">Use comparisons
 to select data based on value.</h2>
-<p>Recall that we can refer to a single column from a DataFrame,
-returning a value with a type of Pandas’ <code>Series</code>:</p>
-<pre class="code"><code>listings_df[&#39;region_parent_name&#39;]</code></pre>
-<pre class="code"><code>type(listings_df[&#39;region_parent_name&#39;])</code></pre>
 <p>Using a comparison operator on a Series performs the comparison to
 each value in the Series, and returns a new Series full of Boolean
 values:</p>
@@ -153,21 +183,11 @@ operation between two masks, and <code>&amp;</code> to perform an
 <pre class="code"><code>auckland_mask | good_mask</code></pre>
 <pre class="code"><code>auckland_mask &amp; good_mask</code></pre>
 <p>One final note: Conditions on NaN values always return False.</p>
-<h2 id="computing-new-columns">Computing new columns</h2>
-<p>Performing maths on a Series applies the operation to each value in
-the Series, returning a new Series:</p>
-<pre class="code"><code>nzd_to_aud = 0.93
-listings_df[&#39;price_nzd&#39;] * nzd_to_aud</code></pre>
-<p>Performing maths with two Series applies the operation element-wise
-to each pair of values from the two Series:</p>
-<pre class="code"><code>listings_df[&#39;price_nzd&#39;] / listings_df[&#39;accommodates&#39;]</code></pre>
-<p>We can add a new column to an existing DataFrame by assigning to a
-new column name that doesn’t exist in the DataFrame yet:</p>
-<pre class="code"><code>listings_df[&#39;price_per_person&#39;] = listings_df[&#39;price_nzd&#39;] / listings_df[&#39;accommodates&#39;]</code></pre>
-<pre class="code"><code>listings_df</code></pre>
-<pre class="code"><code>listings_df[&#39;price_per_person&#39;].describe()</code></pre>
 <h2 id="pandas-and-plotly-documentation">Pandas and Plotly
 Documentation</h2>
+<p>The tools for transforming and filtering data we’ve used here are the
+kind of code you’ll spend much of your time writing when analysing data
+with Pandas.</p>
 <p>Find out what other functions (methods) and variables (attributes)
 are attached to DataFrames and Series from their reference
 documentation:</p>
@@ -182,24 +202,7 @@ arguments they will accept to configure them:</p>
 <li>https://plotly.com/python/plotly-express/</li>
 <li>https://plotly.com/python-api-reference/</li>
 </ul>
-<h2 id="column-types-and-data-preparation">Column Types and Data
-Preparation</h2>
-<p>Every column has a type of value stored in it:</p>
-<pre class="code"><code>listings_df.info()</code></pre>
-<ul>
-<li>Numeric types have been automatically inferred by Pandas</li>
-<li>Non-numeric types like strings are listed as <code>object</code> (we
-only have strings here)</li>
-<li>Some types aren’t what we want</li>
-</ul>
-<p>We can convert date columns from strings to dates:</p>
-<pre class="code"><code>pd.to_datetime(listings_df[&#39;host_since&#39;])</code></pre>
-<p>We must assign the transformed columns to replace the original
-columns:</p>
-<pre class="code"><code>listings_df[&#39;host_since&#39;] = pd.to_datetime(listings_df[&#39;host_since&#39;])
-listings_df[&#39;last_review&#39;] = pd.to_datetime(listings_df[&#39;last_review&#39;])</code></pre>
-<pre class="code"><code>listings_df.info()</code></pre>
-<pre class="code"><code>listings_df</code></pre>
+<h2 id="more-data-preparation">More Data Preparation</h2>
 <p>We can also remove the dollar sign from each price:</p>
 <pre class="code"><code>listings_df[&#39;price&#39;].str.replace(&#39;$&#39;, &#39;&#39;, regex=False)</code></pre>
 <p>We can “chain” additional method calls on the results of previous

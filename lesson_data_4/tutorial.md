@@ -152,6 +152,13 @@ listings_df = pd.read_csv('https://pynoon.github.io/data/inside_airbnb_listings_
 listings_df
 ```
 
+While Pandas provides many more functions for transforming DataFrames
+and Series, it is still often convenient to express a transformation
+as plain-old-Python code applied to a single value or row.
+
+We can do this by writing our transformation as a regular Python
+function and then *applying* it to a Series or DataFrame.
+
 To transform a listing ID into a URL, we can do the following:
 
 ```
@@ -181,7 +188,9 @@ listings_df
 ```
 
 We can also use `.apply()` with `axis='columns` on an entire DataFrame
-to pass an entire row at a time to the function:
+to pass an entire row at a time to the function.
+
+The output will still be a single Series of the returned values.
 
 ```code
 def listing_to_description(row):
@@ -192,6 +201,23 @@ def listing_to_description(row):
 listings_df['description'] = listings_df.apply(listing_to_description, axis='columns')
 listings_df
 ```
+
+The `row` passed into the function will be a Series representing a
+single row in the DataFrame.
+
+We can access the row's value for each column in the same way we
+access columns in a DataFrame.
+
+
+One important point to know about `.apply()` is that **Pandas built-in
+operations will often be much faster** than running plain-old-Python on
+each row.
+
+However, this often won't make much of a difference until you're
+dealing with hundreds of thousands or millions of rows. And remember,
+when exploring the data it's **most important for you to be able to
+quickly translate your ideas into working code!**
+
 
 ## Organising code with functions
 

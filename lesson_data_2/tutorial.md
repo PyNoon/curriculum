@@ -40,12 +40,6 @@ It is based on:
 
 In the code above, we are effectively asking "is 1 less than 2?".
 
-Let's try the "greater than or equal to" operator next:
-
-```code
-1 >= 2
-```
-
 The value returned is either `True` or `False`, a **Boolean** value:
 
 ```code
@@ -54,10 +48,6 @@ type(1 < 2)
 
 To check if two values are equal, use two equal signs (as a single
 equal sign is used by Python for assignment):
-
-```code
-'pynoon' == 'pynoon'
-```
 
 ```code
 'pynoon' == 'PYNOON'
@@ -98,12 +88,14 @@ lessons):
 
 ```code
 bag_kg = 3
-if bag_kg < 7:
+if bag_kg <= 7:
     print('Bag allowed as carry-on')
     print('Please proceed to board the plane')
 else:
     print('Please check your bag')
 ```
+
+> `<=` is "less than or equal to"
 
 > Note: The `else:` clause is optional
 
@@ -133,18 +125,80 @@ listings_df = pd.read_csv('https://pynoon.github.io/data/inside_airbnb_listings_
 listings_df
 ```
 
+We can see how big the DataFrame is using `.shape`:
+
+```code
+listings_df.shape
+```
+
+We can also see what columns we have available to work with:
+
+```code
+listings_df.columns
+```
+
+
+## Column Types and Data Preparation
+
+Every column has a type of value stored in it:
+
+```code
+listings_df.info()
+```
+
+* Even though the CSV provided no data type information, numeric types
+  have been automatically inferred by Pandas
+* Non-numeric types like strings are listed as `object` (we only have
+  strings here)
+* **Types aren’t always what we want** - the `last_review` column
+  should be a datetime
+
+We can convert date columns from strings to dates:
+
+```code
+pd.to_datetime(listings_df['last_review'])
+```
+
+We must assign the transformed column to replace the original column:
+
+```code
+listings_df['last_review'] = pd.to_datetime(listings_df['last_review'])
+```
+
+```code
+listings_df.info()
+```
+
+## Computing new columns
+
+Applying standard Python maths operators on a Series performs the
+operation on each value in the Series and returns a new Series:
+
+```code
+listings_df['price_nzd'] * 0.5
+```
+
+Performing maths with two Series applies the operation *element-wise*
+to each pair of values from the two Series:
+
+```code
+listings_df['price_nzd'] / listings_df['accommodates']
+```
+
+Just as we can updated columns, we can add a new column to an existing
+DataFrame by assigning to a new column name that doesn't exist in the
+DataFrame yet:
+
+```code
+listings_df['price_per_person'] = listings_df['price_nzd'] / listings_df['accommodates']
+```
+
+```code
+listings_df
+```
+
+
 ## Use comparisons to select data based on value.
-
-Recall that we can refer to a single column from a DataFrame,
-returning a value with a type of Pandas' `Series`:
-
-```code
-listings_df['region_parent_name']
-```
-
-```code
-type(listings_df['region_parent_name'])
-```
 
 Using a comparison operator on a Series performs the comparison to
 each value in the Series, and returns a new Series full of Boolean
@@ -154,7 +208,8 @@ values:
 listings_df['region_parent_name'] == 'Auckland'
 ```
 
-> Remember: the type of the value determines what an operation will do with it.
+> Remember: the type of the value determines what an operation will do
+> with it.
 
 We can use the Boolean Series, commonly called a **mask**, to return a
 *new* DataFrame that is filtered to contain only the rows where the
@@ -225,40 +280,11 @@ auckland_mask & good_mask
 One final note: Conditions on NaN values always return False.
 
 
-## Computing new columns
-
-Performing maths on a Series applies the operation to each value in
-the Series, returning a new Series:
-
-```code
-nzd_to_aud = 0.93
-listings_df['price_nzd'] * nzd_to_aud
-```
-
-Performing maths with two Series applies the operation element-wise to
-each pair of values from the two Series:
-
-```code
-listings_df['price_nzd'] / listings_df['accommodates']
-```
-
-We can add a new column to an existing DataFrame by assigning to a new
-column name that doesn't exist in the DataFrame yet:
-
-```code
-listings_df['price_per_person'] = listings_df['price_nzd'] / listings_df['accommodates']
-```
-
-```code
-listings_df
-```
-
-```code
-listings_df['price_per_person'].describe()
-```
-
-
 ## Pandas and Plotly Documentation
+
+The tools for transforming and filtering data we’ve used here are the
+kind of code you’ll spend much of your time writing when analysing
+data with Pandas.
 
 Find out what other functions (methods) and variables (attributes) are
 attached to DataFrames and Series from their reference documentation:
@@ -274,39 +300,7 @@ arguments they will accept to configure them:
 * https://plotly.com/python-api-reference/
 
 
-## Column Types and Data Preparation
-
-Every column has a type of value stored in it:
-
-```code
-listings_df.info()
-```
-
-* Numeric types have been automatically inferred by Pandas
-* Non-numeric types like strings are listed as `object` (we only have
-  strings here)
-* Some types aren't what we want
-
-We can convert date columns from strings to dates:
-
-```code
-pd.to_datetime(listings_df['host_since'])
-```
-
-We must assign the transformed columns to replace the original columns:
-
-```code
-listings_df['host_since'] = pd.to_datetime(listings_df['host_since'])
-listings_df['last_review'] = pd.to_datetime(listings_df['last_review'])
-```
-
-```code
-listings_df.info()
-```
-
-```code
-listings_df
-```
+## More Data Preparation
 
 We can also remove the dollar sign from each price:
 

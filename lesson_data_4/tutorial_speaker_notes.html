@@ -132,6 +132,11 @@ DataFrames</h2>
 <pre class="code"><code>import pandas as pd</code></pre>
 <pre class="code"><code>listings_df = pd.read_csv(&#39;https://pynoon.github.io/data/inside_airbnb_listings_nz_2023_09.csv&#39;)
 listings_df</code></pre>
+<p>While Pandas provides many more functions for transforming DataFrames
+and Series, it is still often convenient to express a transformation as
+plain-old-Python code applied to a single value or row.</p>
+<p>We can do this by writing our transformation as a regular Python
+function and then <em>applying</em> it to a Series or DataFrame.</p>
 <p>To transform a listing ID into a URL, we can do the following:</p>
 <pre><code>id = &#39;l11909616&#39;
 f&#39;https://www.airbnb.co.nz/rooms/{id[1:]}&#39;</code></pre>
@@ -148,7 +153,8 @@ column:</p>
 listings_df</code></pre>
 <p>We can also use <code>.apply()</code> with <code>axis=&#39;columns</code>
 on an entire DataFrame to pass an entire row at a time to the
-function:</p>
+function.</p>
+<p>The output will still be a single Series of the returned values.</p>
 <pre class="code"><code>def listing_to_description(row):
     room_type = row[&#39;room_type&#39;]
     host_name = row[&#39;host_name&#39;]
@@ -156,6 +162,17 @@ function:</p>
 
 listings_df[&#39;description&#39;] = listings_df.apply(listing_to_description, axis=&#39;columns&#39;)
 listings_df</code></pre>
+<p>The <code>row</code> passed into the function will be a Series
+representing a single row in the DataFrame.</p>
+<p>We can access the row’s value for each column in the same way we
+access columns in a DataFrame.</p>
+<p>One important point to know about <code>.apply()</code> is that
+<strong>Pandas built-in operations will often be much faster</strong>
+than running plain-old-Python on each row.</p>
+<p>However, this often won’t make much of a difference until you’re
+dealing with hundreds of thousands or millions of rows. And remember,
+when exploring the data it’s <strong>most important for you to be able
+to quickly translate your ideas into working code!</strong></p>
 <h2 id="organising-code-with-functions">Organising code with
 functions</h2>
 <ul>
