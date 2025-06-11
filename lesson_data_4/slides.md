@@ -69,7 +69,7 @@ title: PyNoon Data Lesson 4
   * Each piece of data should have a **single source of truth**
   * Generate other **representations** from that source
 * Documentation
-  * Comments that state exactly what code does (i.e. repeat what they
+  * Comments that state exactly what code does (i.e. repeat what the
     code itself is saying) get out of date
   * Comments should explain what code **achieves** and **why**
 
