@@ -42,8 +42,8 @@ title: PyNoon Plus Lesson 1
 * Probably not
 * If anything, programming is more important to "glue" AI to
   data/systems
-* AI-generated code often needs fixing - **you still need to know how to
-  fix it**
+* AI-generated code often needs reviewing and fixing - **you still
+  need to understand the code you're responsible for**
 * The essence of programming is about *precisely* instructing a
   computer - you still need to carefully **consider** and
   **communicate** those instructions
@@ -61,7 +61,8 @@ title: PyNoon Plus Lesson 1
 * **DON'T** use generated code you don't understand
 * **DON'T** use it to replace reading documentation
 * **DO** ask it to explain code (as *one* perspective)
-* **DO** use it generate snippets for specific tasks
+* **DO** use it generate snippets, start projects, and refactor (all
+  with review)
 * **DO** be specific in your instructions/requirements
 * **DO** ask it to try fix code when the result is wrong
 

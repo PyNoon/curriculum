@@ -46,7 +46,7 @@ import requests
   standard method for requests to retrieve data.
   * Other methods include `POST` and `PUT`, which are commonly used
     for submitting new data or data updates to an API.
-* The URL to use and expected parameters for the API are documented
+* The URL to use and expected parameters and headers for the API are documented
   at: [nominatim.org/release-docs/develop/api/Overview](https://nominatim.org/release-docs/develop/api/Overview/)
 
 ```code
@@ -57,6 +57,7 @@ r = requests.get(
         'format': 'jsonv2',
         'addressdetails': 1,
     },
+    headers={'referer': 'pynoon demo'},
 )
 ```
 
@@ -118,6 +119,7 @@ r = requests.get(
         'format': 'oops',
         'addressdetails': 1,
     },
+    headers={'referer': 'pynoon demo'},
 )
 ```
 
@@ -193,6 +195,7 @@ def get_address_details(address):
             'format': 'jsonv2',
             'addressdetails': 1,
         },
+        headers={'referer': 'pynoon demo'},
     )
     # Avoid hitting the API rate limit
     sleep(1)

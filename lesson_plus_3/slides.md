@@ -64,8 +64,7 @@ title: PyNoon Plus Lesson 3
 
 * **Option 1:** Make a runnable zip file: [zipapp](https://docs.python.org/3/library/zipapp.html)
 * **Option 2:** Create a Python package
-  * [Poetry](https://python-poetry.org/) or [Rye](https://rye-up.com/)
-    makes packaging easy
+  * [uv](https://github.com/astral-sh/uv) makes packaging easy
   * Share the package as a pip-installable file
   * Publish on [pypi](https://pypi.org/) for anyone to install with `pip`
 * Useful for:

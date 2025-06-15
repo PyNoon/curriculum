@@ -68,8 +68,8 @@ request, which is the standard method for requests to retrieve data.
 are commonly used for submitting new data or data updates to an
 API.</li>
 </ul></li>
-<li>The URL to use and expected parameters for the API are documented
-at: <a href="https://nominatim.org/release-docs/develop/api/Overview/">nominatim.org/release-docs/develop/api/Overview</a></li>
+<li>The URL to use and expected parameters and headers for the API are
+documented at: <a href="https://nominatim.org/release-docs/develop/api/Overview/">nominatim.org/release-docs/develop/api/Overview</a></li>
 </ul>
 <pre class="code"><code>r = requests.get(
     &#39;https://nominatim.openstreetmap.org/search&#39;,
@@ -78,6 +78,7 @@ at: <a href="https://nominatim.org/release-docs/develop/api/Overview/">nominatim
         &#39;format&#39;: &#39;jsonv2&#39;,
         &#39;addressdetails&#39;: 1,
     },
+    headers={&#39;referer&#39;: &#39;pynoon demo&#39;},
 )</code></pre>
 <p>Let’s look at the response:</p>
 <pre class="code"><code>r</code></pre>
@@ -114,6 +115,7 @@ format?</p>
         &#39;format&#39;: &#39;oops&#39;,
         &#39;addressdetails&#39;: 1,
     },
+    headers={&#39;referer&#39;: &#39;pynoon demo&#39;},
 )</code></pre>
 <p>The text is not the JSON we expect:</p>
 <pre class="code"><code>r.text</code></pre>
@@ -183,6 +185,7 @@ def get_address_details(address):
             &#39;format&#39;: &#39;jsonv2&#39;,
             &#39;addressdetails&#39;: 1,
         },
+        headers={&#39;referer&#39;: &#39;pynoon demo&#39;},
     )
     # Avoid hitting the API rate limit
     sleep(1)

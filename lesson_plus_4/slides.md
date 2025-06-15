@@ -181,7 +181,7 @@ def hello_world():
 
 ### Tooling
 
-* Manage pip dependencies with [`rye`](https://rye-up.com/)
+* Manage pip dependencies with [`uv`](https://github.com/astral-sh/uv)
 * Automated testing
   * Unit tests for individual functions, e.g.
     [`pytest`](https://docs.pytest.org/en/8.0.x/)
@@ -191,19 +191,23 @@ def hello_world():
   [`ruff`](https://docs.astral.sh/ruff/)
 * Version control to track file changes, e.g.
   [`git`](https://git-scm.com/)
+* Set up lots of common tools with
+  [`usethis`](https://pypi.org/project/usethis/)
 
 ### Miscellaneous
 
-* [Python coming to Excel soon](https://support.microsoft.com/en-gb/office/get-started-with-python-in-excel-a33fbcbe-065b-41d3-82cf-23d05397f53d)
+* [Python now in Excel](https://support.microsoft.com/en-gb/office/get-started-with-python-in-excel-a33fbcbe-065b-41d3-82cf-23d05397f53d)
 * Distributed Computing:
   * [PySpark](https://spark.apache.org/docs/latest/api/python/index.html)
+  * [Ray](https://www.ray.io/)
   * [Dask](https://www.dask.org/)
+  * [Labtech](https://ben-denham.github.io/labtech/)
 * Game development:
-  * [PyGame](https://www.pygame.org) engine for 2D games
+  * [PyGame](https://www.pygame.org) engine for 2D
   * [Pyxel](https://github.com/kitao/pyxel) for retro games
   * [Panda3D](https://github.com/panda3d/panda3d),
     [Ursina](https://github.com/pokepetter/ursina), and
-    [Harfang3D](https://www.harfang3d.com/en_US/) for 3D games
+    [Harfang3D](https://www.harfang3d.com/en_US/) for 3D
 
 ### The Python Community
 
