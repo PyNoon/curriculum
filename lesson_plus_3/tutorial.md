@@ -28,6 +28,13 @@ notebooks.
 2. What's the first thing to do? RENAME IT!
 3. Name it `pynoon_plus_3.ipynb`
 
+We need to install `jupyter_bokeh` for `panel` to work in Google
+Colab:
+
+```code
+!pip install jupyter_bokeh
+```
+
 ## UI Widget Basics
 
 To get started, let's import the `panel` module that provides widgets
