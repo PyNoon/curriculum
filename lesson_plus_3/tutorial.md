@@ -1,5 +1,5 @@
 ---
-title: PyNoon Plus Lesson 2 - Tutorial
+title: PyNoon Plus Lesson 3 - Tutorial
 jupyter:
   nbformat: 4
   nbformat_minor: 4
